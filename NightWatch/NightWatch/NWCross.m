@@ -21,9 +21,6 @@ NSString *crossImageName = @"Cross";
     self = [super initWithFrame:frame];
 
     if (self) {
-        
-
-        self.Cframe = CGRectMake(250, 100, self.CROSS_WIDTH, self.CROSS_HEIGHT);
         self.image = [UIImage imageNamed:crossImageName];
     }
     
