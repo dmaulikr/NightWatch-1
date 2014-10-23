@@ -15,13 +15,20 @@ NSString *crossImageName = @"Cross";
 @implementation NWCross
 
 
-- (id)initWithFrame:(CGRect)frame
+- (id)init
 {
 
-    self = [super initWithFrame:frame];
+    self = [super init];
 
     if (self) {
         self.image = [UIImage imageNamed:crossImageName];
+        _CROSS_POSITION_Y1 = [NSNumber numberWithInt:0];
+        _CROSS_POSITION_Y2 = [NSNumber numberWithInt:100];
+        _CROSS_POSITION_Y3 = [NSNumber numberWithInt:200];
+        
+        
+
+        
     }
     
     return self;

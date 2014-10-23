@@ -10,4 +10,7 @@
 
 @interface NWGamePlayViewController : UIViewController
 
+@property (retain, nonatomic) NSMutableArray *arrayPositions;
+@property (retain, nonatomic) NSNumber *randomPosition;
+
 @end

@@ -12,58 +12,42 @@
 
 const int CROSS_HEIGHT = 75;
 const int CROSS_WIDTH = 50;
-
-
-
 const int CROSS_POSITION_Y = 250;
 
-
-
-
-
 @interface NWGamePlayViewController ()
+
 @property (retain, nonatomic) IBOutlet UILabel *highScoreLbl;
 @property (retain, nonatomic) NSDictionary *dictJSON;
+
 @property (retain, nonatomic) NWCross *cross;
+@property (retain, nonatomic) NWGhost *ghost;
+
 @property (assign, nonatomic) BOOL objectTouched;
-@property (retain, nonatomic) NSNumber *CROSS_POSITION_X1, *CROSS_POSITION_X2, *CROSS_POSITION_X3, *CROSS_POSITION_X4,
-                                       *CROSS_POSITION_X5;
-@property (assign, nonatomic) id randomPosition;
-@property (retain, nonatomic) NSArray *arrayPositions;
+
+@property (assign, nonatomic) int randomPositionx;
+@property (assign, nonatomic) int randomPositiony;
+
+@property (retain, nonatomic) NSMutableArray *arrayPositions;
+
+
 
 @end
 
 @implementation NWGamePlayViewController
 
 
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+- (void) viewWillAppear:(BOOL)animated
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-
-        }
-    return self;
+    
+    _randomPosition = [NSNumber numberWithInt:arc4random() % ([_arrayPositions count] - 1)];
 }
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    
-    _CROSS_POSITION_X1 = [NSNumber numberWithInt:0];
-    _CROSS_POSITION_X2 = [NSNumber numberWithInt:100];
-    _CROSS_POSITION_X3 = [NSNumber numberWithInt:200];
-    _CROSS_POSITION_X4 = [NSNumber numberWithInt:300];
-    _CROSS_POSITION_X5 = [NSNumber numberWithInt:400];
-    
-    _arrayPositions = @[_CROSS_POSITION_X1,
-                        _CROSS_POSITION_X2,
-                        _CROSS_POSITION_X3,
-                        _CROSS_POSITION_X4,
-                        _CROSS_POSITION_X5];
-    
+        
     //Fetching the Data from ghost.json
     NSString *JSONFilePath = [[NSBundle mainBundle]pathForResource:@"ghost"
                                                             ofType:@"json"];
@@ -73,8 +57,6 @@ const int CROSS_POSITION_Y = 250;
                            JSONObjectWithData:JSONData
                            options:kNilOptions
                            error:nil];
-    
-
     
     NSNumber *frameX = [self.dictJSON objectForKey:@"frame.x"];
     NSNumber *frameY = [self.dictJSON objectForKey:@"frame.y"];
@@ -90,21 +72,29 @@ const int CROSS_POSITION_Y = 250;
 
     
     //Instantiate Ghost Object
-    NWGhost *ghost = [[[NWGhost alloc]initWithFrame:ghostFrame]autorelease];
-    [self.view addSubview:ghost];
-    [self attack:ghost.layer];
-    
-    //_randomPosition = _arrayPositions[arc4random_uniform([_arrayPositions count])];
+    _ghost = [[[NWGhost alloc]initWithFrame:ghostFrame]autorelease];
+    [self.view addSubview:_ghost];
+    [self attack:_ghost.layer];
     
     //Instantiate Cross
-    CGRect crossframe = CGRectMake(120, CROSS_POSITION_Y, CROSS_WIDTH, CROSS_HEIGHT);
+    _cross = [[[NWCross alloc]init]autorelease];
     
-    _cross = [[[NWCross alloc]initWithFrame:crossframe]autorelease];
+    int randomFromFiveDefaultPositions = [_cross.arrayPositions[[_cross.randomPosition intValue]]intValue];
+    
+    CGRect crossframe = CGRectMake(randomFromFiveDefaultPositions, CROSS_POSITION_Y, CROSS_WIDTH, CROSS_HEIGHT);
+    
+    _cross.frame  = crossframe;
+    
     [self.view addSubview:_cross];
     _cross.userInteractionEnabled = YES;
     
+    _arrayPositions = [[NSMutableArray alloc]initWithObjects:_cross.CROSS_POSITION_Y1,_cross.CROSS_POSITION_Y2, _cross.CROSS_POSITION_Y3,nil];
+    
+    NSLog(@"%d",[_cross.arrayPositions[[_cross.randomPosition intValue]]intValue]);
+    
     
 }
+
 
 
 
@@ -115,7 +105,7 @@ const int CROSS_POSITION_Y = 250;
     CAKeyframeAnimation *translation = [CAKeyframeAnimation animationWithKeyPath:keyPath];
     
     translation.duration = 4.0f;
-    translation.repeatCount = HUGE_VAL;
+//    translation.repeatCount = HUGE_VAL;
 
     
     NSMutableArray *values = [[[NSMutableArray alloc]init]autorelease];
@@ -154,14 +144,17 @@ const int CROSS_POSITION_Y = 250;
                                       touchPoint.y - (CROSS_HEIGHT/2),
                                       CROSS_WIDTH,
                                       CROSS_HEIGHT);
-        _randomPosition = _arrayPositions[arc4random_uniform([_arrayPositions count])];
     }
     
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    _cross.frame = CGRectMake([_randomPosition intValue], CROSS_POSITION_Y, CROSS_WIDTH, CROSS_HEIGHT);
+    if (_objectTouched){
+        int randomFromFiveDefaultPositions = [_cross.arrayPositions[[_cross.randomPosition intValue]]intValue];
+        CGRect crossframe = CGRectMake(randomFromFiveDefaultPositions, CROSS_POSITION_Y, CROSS_WIDTH, CROSS_HEIGHT);
+        _cross.frame = crossframe;
+    }
     _objectTouched = FALSE;
 }
 
@@ -170,4 +163,6 @@ const int CROSS_POSITION_Y = 250;
     [_highScoreLbl release];
     [super dealloc];
 }
+
+
 @end
