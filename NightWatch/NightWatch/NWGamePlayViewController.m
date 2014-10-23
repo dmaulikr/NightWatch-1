@@ -8,23 +8,34 @@
 
 #import "NWGamePlayViewController.h"
 #import "NWGhost.h"
+#import "NWCross.h"
+
+const int CROSS_HEIGHT = 75;
+const int CROSS_WIDTH = 50;
+
+const int CROSS_POSITION_X1 = 350;
+const int CROSS_POSITION_X2 = 0;
+const int CROSS_POSITION_Y = 250;
+
+
 
 
 @interface NWGamePlayViewController ()
 @property (retain, nonatomic) IBOutlet UILabel *highScoreLbl;
 @property (retain, nonatomic) NSDictionary *dictJSON;
+@property (retain, nonatomic) NWCross *cross;
+@property (assign, nonatomic) BOOL objectTouched;
 
 @end
 
 @implementation NWGamePlayViewController
 
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-
-        
-
         
         }
     return self;
@@ -60,11 +71,18 @@
                                    [frameHeight floatValue]);
 
     
-    
     //Instantiate Ghost Object
     NWGhost *ghost = [[[NWGhost alloc]initWithFrame:ghostFrame]autorelease];
     [self.view addSubview:ghost];
     [self attack:ghost.layer];
+    
+     int randomPosition = CROSS_POSITION_X2 + arc4random() % (CROSS_POSITION_X1 - CROSS_POSITION_X2);
+    //Instantiate Cross
+    CGRect crossframe = CGRectMake(randomPosition, CROSS_POSITION_Y, CROSS_WIDTH, CROSS_HEIGHT);
+    
+    _cross = [[[NWCross alloc]initWithFrame:crossframe]autorelease];
+    [self.view addSubview:_cross];
+    
     
 }
 
@@ -85,7 +103,7 @@
     [values addObject:[NSNumber numberWithFloat:0.0f]];
     
     //end value
-    CGFloat width = [[UIScreen mainScreen]applicationFrame].size.width + 400;
+    CGFloat width = [[UIScreen mainScreen]applicationFrame].size.width + 300;
     [values addObject:[NSNumber numberWithFloat:width]];
     translation.values = values;
     
@@ -94,11 +112,31 @@
 }
 
 
-- (void)didReceiveMemoryWarning
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    
+    
+
 }
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+
+            UITouch *touch = [[event allTouches]anyObject];
+            CGPoint touchPoint = [touch locationInView:self.view];
+            _cross.frame = CGRectMake(touchPoint.x - (CROSS_WIDTH/2),
+                                      touchPoint.y - (CROSS_HEIGHT/2),
+                                      CROSS_WIDTH,
+                                      CROSS_HEIGHT);
+    
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    int randomPosition = CROSS_POSITION_X2 + arc4random() % (CROSS_POSITION_X1 - CROSS_POSITION_X2);
+    _cross.frame = CGRectMake(randomPosition, CROSS_POSITION_Y, CROSS_WIDTH, CROSS_HEIGHT);
+}
+
 
 - (void)dealloc {
     [_highScoreLbl release];

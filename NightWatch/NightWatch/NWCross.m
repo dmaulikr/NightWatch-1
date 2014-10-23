@@ -8,24 +8,30 @@
 
 #import "NWCross.h"
 
+NSString *crossImageName = @"Cross";
+
+
+
 @implementation NWCross
+
 
 - (id)initWithFrame:(CGRect)frame
 {
+
     self = [super initWithFrame:frame];
+
     if (self) {
-        // Initialization code
+        
+
+        self.Cframe = CGRectMake(250, 100, self.CROSS_WIDTH, self.CROSS_HEIGHT);
+        self.image = [UIImage imageNamed:crossImageName];
     }
+    
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
+
+
+
 
 @end

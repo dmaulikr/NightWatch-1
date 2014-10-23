@@ -10,4 +10,8 @@
 
 @interface NWCross : UIImageView
 
+@property (assign, nonatomic) CGRect Cframe;
+@property (assign, nonatomic) const int CROSS_HEIGHT, CROSS_WIDTH;
+
+
 @end

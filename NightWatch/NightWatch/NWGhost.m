@@ -16,7 +16,6 @@ NSString *AGhostImageName = @"Ghost";
 - (id)initWithFrame:(CGRect)frame
 {
     
-    
     self = [super initWithFrame:frame];
     if (self) {
     
