@@ -1,0 +1,9 @@
+{
+    
+    "speed"    : 5.0,
+    "frame.x"  : -200,
+    "frame.y"  : 75,
+    "frame.width" : 100,
+    "frame.height" : 100
+    
+}

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA0C0A1C19F89274006B8DA5 /* NWGhost.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0C0A1B19F89274006B8DA5 /* NWGhost.m */; };
+		FA0C0A1E19F893FC006B8DA5 /* ghost.json in Resources */ = {isa = PBXBuildFile; fileRef = FA0C0A1D19F893FC006B8DA5 /* ghost.json */; };
+		FA0C0A2019F896B0006B8DA5 /* Ghost.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0C0A1F19F896B0006B8DA5 /* Ghost.png */; };
 		FA19589E19F79EE200857A2E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA19589D19F79EE200857A2E /* Foundation.framework */; };
 		FA1958A019F79EE200857A2E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA19589F19F79EE200857A2E /* CoreGraphics.framework */; };
 		FA1958A219F79EE200857A2E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA1958A119F79EE200857A2E /* UIKit.framework */; };
@@ -35,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA0C0A1A19F89274006B8DA5 /* NWGhost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWGhost.h; sourceTree = "<group>"; };
+		FA0C0A1B19F89274006B8DA5 /* NWGhost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWGhost.m; sourceTree = "<group>"; };
+		FA0C0A1D19F893FC006B8DA5 /* ghost.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ghost.json; sourceTree = "<group>"; };
+		FA0C0A1F19F896B0006B8DA5 /* Ghost.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ghost.png; sourceTree = "<group>"; };
 		FA19589A19F79EE200857A2E /* NightWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NightWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA19589D19F79EE200857A2E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FA19589F19F79EE200857A2E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -119,6 +126,9 @@
 				FA1958CC19F7A23A00857A2E /* NWGamePlayViewController.h */,
 				FA1958CD19F7A23A00857A2E /* NWGamePlayViewController.m */,
 				FA1958CE19F7A23A00857A2E /* NWGamePlayViewController.xib */,
+				FA0C0A1A19F89274006B8DA5 /* NWGhost.h */,
+				FA0C0A1B19F89274006B8DA5 /* NWGhost.m */,
+				FA0C0A1D19F893FC006B8DA5 /* ghost.json */,
 				FA1958AF19F79EE200857A2E /* Images.xcassets */,
 				FA1958D319F7A2C800857A2E /* Resources */,
 				FA1958A419F79EE200857A2E /* Supporting Files */,
@@ -159,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				FA1958D119F7A2C300857A2E /* child.png */,
+				FA0C0A1F19F896B0006B8DA5 /* Ghost.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -242,7 +253,9 @@
 				FA1958D219F7A2C300857A2E /* child.png in Resources */,
 				FA1958A819F79EE200857A2E /* InfoPlist.strings in Resources */,
 				FA1958B019F79EE200857A2E /* Images.xcassets in Resources */,
+				FA0C0A1E19F893FC006B8DA5 /* ghost.json in Resources */,
 				FA1958D019F7A23A00857A2E /* NWGamePlayViewController.xib in Resources */,
+				FA0C0A2019F896B0006B8DA5 /* Ghost.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +276,7 @@
 			files = (
 				FA1958CF19F7A23A00857A2E /* NWGamePlayViewController.m in Sources */,
 				FA1958AA19F79EE200857A2E /* main.m in Sources */,
+				FA0C0A1C19F89274006B8DA5 /* NWGhost.m in Sources */,
 				FA1958AE19F79EE200857A2E /* NWAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -462,6 +476,7 @@
 				FA1958C819F79EE200857A2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		FA1958C919F79EE200857A2E /* Build configuration list for PBXNativeTarget "NightWatchTests" */ = {
 			isa = XCConfigurationList;
@@ -470,6 +485,7 @@
 				FA1958CB19F79EE200857A2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
