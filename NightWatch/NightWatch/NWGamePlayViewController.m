@@ -60,11 +60,39 @@
                                    [frameHeight floatValue]);
 
     
+    
     //Instantiate Ghost Object
     NWGhost *ghost = [[[NWGhost alloc]initWithFrame:ghostFrame]autorelease];
     [self.view addSubview:ghost];
+    [self attack:ghost.layer];
     
 }
+
+
+- (void)attack:(CALayer *)layer
+{
+    NSString *keyPath = @"transform.translation.x";
+    
+    CAKeyframeAnimation *translation = [CAKeyframeAnimation animationWithKeyPath:keyPath];
+    
+    translation.duration = 4.0f;
+    translation.repeatCount = HUGE_VAL;
+
+    
+    NSMutableArray *values = [[[NSMutableArray alloc]init]autorelease];
+    
+    //start value
+    [values addObject:[NSNumber numberWithFloat:0.0f]];
+    
+    //end value
+    CGFloat width = [[UIScreen mainScreen]applicationFrame].size.width + 400;
+    [values addObject:[NSNumber numberWithFloat:width]];
+    translation.values = values;
+    
+    [layer addAnimation:translation forKey:keyPath];
+    
+}
+
 
 - (void)didReceiveMemoryWarning
 {
