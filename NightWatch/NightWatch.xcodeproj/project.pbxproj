@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA0817E019F9D29A00FC2073 /* child.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0817DF19F9D29A00FC2073 /* child.png */; };
+		FA0817E219F9D30200FC2073 /* Cross.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0817E119F9D30200FC2073 /* Cross.png */; };
 		FA0C0A1C19F89274006B8DA5 /* NWGhost.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0C0A1B19F89274006B8DA5 /* NWGhost.m */; };
 		FA0C0A1E19F893FC006B8DA5 /* ghost.json in Resources */ = {isa = PBXBuildFile; fileRef = FA0C0A1D19F893FC006B8DA5 /* ghost.json */; };
 		FA0C0A2019F896B0006B8DA5 /* Ghost.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0C0A1F19F896B0006B8DA5 /* Ghost.png */; };
@@ -24,7 +26,7 @@
 		FA1958C319F79EE200857A2E /* NightWatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1958C219F79EE200857A2E /* NightWatchTests.m */; };
 		FA1958CF19F7A23A00857A2E /* NWGamePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1958CD19F7A23A00857A2E /* NWGamePlayViewController.m */; };
 		FA1958D019F7A23A00857A2E /* NWGamePlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1958CE19F7A23A00857A2E /* NWGamePlayViewController.xib */; };
-		FA1958D219F7A2C300857A2E /* child.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1958D119F7A2C300857A2E /* child.png */; };
+		FA2217AF19F8CA4000B5F437 /* NWCross.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2217AD19F8CA4000B5F437 /* NWCross.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA0817DF19F9D29A00FC2073 /* child.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = child.png; sourceTree = "<group>"; };
+		FA0817E119F9D30200FC2073 /* Cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cross.png; sourceTree = "<group>"; };
 		FA0C0A1A19F89274006B8DA5 /* NWGhost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWGhost.h; sourceTree = "<group>"; };
 		FA0C0A1B19F89274006B8DA5 /* NWGhost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWGhost.m; sourceTree = "<group>"; };
 		FA0C0A1D19F893FC006B8DA5 /* ghost.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ghost.json; sourceTree = "<group>"; };
@@ -61,7 +65,8 @@
 		FA1958CC19F7A23A00857A2E /* NWGamePlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWGamePlayViewController.h; sourceTree = "<group>"; };
 		FA1958CD19F7A23A00857A2E /* NWGamePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWGamePlayViewController.m; sourceTree = "<group>"; };
 		FA1958CE19F7A23A00857A2E /* NWGamePlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NWGamePlayViewController.xib; sourceTree = "<group>"; };
-		FA1958D119F7A2C300857A2E /* child.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = child.png; sourceTree = "<group>"; };
+		FA2217AC19F8CA4000B5F437 /* NWCross.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWCross.h; sourceTree = "<group>"; };
+		FA2217AD19F8CA4000B5F437 /* NWCross.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWCross.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +133,8 @@
 				FA1958CE19F7A23A00857A2E /* NWGamePlayViewController.xib */,
 				FA0C0A1A19F89274006B8DA5 /* NWGhost.h */,
 				FA0C0A1B19F89274006B8DA5 /* NWGhost.m */,
+				FA2217AC19F8CA4000B5F437 /* NWCross.h */,
+				FA2217AD19F8CA4000B5F437 /* NWCross.m */,
 				FA0C0A1D19F893FC006B8DA5 /* ghost.json */,
 				FA1958AF19F79EE200857A2E /* Images.xcassets */,
 				FA1958D319F7A2C800857A2E /* Resources */,
@@ -168,8 +175,9 @@
 		FA1958D319F7A2C800857A2E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FA1958D119F7A2C300857A2E /* child.png */,
 				FA0C0A1F19F896B0006B8DA5 /* Ghost.png */,
+				FA0817E119F9D30200FC2073 /* Cross.png */,
+				FA0817DF19F9D29A00FC2073 /* child.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -250,9 +258,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA1958D219F7A2C300857A2E /* child.png in Resources */,
 				FA1958A819F79EE200857A2E /* InfoPlist.strings in Resources */,
 				FA1958B019F79EE200857A2E /* Images.xcassets in Resources */,
+				FA0817E019F9D29A00FC2073 /* child.png in Resources */,
+				FA0817E219F9D30200FC2073 /* Cross.png in Resources */,
 				FA0C0A1E19F893FC006B8DA5 /* ghost.json in Resources */,
 				FA1958D019F7A23A00857A2E /* NWGamePlayViewController.xib in Resources */,
 				FA0C0A2019F896B0006B8DA5 /* Ghost.png in Resources */,
@@ -276,6 +285,7 @@
 			files = (
 				FA1958CF19F7A23A00857A2E /* NWGamePlayViewController.m in Sources */,
 				FA1958AA19F79EE200857A2E /* main.m in Sources */,
+				FA2217AF19F8CA4000B5F437 /* NWCross.m in Sources */,
 				FA0C0A1C19F89274006B8DA5 /* NWGhost.m in Sources */,
 				FA1958AE19F79EE200857A2E /* NWAppDelegate.m in Sources */,
 			);

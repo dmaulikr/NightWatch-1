@@ -8,100 +8,113 @@
 
 #import "NWGamePlayViewController.h"
 #import "NWGhost.h"
+#import "NWCross.h"
 
+
+const int CROSS_POSITION_Y = 250;
 
 @interface NWGamePlayViewController ()
+
 @property (retain, nonatomic) IBOutlet UILabel *highScoreLbl;
-@property (retain, nonatomic) NSDictionary *dictJSON;
+
+@property (retain, nonatomic) NWCross *cross;
+@property (retain, nonatomic) NWGhost *ghost;
+
+@property (assign, nonatomic) BOOL crossIsTouched;
 
 @end
 
 @implementation NWGamePlayViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-
-        
-
-        
-        }
-    return self;
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    _cross = [[[NWCross alloc]init]autorelease];
+    _cross.frame = _cross.Cframe;
+    _cross.userInteractionEnabled = TRUE;
     
-    //Fetching the Data from ghost.json
-    NSString *JSONFilePath = [[NSBundle mainBundle]pathForResource:@"ghost"
-                                                            ofType:@"json"];
-    NSData *JSONData = [NSData dataWithContentsOfFile:JSONFilePath];
-    self.dictJSON = [[[NSDictionary alloc]init]autorelease];
-    self.dictJSON = [NSJSONSerialization
-                           JSONObjectWithData:JSONData
-                           options:kNilOptions
-                           error:nil];
+        
+    _ghost = [[[NWGhost alloc]init]autorelease];
+    _ghost.frame = _ghost.ghostFrame;
     
+    [self.view addSubview:_ghost];
+    
+    [self.view addSubview:_cross];
+    [_ghost animateAttack:_ghost.layer];
 
-    
-    NSNumber *frameX = [self.dictJSON objectForKey:@"frame.x"];
-    NSNumber *frameY = [self.dictJSON objectForKey:@"frame.y"];
-    NSNumber *frameWidth = [self.dictJSON objectForKey:@"frame.width"];
-    NSNumber *frameHeight = [self.dictJSON objectForKey:@"frame.height"];
-    
-    
-    //Assign the object Frame and Start location
-    CGRect ghostFrame = CGRectMake([frameX floatValue],
-                                   [frameY floatValue],
-                                   [frameWidth floatValue],
-                                   [frameHeight floatValue]);
-
-    
-    
-    //Instantiate Ghost Object
-    NWGhost *ghost = [[[NWGhost alloc]initWithFrame:ghostFrame]autorelease];
-    [self.view addSubview:ghost];
-    [self attack:ghost.layer];
-    
 }
 
 
-- (void)attack:(CALayer *)layer
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    NSString *keyPath = @"transform.translation.x";
     
-    CAKeyframeAnimation *translation = [CAKeyframeAnimation animationWithKeyPath:keyPath];
-    
-    translation.duration = 4.0f;
-    translation.repeatCount = HUGE_VAL;
+    [super touchesBegan:touches withEvent:event];
+    UITouch *touch = [touches anyObject];
+    if ([touch.view isKindOfClass: NWCross.class]) {
+        _crossIsTouched = TRUE;
+    }
 
-    
-    NSMutableArray *values = [[[NSMutableArray alloc]init]autorelease];
-    
-    //start value
-    [values addObject:[NSNumber numberWithFloat:0.0f]];
-    
-    //end value
-    CGFloat width = [[UIScreen mainScreen]applicationFrame].size.width + 400;
-    [values addObject:[NSNumber numberWithFloat:width]];
-    translation.values = values;
-    
-    [layer addAnimation:translation forKey:keyPath];
-    
 }
 
-
-- (void)didReceiveMemoryWarning
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    if (_crossIsTouched){
+            UITouch *touch = [[event allTouches]anyObject];
+            CGPoint touchPoint = [touch locationInView:self.view];
+            CGRect crossFrame = CGRectMake(touchPoint.x - (_cross.CROSS_WIDTH/2),
+                                           touchPoint.y - (_cross.CROSS_HEIGHT/2),
+                                           _cross.CROSS_WIDTH,
+                                           _cross.CROSS_HEIGHT);
+        _cross.frame = crossFrame;
+        
+//        NSLog(@"%@",CGRectIntersectsRect(crossFrame, self.ghost.frame) ? @"YES" : @"NO");
+
+//        NSLog(@"%f %f %d %d",touchPoint.x - (_cross.CROSS_WIDTH/2),
+//              touchPoint.y - (_cross.CROSS_HEIGHT/2),
+//              _cross.CROSS_WIDTH,
+//              _cross.CROSS_HEIGHT);
+        
+//        [_ghost wasIntersectedByCross:crossFrame];
+        
+        CGRect incoming = [_ghost.layer.presentationLayer frame];
+        
+        if (CGRectIntersectsRect(_cross.frame, incoming)) {
+            NSLog(@"Intersecting");
+        } else {
+
+        }
+        
+    }
+    
+
+    
 }
 
-- (void)dealloc {
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (_crossIsTouched) {
+        _cross.frame = CGRectMake(_cross.CROSS_POSITION_X, [[_cross randomPositions:_cross.arrayPositions] intValue],
+                                  _cross.CROSS_WIDTH, _cross.CROSS_HEIGHT);
+    }
+    _crossIsTouched = FALSE;
+}
+
+
+- (void)dealloc
+{
     [_highScoreLbl release];
     [super dealloc];
 }
+
+-(void)checkCollision
+{
+    if(CGRectIntersectsRect(_cross.frame, _ghost.frame)) {
+        NSLog(@"YES");
+    } else {
+        NSLog(@"NO");
+    }
+}
+
 @end
