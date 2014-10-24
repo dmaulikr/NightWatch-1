@@ -16,7 +16,7 @@
 @property (retain, nonatomic) NSNumber *randomPosition;
 @property (retain, nonatomic) CAKeyframeAnimation *attack;
 
-- (BOOL)wasIntersectedByCross;
+- (BOOL)wasIntersectedByCross:(CGRect)collider;
 - (void)reachedTheBaby;
 - (void)die;
 - (void)animateAttack:(CALayer *)layer;

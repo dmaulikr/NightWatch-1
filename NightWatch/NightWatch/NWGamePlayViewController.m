@@ -70,13 +70,13 @@ const int CROSS_POSITION_Y = 250;
         _cross.frame = crossFrame;
         
 //        NSLog(@"%@",CGRectIntersectsRect(crossFrame, self.ghost.frame) ? @"YES" : @"NO");
-//
+
 //        NSLog(@"%f %f %d %d",touchPoint.x - (_cross.CROSS_WIDTH/2),
 //              touchPoint.y - (_cross.CROSS_HEIGHT/2),
 //              _cross.CROSS_WIDTH,
 //              _cross.CROSS_HEIGHT);
         
-        [self checkCollision];
+        [_ghost wasIntersectedByCross:crossFrame];
         
     }
     

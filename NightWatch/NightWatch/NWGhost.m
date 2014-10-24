@@ -65,7 +65,7 @@ NSString *keyPath = @"transform.translation.x";
     CGFloat width = [[UIScreen mainScreen]applicationFrame].size.width + 300;
     [values addObject:[NSNumber numberWithFloat:width]];
     _attack.values = values;
-//    attack.repeatCount = HUGE_VAL;
+    _attack.repeatCount = HUGE_VAL;
     
     [layer addAnimation:_attack forKey:keyPath];
 
@@ -77,9 +77,15 @@ NSString *keyPath = @"transform.translation.x";
     
 }
 
-- (BOOL)wasIntersectedByCross
+- (BOOL)wasIntersectedByCross:(CGRect)collider
 {
-    return TRUE;
+    if (CGRectIntersectsRect(self.frame, collider)) {
+        return TRUE;
+        NSLog(@"Intersecting");
+    } else {
+        return FALSE;
+    }
+
 }
 
 - (NSNumber *)randomPositions:(NSMutableArray *)array
