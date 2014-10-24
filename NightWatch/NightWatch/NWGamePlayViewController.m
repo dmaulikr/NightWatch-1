@@ -35,7 +35,11 @@ const int CROSS_POSITION_Y = 250;
     _cross.frame = _cross.Cframe;
     _cross.userInteractionEnabled = TRUE;
     
+    _ghost = [[[NWGhost alloc]init]autorelease];
+    _ghost.frame = _ghost.ghostFrame;
+    
     [self.view addSubview:_cross];
+    [self.view addSubview:_ghost];
 
 }
 

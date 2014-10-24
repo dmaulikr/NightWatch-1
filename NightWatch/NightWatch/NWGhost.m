@@ -10,14 +10,12 @@
 
 NSString *AGhostImageName = @"Ghost";
 
-
 @implementation NWGhost
 
-
-- (id)initWithFrame:(CGRect)frame
+- (id)init
 {
     
-    self = [super initWithFrame:frame];
+    self = [super init];
     if (self) {
     
         
@@ -33,18 +31,21 @@ NSString *AGhostImageName = @"Ghost";
                          error:nil];
         
         NSNumber *frameX = [self.dictJSON objectForKey:@"frame.x"];
-        NSNumber *frameY = [self.dictJSON objectForKey:@"frame.y"];
         NSNumber *frameWidth = [self.dictJSON objectForKey:@"frame.width"];
         NSNumber *frameHeight = [self.dictJSON objectForKey:@"frame.height"];
         
+        _arrayPositions = [[[NSMutableArray alloc]initWithObjects:[self.dictJSON objectForKey:@"frame.y"],
+                                                                  [self.dictJSON objectForKey:@"frame.y2"],
+                                                                  [self.dictJSON objectForKey:@"frame.y3"],
+                                                                   nil]autorelease];
         
         //Assign the object Frame and Start location
         _ghostFrame = CGRectMake([frameX floatValue],
-                                 [frameY floatValue],
+                                 [[self randomPositions:_arrayPositions]floatValue],
                                  [frameWidth floatValue],
                                  [frameHeight floatValue]);
-
-        
+      
+        [self animateAttack:self.layer];
     }
     return self;
 }
@@ -83,6 +84,13 @@ NSString *AGhostImageName = @"Ghost";
 {
     return TRUE;
 }
+
+- (NSNumber *)randomPositions:(NSMutableArray *)array
+{
+    _randomPosition = array[arc4random() % [array count]];
+    return _randomPosition;
+}
+
 
 
 @end

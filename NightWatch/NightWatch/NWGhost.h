@@ -12,9 +12,12 @@
 
 @property (retain, nonatomic) NSDictionary *dictJSON;
 @property (assign, nonatomic) CGRect ghostFrame;
+@property (retain, nonatomic) NSMutableArray *arrayPositions;
+@property (retain, nonatomic) NSNumber *randomPosition;
 
 - (BOOL)wasIntersectedByCross;
 - (void)die;
 - (void)animateAttack:(CALayer *)layer;
+- (NSNumber *)randomPositions:(NSMutableArray *)array;
 
 @end
