@@ -13,13 +13,13 @@
 @property (retain, nonatomic) NSDictionary *dictJSON;
 @property (assign, nonatomic) CGRect ghostFrame;
 @property (retain, nonatomic) NSMutableArray *arrayPositions;
-@property (retain, nonatomic) NSNumber *randomPosition;
+@property (retain, nonatomic) NSNumber *randomPosition, *frameX, *frameWidth, *frameHeight;
 @property (retain, nonatomic) CAKeyframeAnimation *attack;
+@property (assign, nonatomic) float startPosForAnimation;
+
 
 - (BOOL)wasIntersectedByCross:(CGRect)collider;
-- (void)reachedTheBaby;
-- (void)die;
-- (void)animateAttack:(CALayer *)layer;
 - (NSNumber *)randomPositions:(NSMutableArray *)array;
+
 
 @end

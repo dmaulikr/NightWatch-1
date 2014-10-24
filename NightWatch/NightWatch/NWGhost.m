@@ -30,9 +30,9 @@ NSString *keyPath = @"transform.translation.x";
                          options:kNilOptions
                          error:nil];
         
-        NSNumber *frameX = [self.dictJSON objectForKey:@"frame.x"];
-        NSNumber *frameWidth = [self.dictJSON objectForKey:@"frame.width"];
-        NSNumber *frameHeight = [self.dictJSON objectForKey:@"frame.height"];
+        _frameX = [self.dictJSON objectForKey:@"frame.x"];
+        _frameWidth = [self.dictJSON objectForKey:@"frame.width"];
+        _frameHeight = [self.dictJSON objectForKey:@"frame.height"];
         
         _arrayPositions = [[[NSMutableArray alloc]initWithObjects:[self.dictJSON objectForKey:@"frame.y"],
                                                                   [self.dictJSON objectForKey:@"frame.y2"],
@@ -40,41 +40,15 @@ NSString *keyPath = @"transform.translation.x";
                                                                    nil]autorelease];
         
         //Assign the object Frame and Start location
-        _ghostFrame = CGRectMake([frameX floatValue],
+        _ghostFrame = CGRectMake([_frameX floatValue],
                                  [[self randomPositions:_arrayPositions] floatValue],
-                                 [frameWidth floatValue],
-                                 [frameHeight floatValue]);
-      
-        [self animateAttack:self.layer];
+                                 [_frameWidth floatValue],
+                                 [_frameHeight floatValue]);
+        
+        _startPosForAnimation = [[self randomPositions:_arrayPositions]floatValue];
+
     }
     return self;
-}
-
-- (void)animateAttack:(CALayer *)layer
-{
-    
-    _attack = [CAKeyframeAnimation animationWithKeyPath:keyPath];
-    
-    _attack.duration = [[self.dictJSON objectForKey:@"speed"] floatValue];
-    NSMutableArray *values = [[[NSMutableArray alloc]init]autorelease];
-    
-    //start value
-    [values addObject:[NSNumber numberWithFloat:0.0f]];
-    
-    //end value
-    CGFloat width = [[UIScreen mainScreen]applicationFrame].size.width + 300;
-    [values addObject:[NSNumber numberWithFloat:width]];
-    _attack.values = values;
-//    _attack.repeatCount = HUGE_VAL;
-    
-    [layer addAnimation:_attack forKey:keyPath];
-
-}
-
-- (void)die;
-{
-    
-    
 }
 
 - (BOOL)wasIntersectedByCross:(CGRect)collider
@@ -94,19 +68,6 @@ NSString *keyPath = @"transform.translation.x";
     return _randomPosition;
 }
 
-- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
-{
-    
-    NSLog(@"Stopped Animation");
-    
-}
-
-- (void)reachedTheBaby
-{
-    
-    NSLog(@"GAME OVER");
-    
-}
 
 
 

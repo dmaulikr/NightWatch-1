@@ -13,9 +13,11 @@
 
 const int CROSS_POSITION_Y = 250;
 
+
 @interface NWGamePlayViewController ()
 
 @property (retain, nonatomic) IBOutlet UILabel *highScoreLbl;
+@property (retain, nonatomic) IBOutlet UILabel *yourScoreLbl;
 
 @property (retain, nonatomic) NWCross *cross;
 @property (retain, nonatomic) NWGhost *ghost;
@@ -38,7 +40,7 @@ const int CROSS_POSITION_Y = 250;
 
     NSTimer *ghostFirer;
     
-    ghostFirer = [NSTimer timerWithTimeInterval:2.0
+    ghostFirer = [NSTimer timerWithTimeInterval:2.5
                                          target:self
                                        selector:@selector(ghostsArrive:)
                                        userInfo:nil
@@ -97,6 +99,7 @@ const int CROSS_POSITION_Y = 250;
 - (void)dealloc
 {
     [_highScoreLbl release];
+    [_yourScoreLbl release];
     [super dealloc];
 }
 
@@ -106,17 +109,29 @@ const int CROSS_POSITION_Y = 250;
     
     if (CGRectIntersectsRect(_cross.frame, incoming)) {
         NSLog(@"Intersecting");
+        //_ghost.image = nil;
     }
 
 }
 
 -(void)ghostsArrive:(NSTimer *)timer
 {
-    _ghost = [[[NWGhost alloc]init]autorelease];
-    _ghost.frame = _ghost.ghostFrame;
-    [self.view addSubview:_ghost];
-    NSLog(@"Ghost Created");
+        _ghost = [[NWGhost alloc]init];
+ 
+        CGRect startFrame = CGRectMake(-100, _ghost.startPosForAnimation, 100, 100);
+        CGRect endFrame   = CGRectMake(350, _ghost.startPosForAnimation, 100, 100);
+        
 
+        _ghost.frame = startFrame;
+        
+        [self.view addSubview:_ghost];
+        
+        [UIView animateWithDuration:8.0
+                         animations:^{
+                             _ghost.frame = endFrame;
+                         } completion:^(BOOL finished) {
+                             [_ghost removeFromSuperview];
+                         }];
 }
 
 @end
