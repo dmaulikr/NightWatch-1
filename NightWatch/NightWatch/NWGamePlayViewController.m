@@ -38,11 +38,11 @@ const int CROSS_POSITION_Y = 250;
         
     _ghost = [[[NWGhost alloc]init]autorelease];
     _ghost.frame = _ghost.ghostFrame;
+    
     [self.view addSubview:_ghost];
     
-    
     [self.view addSubview:_cross];
-
+    [_ghost animateAttack:_ghost.layer];
 
 }
 
@@ -76,7 +76,15 @@ const int CROSS_POSITION_Y = 250;
 //              _cross.CROSS_WIDTH,
 //              _cross.CROSS_HEIGHT);
         
-        [_ghost wasIntersectedByCross:crossFrame];
+//        [_ghost wasIntersectedByCross:crossFrame];
+        
+        CGRect incoming = [_ghost.layer.presentationLayer frame];
+        
+        if (CGRectIntersectsRect(_cross.frame, incoming)) {
+            NSLog(@"Intersecting");
+        } else {
+
+        }
         
     }
     

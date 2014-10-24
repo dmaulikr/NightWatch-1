@@ -45,7 +45,7 @@ NSString *keyPath = @"transform.translation.x";
                                  [frameWidth floatValue],
                                  [frameHeight floatValue]);
       
-        [self animateAttack:self.layer];
+ 
     }
     return self;
 }
