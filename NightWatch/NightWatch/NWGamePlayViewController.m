@@ -34,28 +34,35 @@ const int CROSS_POSITION_Y = 250;
     _cross = [[[NWCross alloc]init]autorelease];
     _cross.frame = _cross.Cframe;
     _cross.userInteractionEnabled = TRUE;
-    
-        
-    _ghost = [[[NWGhost alloc]init]autorelease];
-    _ghost.frame = _ghost.ghostFrame;
-    
-    [self.view addSubview:_ghost];
-    
     [self.view addSubview:_cross];
-    [_ghost animateAttack:_ghost.layer];
+
+    NSTimer *ghostFirer;
+    
+    ghostFirer = [NSTimer timerWithTimeInterval:2.0
+                                         target:self
+                                       selector:@selector(ghostsArrive:)
+                                       userInfo:nil
+                                        repeats:YES];
+    
+    [[NSRunLoop mainRunLoop] addTimer:ghostFirer forMode:NSDefaultRunLoopMode];
 
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+
+    
+//    [self ghostsArrive];
+    
+}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    
     [super touchesBegan:touches withEvent:event];
     UITouch *touch = [touches anyObject];
     if ([touch.view isKindOfClass: NWCross.class]) {
         _crossIsTouched = TRUE;
     }
-
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
@@ -68,23 +75,8 @@ const int CROSS_POSITION_Y = 250;
                                            _cross.CROSS_WIDTH,
                                            _cross.CROSS_HEIGHT);
         _cross.frame = crossFrame;
+        [self checkCollision];
         
-//        NSLog(@"%@",CGRectIntersectsRect(crossFrame, self.ghost.frame) ? @"YES" : @"NO");
-
-//        NSLog(@"%f %f %d %d",touchPoint.x - (_cross.CROSS_WIDTH/2),
-//              touchPoint.y - (_cross.CROSS_HEIGHT/2),
-//              _cross.CROSS_WIDTH,
-//              _cross.CROSS_HEIGHT);
-        
-//        [_ghost wasIntersectedByCross:crossFrame];
-        
-        CGRect incoming = [_ghost.layer.presentationLayer frame];
-        
-        if (CGRectIntersectsRect(_cross.frame, incoming)) {
-            NSLog(@"Intersecting");
-        } else {
-
-        }
         
     }
     
@@ -110,11 +102,21 @@ const int CROSS_POSITION_Y = 250;
 
 -(void)checkCollision
 {
-    if(CGRectIntersectsRect(_cross.frame, _ghost.frame)) {
-        NSLog(@"YES");
-    } else {
-        NSLog(@"NO");
+    CGRect incoming = [_ghost.layer.presentationLayer frame];
+    
+    if (CGRectIntersectsRect(_cross.frame, incoming)) {
+        NSLog(@"Intersecting");
     }
+
+}
+
+-(void)ghostsArrive:(NSTimer *)timer
+{
+    _ghost = [[[NWGhost alloc]init]autorelease];
+    _ghost.frame = _ghost.ghostFrame;
+    [self.view addSubview:_ghost];
+    NSLog(@"Ghost Created");
+
 }
 
 @end
