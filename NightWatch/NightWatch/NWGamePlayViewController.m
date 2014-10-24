@@ -35,11 +35,14 @@ const int CROSS_POSITION_Y = 250;
     _cross.frame = _cross.Cframe;
     _cross.userInteractionEnabled = TRUE;
     
+        
     _ghost = [[[NWGhost alloc]init]autorelease];
     _ghost.frame = _ghost.ghostFrame;
+    [self.view addSubview:_ghost];
+    
     
     [self.view addSubview:_cross];
-    [self.view addSubview:_ghost];
+
 
 }
 
@@ -51,7 +54,6 @@ const int CROSS_POSITION_Y = 250;
     UITouch *touch = [touches anyObject];
     if ([touch.view isKindOfClass: NWCross.class]) {
         _crossIsTouched = TRUE;
-       
     }
 
 }
@@ -67,28 +69,44 @@ const int CROSS_POSITION_Y = 250;
                                            _cross.CROSS_HEIGHT);
         _cross.frame = crossFrame;
         
-
+//        NSLog(@"%@",CGRectIntersectsRect(crossFrame, self.ghost.frame) ? @"YES" : @"NO");
+//
+//        NSLog(@"%f %f %d %d",touchPoint.x - (_cross.CROSS_WIDTH/2),
+//              touchPoint.y - (_cross.CROSS_HEIGHT/2),
+//              _cross.CROSS_WIDTH,
+//              _cross.CROSS_HEIGHT);
+        
+        [self checkCollision];
+        
     }
+    
+
     
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (_crossIsTouched){
+    if (_crossIsTouched) {
         _cross.frame = CGRectMake(_cross.CROSS_POSITION_X, [[_cross randomPositions:_cross.arrayPositions] intValue],
                                   _cross.CROSS_WIDTH, _cross.CROSS_HEIGHT);
-        
-        NSLog(@"%d, %d, %d, %d", _cross.CROSS_POSITION_X, [_cross.randomPosition intValue],
-              _cross.CROSS_WIDTH, _cross.CROSS_HEIGHT);
     }
     _crossIsTouched = FALSE;
 }
 
 
-- (void)dealloc {
+- (void)dealloc
+{
     [_highScoreLbl release];
     [super dealloc];
 }
 
+-(void)checkCollision
+{
+    if(CGRectIntersectsRect(_cross.frame, _ghost.frame)) {
+        NSLog(@"YES");
+    } else {
+        NSLog(@"NO");
+    }
+}
 
 @end

@@ -13,4 +13,6 @@
 @property (retain, nonatomic) NSMutableArray *arrayPositions;
 @property (retain, nonatomic) NSNumber *randomPosition;
 
+-(void)checkCollision;
+
 @end

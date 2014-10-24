@@ -9,6 +9,7 @@
 #import "NWGhost.h"
 
 NSString *AGhostImageName = @"Ghost";
+NSString *keyPath = @"transform.translation.x";
 
 @implementation NWGhost
 
@@ -18,7 +19,6 @@ NSString *AGhostImageName = @"Ghost";
     self = [super init];
     if (self) {
     
-        
         self.image = [UIImage imageNamed:AGhostImageName];
         //Fetching the Data from ghost.json
         NSString *JSONFilePath = [[NSBundle mainBundle]pathForResource:@"ghost"
@@ -41,7 +41,7 @@ NSString *AGhostImageName = @"Ghost";
         
         //Assign the object Frame and Start location
         _ghostFrame = CGRectMake([frameX floatValue],
-                                 [[self randomPositions:_arrayPositions]floatValue],
+                                 [[self randomPositions:_arrayPositions] floatValue],
                                  [frameWidth floatValue],
                                  [frameHeight floatValue]);
       
@@ -52,14 +52,10 @@ NSString *AGhostImageName = @"Ghost";
 
 - (void)animateAttack:(CALayer *)layer
 {
-    NSString *keyPath = @"transform.translation.x";
     
-    CAKeyframeAnimation *translation = [CAKeyframeAnimation animationWithKeyPath:keyPath];
+    _attack = [CAKeyframeAnimation animationWithKeyPath:keyPath];
     
-    translation.duration = 4.0f;
-    //    translation.repeatCount = HUGE_VAL;
-    
-    
+    _attack.duration = [[self.dictJSON objectForKey:@"speed"] floatValue];
     NSMutableArray *values = [[[NSMutableArray alloc]init]autorelease];
     
     //start value
@@ -68,10 +64,11 @@ NSString *AGhostImageName = @"Ghost";
     //end value
     CGFloat width = [[UIScreen mainScreen]applicationFrame].size.width + 300;
     [values addObject:[NSNumber numberWithFloat:width]];
-    translation.values = values;
+    _attack.values = values;
+//    attack.repeatCount = HUGE_VAL;
     
-    [layer addAnimation:translation forKey:keyPath];
-    
+    [layer addAnimation:_attack forKey:keyPath];
+
 }
 
 - (void)die;
@@ -89,6 +86,20 @@ NSString *AGhostImageName = @"Ghost";
 {
     _randomPosition = array[arc4random() % [array count]];
     return _randomPosition;
+}
+
+- (void)animationDidStop:(CAAnimation *)anim finished:(BOOL)flag
+{
+    
+    NSLog(@"Stopped Animation");
+    
+}
+
+- (void)reachedTheBaby
+{
+    
+    NSLog(@"GAME OVER");
+    
 }
 
 

@@ -14,8 +14,10 @@
 @property (assign, nonatomic) CGRect ghostFrame;
 @property (retain, nonatomic) NSMutableArray *arrayPositions;
 @property (retain, nonatomic) NSNumber *randomPosition;
+@property (retain, nonatomic) CAKeyframeAnimation *attack;
 
 - (BOOL)wasIntersectedByCross;
+- (void)reachedTheBaby;
 - (void)die;
 - (void)animateAttack:(CALayer *)layer;
 - (NSNumber *)randomPositions:(NSMutableArray *)array;
