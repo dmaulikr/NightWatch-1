@@ -9,9 +9,11 @@
 #import "NWGamePlayViewController.h"
 #import "NWGhost.h"
 #import "NWCross.h"
+#import "NWGameOverViewController.h"
 
 
 const int CROSS_POSITION_Y = 250;
+const int BABY_X_POSITION = 350;
 
 
 @interface NWGamePlayViewController ()
@@ -116,22 +118,30 @@ const int CROSS_POSITION_Y = 250;
 
 -(void)ghostsArrive:(NSTimer *)timer
 {
-        _ghost = [[NWGhost alloc]init];
+    _ghost = [[NWGhost alloc]init];
  
-        CGRect startFrame = CGRectMake(-100, _ghost.startPosForAnimation, 100, 100);
-        CGRect endFrame   = CGRectMake(350, _ghost.startPosForAnimation, 100, 100);
+    CGRect startFrame = CGRectMake([[_ghost frameX]floatValue],
+                                   _ghost.startPosForAnimation,
+                                   [[_ghost frameWidth]floatValue],
+                                   [[_ghost frameHeight]floatValue]);
+    
+    CGRect endFrame   = CGRectMake(BABY_X_POSITION,
+                                   _ghost.startPosForAnimation,
+                                   [[_ghost frameWidth]floatValue],
+                                   [[_ghost frameHeight]floatValue]);
+    
+    _ghost.frame = startFrame;
+    
+    [self.view addSubview:_ghost];
         
-
-        _ghost.frame = startFrame;
-        
-        [self.view addSubview:_ghost];
-        
-        [UIView animateWithDuration:8.0
-                         animations:^{
-                             _ghost.frame = endFrame;
-                         } completion:^(BOOL finished) {
-                             [_ghost removeFromSuperview];
-                         }];
+    [UIView animateWithDuration:8.0
+                        animations:^{
+                            _ghost.frame = endFrame;
+                        } completion:^(BOOL finished) {
+//                            [_ghost removeFromSuperview];
+                            NWGameOverViewController *gameOver = [[[NWGameOverViewController alloc]init]autorelease];
+                            [self.navigationController pushViewController:gameOver animated:NO];
+                        }];
 }
 
 @end

@@ -17,8 +17,10 @@
     // Override point for customization after application launch.
     
     NWGamePlayViewController *rvc = [[[NWGamePlayViewController alloc]init]autorelease];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:rvc];
+    nav.navigationBarHidden = YES;
     
-    self.window.rootViewController = rvc;
+    self.window.rootViewController = nav;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
