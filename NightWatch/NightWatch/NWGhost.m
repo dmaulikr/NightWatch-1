@@ -45,7 +45,7 @@ NSString *keyPath = @"transform.translation.x";
                                  [frameWidth floatValue],
                                  [frameHeight floatValue]);
       
- 
+        [self animateAttack:self.layer];
     }
     return self;
 }
@@ -65,7 +65,7 @@ NSString *keyPath = @"transform.translation.x";
     CGFloat width = [[UIScreen mainScreen]applicationFrame].size.width + 300;
     [values addObject:[NSNumber numberWithFloat:width]];
     _attack.values = values;
-    _attack.repeatCount = HUGE_VAL;
+//    _attack.repeatCount = HUGE_VAL;
     
     [layer addAnimation:_attack forKey:keyPath];
 
