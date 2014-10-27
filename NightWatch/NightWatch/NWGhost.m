@@ -41,11 +41,11 @@ NSString *keyPath = @"transform.translation.x";
         
         //Assign the object Frame and Start location
         _ghostFrame = CGRectMake([_frameX floatValue],
-                                 [[self randomPositions:_arrayPositions] floatValue],
+                                 [self randomPositions:_arrayPositions],
                                  [_frameWidth floatValue],
                                  [_frameHeight floatValue]);
         
-        _startPosForAnimation = [[self randomPositions:_arrayPositions]floatValue];
+        _startPosForAnimation = [self randomPositions:_arrayPositions];
 
     }
     return self;
@@ -54,17 +54,15 @@ NSString *keyPath = @"transform.translation.x";
 - (BOOL)wasIntersectedByCross:(CGRect)collider
 {
     if (CGRectIntersectsRect(self.frame, collider)) {
-        return TRUE;
         NSLog(@"Intersecting");
-    } else {
-        return FALSE;
+                return TRUE;
     }
-
+    return FALSE;
 }
 
-- (NSNumber *)randomPositions:(NSMutableArray *)array
+- (NSInteger)randomPositions:(NSMutableArray *)array
 {
-    _randomPosition = array[arc4random() % [array count]];
+    _randomPosition = [array[arc4random() % [array count]]integerValue];
     return _randomPosition;
 }
 

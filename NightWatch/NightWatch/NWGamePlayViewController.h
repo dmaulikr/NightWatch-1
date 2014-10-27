@@ -14,6 +14,6 @@
 @property (retain, nonatomic) NSNumber *randomPosition;
 
 -(void)checkCollision;
--(void)ghostsArrive:(NSTimer *)timer;
+-(void)ghostsArrive;
 
 @end

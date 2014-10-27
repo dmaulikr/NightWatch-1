@@ -10,9 +10,7 @@
 
 NSString *crossImageName = @"Cross";
 
-
 @implementation NWCross
-
 
 - (id)init
 {
@@ -34,7 +32,7 @@ NSString *crossImageName = @"Cross";
                            _CROSS_POSITION_Y3, nil];
         
         
-        _Cframe = CGRectMake(_CROSS_POSITION_X, [[self randomPositions:_arrayPositions] intValue], _CROSS_WIDTH, _CROSS_HEIGHT);
+        _Cframe = CGRectMake(_CROSS_POSITION_X, [self randomPositions:_arrayPositions], _CROSS_WIDTH, _CROSS_HEIGHT);
         
     }
     
@@ -42,9 +40,9 @@ NSString *crossImageName = @"Cross";
 }
 
 
-- (NSNumber *)randomPositions:(NSMutableArray *)array
+- (NSInteger)randomPositions:(NSMutableArray *)array
 {
-    _randomPosition = array[arc4random() % [array count]];
+    _randomPosition = [array[arc4random() % [array count]]integerValue];
     return _randomPosition;
 }
 

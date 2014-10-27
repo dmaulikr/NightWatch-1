@@ -44,19 +44,21 @@ const int BABY_X_POSITION = 350;
     
     ghostFirer = [NSTimer timerWithTimeInterval:2.5
                                          target:self
-                                       selector:@selector(ghostsArrive:)
+                                       selector:@selector(ghostsArrive)
                                        userInfo:nil
                                         repeats:YES];
     
     [[NSRunLoop mainRunLoop] addTimer:ghostFirer forMode:NSDefaultRunLoopMode];
+    
+    [ghostFirer invalidate];
+    ghostFirer = nil;
 
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
 
-    
-//    [self ghostsArrive];
+
     
 }
 
@@ -91,7 +93,7 @@ const int BABY_X_POSITION = 350;
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (_crossIsTouched) {
-        _cross.frame = CGRectMake(_cross.CROSS_POSITION_X, [[_cross randomPositions:_cross.arrayPositions] intValue],
+        _cross.frame = CGRectMake(_cross.CROSS_POSITION_X, [_cross randomPositions:_cross.arrayPositions],
                                   _cross.CROSS_WIDTH, _cross.CROSS_HEIGHT);
     }
     _crossIsTouched = FALSE;
@@ -116,7 +118,7 @@ const int BABY_X_POSITION = 350;
 
 }
 
--(void)ghostsArrive:(NSTimer *)timer
+-(void)ghostsArrive
 {
     _ghost = [[NWGhost alloc]init];
  
