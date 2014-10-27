@@ -23,6 +23,7 @@ const int BABY_X_POSITION = 350;
 
 @property (retain, nonatomic) NWCross *cross;
 @property (retain, nonatomic) NWGhost *ghost;
+@property (retain, nonatomic) NSTimer *ghostFirer;
 
 @property (assign, nonatomic) BOOL crossIsTouched;
 
@@ -40,18 +41,17 @@ const int BABY_X_POSITION = 350;
     _cross.userInteractionEnabled = TRUE;
     [self.view addSubview:_cross];
 
-    NSTimer *ghostFirer;
     
-    ghostFirer = [NSTimer timerWithTimeInterval:2.5
+    _ghostFirer = [NSTimer timerWithTimeInterval:2.5
                                          target:self
                                        selector:@selector(ghostsArrive)
                                        userInfo:nil
                                         repeats:YES];
     
-    [[NSRunLoop mainRunLoop] addTimer:ghostFirer forMode:NSDefaultRunLoopMode];
+    [[NSRunLoop mainRunLoop] addTimer:_ghostFirer forMode:NSDefaultRunLoopMode];
     
-    [ghostFirer invalidate];
-    ghostFirer = nil;
+//    [ghostFirer invalidate];
+//    ghostFirer = nil;
 
 }
 
@@ -141,6 +141,8 @@ const int BABY_X_POSITION = 350;
                             _ghost.frame = endFrame;
                         } completion:^(BOOL finished) {
 //                            [_ghost removeFromSuperview];
+                            [_ghostFirer invalidate];
+                            _ghostFirer = nil;
                             NWGameOverViewController *gameOver = [[[NWGameOverViewController alloc]init]autorelease];
                             [self.navigationController pushViewController:gameOver animated:NO];
                         }];
