@@ -31,6 +31,7 @@
 		FA1958CF19F7A23A00857A2E /* NWGamePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1958CD19F7A23A00857A2E /* NWGamePlayViewController.m */; };
 		FA1958D019F7A23A00857A2E /* NWGamePlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1958CE19F7A23A00857A2E /* NWGamePlayViewController.xib */; };
 		FA2217AF19F8CA4000B5F437 /* NWCross.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2217AD19F8CA4000B5F437 /* NWCross.m */; };
+		FAB2976719FDF72A00D0D601 /* boom.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976619FDF72A00D0D601 /* boom.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		FA1958CE19F7A23A00857A2E /* NWGamePlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NWGamePlayViewController.xib; sourceTree = "<group>"; };
 		FA2217AC19F8CA4000B5F437 /* NWCross.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWCross.h; sourceTree = "<group>"; };
 		FA2217AD19F8CA4000B5F437 /* NWCross.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWCross.m; sourceTree = "<group>"; };
+		FAB2976619FDF72A00D0D601 /* boom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boom.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 		FA1958D319F7A2C800857A2E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FAB2976619FDF72A00D0D601 /* boom.png */,
 				FA0817EF19FA23C000FC2073 /* Blood-Splatter.png */,
 				FA0817ED19FA236100FC2073 /* cry.png */,
 				FA0C0A1F19F896B0006B8DA5 /* Ghost.png */,
@@ -272,6 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB2976719FDF72A00D0D601 /* boom.png in Resources */,
 				FA0817EE19FA236100FC2073 /* cry.png in Resources */,
 				FA1958A819F79EE200857A2E /* InfoPlist.strings in Resources */,
 				FA1958B019F79EE200857A2E /* Images.xcassets in Resources */,

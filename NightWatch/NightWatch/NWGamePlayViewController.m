@@ -14,7 +14,9 @@
 
 const int CROSS_POSITION_Y = 250;
 const int BABY_X_POSITION = 350;
-
+NSString *boomImage = @"boom";
+NSInteger ghostFirerInterval = 2.0;
+BOOL didScore = FALSE;
 
 @interface NWGamePlayViewController ()
 
@@ -22,14 +24,16 @@ const int BABY_X_POSITION = 350;
 @property (retain, nonatomic) IBOutlet UILabel *yourScoreLbl;
 
 @property (retain, nonatomic) NWCross *cross;
-@property (retain, nonatomic) NWGhost *ghost;
+@property (readwrite, retain, nonatomic) NWGhost *ghost;
 
 @property (retain, nonatomic) NSTimer *ghostFirer;
-@property (retain, nonatomic) NSMutableArray *arrayOfIncomingGhosts;
+@property (readwrite, retain, nonatomic) NSMutableArray *arrayOfIncomingGhosts;
 
 @property (assign, nonatomic) BOOL crossIsTouched;
 @property (assign, nonatomic) NSInteger ghostsInScreen;
 @property (assign, nonatomic) NSInteger yourScore;
+@property (assign, nonatomic) NSInteger highScore;
+@property (retain, nonatomic) NSUserDefaults *savedHighScore;
 
 @end
 
@@ -44,9 +48,15 @@ const int BABY_X_POSITION = 350;
     _cross.frame = _cross.Cframe;
     _cross.userInteractionEnabled = TRUE;
     [self.view addSubview:_cross];
+    
+    _savedHighScore = [NSUserDefaults standardUserDefaults];
+    [_savedHighScore synchronize];
+    _highScoreLbl.text = [NSString stringWithFormat:@"%@",[_savedHighScore objectForKey:@"highScore"]];
 
+    _highScore = [[_savedHighScore objectForKey:@"highScore"]intValue];
+    
     _arrayOfIncomingGhosts = [[NSMutableArray alloc]init];
-    _ghostFirer = [NSTimer timerWithTimeInterval:.5
+    _ghostFirer = [NSTimer timerWithTimeInterval:ghostFirerInterval
                                          target:self
                                        selector:@selector(ghostsArrive)
                                        userInfo:nil
@@ -55,7 +65,6 @@ const int BABY_X_POSITION = 350;
     [[NSRunLoop mainRunLoop] addTimer:_ghostFirer forMode:NSDefaultRunLoopMode];
 
 }
-
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -76,7 +85,6 @@ const int BABY_X_POSITION = 350;
                                         _cross.CROSS_WIDTH,
                                         _cross.CROSS_HEIGHT);
         _cross.frame = crossFrame;
-        
         [self checkCollision];
     }
     
@@ -101,23 +109,33 @@ const int BABY_X_POSITION = 350;
 
 -(void)checkCollision
 {
+ 
     for (int i = 0; i<_ghostsInScreen; i++) {
+        
         if (CGRectIntersectsRect(_cross.frame, [[[_arrayOfIncomingGhosts[i] layer] presentationLayer] frame])) {
-            [_arrayOfIncomingGhosts[i] removeFromSuperview];
-            NSLog(@"OUCH - ghost");
             _yourScore++;
             _yourScoreLbl.text = [NSString stringWithFormat:@"%d",_yourScore];
-            
-        }
-    }
 
+            NWGhost *thisGhost = _arrayOfIncomingGhosts[i];
+            thisGhost.image = [UIImage imageNamed:boomImage];
+
+            double delayInSeconds = 0.4;
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            [thisGhost removeFromSuperview];
+            });
+        }
+        
+    }
 }
 
 -(void)ghostsArrive
 {
+
+    
     [_arrayOfIncomingGhosts addObject:[[NWGhost alloc]init]];
     
-    id currentGhost = _arrayOfIncomingGhosts[_ghostsInScreen];
+    NWGhost *currentGhost = _arrayOfIncomingGhosts[_ghostsInScreen];
     
     CGRect startFrame = CGRectMake([[currentGhost frameX]floatValue],
                                    [currentGhost startPosForAnimation],
@@ -131,25 +149,34 @@ const int BABY_X_POSITION = 350;
     
     [currentGhost setFrame:startFrame];
     
-    
     [self.view addSubview:currentGhost];
     
-    
     [UIView animateWithDuration:2.0
-                        animations:^{
+                     animations:^{
                             [currentGhost setFrame:endFrame];
-                        } completion:^(BOOL finished) {
+                        }
+                     completion:^(BOOL finished) {
                             [_arrayOfIncomingGhosts removeObject:currentGhost];
                             _ghostsInScreen--;
-//                            [currentGhost removeFromSuperview];
-//                            [_ghostFirer invalidate];
-//                            _ghostFirer = nil;
-//                            NWGameOverViewController *gameOver = [[[NWGameOverViewController alloc]init]autorelease];
-//                            [self.navigationController pushViewController:gameOver animated:NO];
+                            [currentGhost removeFromSuperview];
+
+                            if (currentGhost.image != [UIImage imageNamed:boomImage]) {
+                                [_ghostFirer invalidate];
+                                _ghostFirer = nil;
+                                NWGameOverViewController *gameOver = [[[NWGameOverViewController alloc]init]autorelease];
+
+                                [self.navigationController pushViewController:gameOver animated:NO];
+                                
+                                if (_yourScore > _highScore) {
+                                    UIAlertView *newHighScore = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%d",_yourScore] message:@"You set a new High Score" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                                    [newHighScore show];
+                                    
+                                    [_savedHighScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:@"highScore"];
+                                }
+                            }
                         }];
-    
+
     _ghostsInScreen++;
-    NSLog(@"GHOSTS: %d",_ghostsInScreen);
 }
 
 @end
