@@ -28,6 +28,9 @@
                         <color key="titleColor" red="0.81592904863161664" green="1" blue="0.68377632161130808" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="playAgain:" destination="-1" eventType="touchUpInside" id="WCz-yT-Qtq"/>
+                    </connections>
                 </button>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GAME OVER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rIX-Ag-QWS">
                     <rect key="frame" x="113" y="231" width="254" height="48"/>

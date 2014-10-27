@@ -9,8 +9,11 @@
 #import "NWGameOverViewController.h"
 
 @interface NWGameOverViewController ()
+
 @property (retain, nonatomic) IBOutlet UIButton *playAgainBtn;
 @property (retain, nonatomic) IBOutlet UIButton *mainMenuBtn;
+
+- (IBAction)playAgain:(id)sender;
 
 @end
 
@@ -35,6 +38,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) playAgain:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:NO];
+    
 }
 
 - (void)dealloc {

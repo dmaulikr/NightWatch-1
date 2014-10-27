@@ -51,14 +51,6 @@ NSString *keyPath = @"transform.translation.x";
     return self;
 }
 
-- (BOOL)wasIntersectedByCross:(CGRect)collider
-{
-    if (CGRectIntersectsRect(self.frame, collider)) {
-        NSLog(@"Intersecting");
-                return TRUE;
-    }
-    return FALSE;
-}
 
 - (NSInteger)randomPositions:(NSMutableArray *)array
 {

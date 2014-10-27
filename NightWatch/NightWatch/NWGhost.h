@@ -20,8 +20,6 @@
 @property (retain, nonatomic) CAKeyframeAnimation *attack;
 @property (assign, nonatomic) CGFloat startPosForAnimation;
 
-
-- (BOOL)wasIntersectedByCross:(CGRect)collider;
 - (NSInteger)randomPositions:(NSMutableArray *)array;
 
 

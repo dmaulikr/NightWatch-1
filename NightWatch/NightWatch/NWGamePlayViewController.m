@@ -23,9 +23,13 @@ const int BABY_X_POSITION = 350;
 
 @property (retain, nonatomic) NWCross *cross;
 @property (retain, nonatomic) NWGhost *ghost;
+
 @property (retain, nonatomic) NSTimer *ghostFirer;
+@property (retain, nonatomic) NSMutableArray *arrayOfIncomingGhosts;
 
 @property (assign, nonatomic) BOOL crossIsTouched;
+@property (assign, nonatomic) NSInteger ghostsInScreen;
+@property (assign, nonatomic) NSInteger yourScore;
 
 @end
 
@@ -41,26 +45,17 @@ const int BABY_X_POSITION = 350;
     _cross.userInteractionEnabled = TRUE;
     [self.view addSubview:_cross];
 
-    
-    _ghostFirer = [NSTimer timerWithTimeInterval:2.5
+    _arrayOfIncomingGhosts = [[NSMutableArray alloc]init];
+    _ghostFirer = [NSTimer timerWithTimeInterval:.5
                                          target:self
                                        selector:@selector(ghostsArrive)
                                        userInfo:nil
                                         repeats:YES];
     
     [[NSRunLoop mainRunLoop] addTimer:_ghostFirer forMode:NSDefaultRunLoopMode];
-    
-//    [ghostFirer invalidate];
-//    ghostFirer = nil;
 
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
-
-
-    
-}
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -74,19 +69,16 @@ const int BABY_X_POSITION = 350;
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (_crossIsTouched){
-            UITouch *touch = [[event allTouches]anyObject];
-            CGPoint touchPoint = [touch locationInView:self.view];
-            CGRect crossFrame = CGRectMake(touchPoint.x - (_cross.CROSS_WIDTH/2),
-                                           touchPoint.y - (_cross.CROSS_HEIGHT/2),
-                                           _cross.CROSS_WIDTH,
-                                           _cross.CROSS_HEIGHT);
+        UITouch *touch = [[event allTouches]anyObject];
+        CGPoint touchPoint = [touch locationInView:self.view];
+        CGRect crossFrame = CGRectMake(touchPoint.x - (_cross.CROSS_WIDTH/2),
+                                        touchPoint.y - (_cross.CROSS_HEIGHT/2),
+                                        _cross.CROSS_WIDTH,
+                                        _cross.CROSS_HEIGHT);
         _cross.frame = crossFrame;
+        
         [self checkCollision];
-        
-        
     }
-    
-
     
 }
 
@@ -109,43 +101,55 @@ const int BABY_X_POSITION = 350;
 
 -(void)checkCollision
 {
-    CGRect incoming = [_ghost.layer.presentationLayer frame];
-    
-    if (CGRectIntersectsRect(_cross.frame, incoming)) {
-        NSLog(@"Intersecting");
-        //_ghost.image = nil;
+    for (int i = 0; i<_ghostsInScreen; i++) {
+        if (CGRectIntersectsRect(_cross.frame, [[[_arrayOfIncomingGhosts[i] layer] presentationLayer] frame])) {
+            [_arrayOfIncomingGhosts[i] removeFromSuperview];
+            NSLog(@"OUCH - ghost");
+            _yourScore++;
+            _yourScoreLbl.text = [NSString stringWithFormat:@"%d",_yourScore];
+            
+        }
     }
 
 }
 
 -(void)ghostsArrive
 {
-    _ghost = [[NWGhost alloc]init];
- 
-    CGRect startFrame = CGRectMake([[_ghost frameX]floatValue],
-                                   _ghost.startPosForAnimation,
-                                   [[_ghost frameWidth]floatValue],
-                                   [[_ghost frameHeight]floatValue]);
+    [_arrayOfIncomingGhosts addObject:[[NWGhost alloc]init]];
     
+    id currentGhost = _arrayOfIncomingGhosts[_ghostsInScreen];
+    
+    CGRect startFrame = CGRectMake([[currentGhost frameX]floatValue],
+                                   [currentGhost startPosForAnimation],
+                                   [[currentGhost frameWidth]floatValue],
+                                   [[currentGhost frameHeight]floatValue]);
+
     CGRect endFrame   = CGRectMake(BABY_X_POSITION,
-                                   _ghost.startPosForAnimation,
-                                   [[_ghost frameWidth]floatValue],
-                                   [[_ghost frameHeight]floatValue]);
+                                   [currentGhost startPosForAnimation],
+                                   [[currentGhost frameWidth]floatValue],
+                                   [[currentGhost frameHeight]floatValue]);
     
-    _ghost.frame = startFrame;
+    [currentGhost setFrame:startFrame];
     
-    [self.view addSubview:_ghost];
-        
-    [UIView animateWithDuration:8.0
+    
+    [self.view addSubview:currentGhost];
+    
+    
+    [UIView animateWithDuration:2.0
                         animations:^{
-                            _ghost.frame = endFrame;
+                            [currentGhost setFrame:endFrame];
                         } completion:^(BOOL finished) {
-//                            [_ghost removeFromSuperview];
-                            [_ghostFirer invalidate];
-                            _ghostFirer = nil;
-                            NWGameOverViewController *gameOver = [[[NWGameOverViewController alloc]init]autorelease];
-                            [self.navigationController pushViewController:gameOver animated:NO];
+                            [_arrayOfIncomingGhosts removeObject:currentGhost];
+                            _ghostsInScreen--;
+//                            [currentGhost removeFromSuperview];
+//                            [_ghostFirer invalidate];
+//                            _ghostFirer = nil;
+//                            NWGameOverViewController *gameOver = [[[NWGameOverViewController alloc]init]autorelease];
+//                            [self.navigationController pushViewController:gameOver animated:NO];
                         }];
+    
+    _ghostsInScreen++;
+    NSLog(@"GHOSTS: %d",_ghostsInScreen);
 }
 
 @end
