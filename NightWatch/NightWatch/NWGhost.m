@@ -13,6 +13,7 @@ NSString *keyPath = @"transform.translation.x";
 
 @implementation NWGhost
 
+
 - (id)init
 {
     

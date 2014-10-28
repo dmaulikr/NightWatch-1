@@ -54,6 +54,14 @@ BOOL gameOverScreenCalled;
 {
     [_highScoreLbl release];
     [_yourScoreLbl release];
+    [_randomPosition release];
+    [_savedScore release];
+    [_cross release];
+    [_ghost release];
+    [_ghostFirer release];
+    [_collisionChecker release];
+    [_arrayOfIncomingGhosts release];
+    
     [super dealloc];
 }
 
@@ -149,7 +157,7 @@ BOOL gameOverScreenCalled;
                 [thisGhost removeFromSuperview];
                 if (didCountScore == FALSE) {
                     _yourScore++;
-                    _yourScoreLbl.text = [NSString stringWithFormat:@"%d",_yourScore];
+                    _yourScoreLbl.text = [NSString stringWithFormat:@"%ld",(long)_yourScore];
                     didCountScore = TRUE;
                 }
             });
@@ -216,7 +224,7 @@ BOOL gameOverScreenCalled;
     gameOverScreenCalled = TRUE;
     
     if (_yourScore > _highScore) {
-        UIAlertView *newHighScoreAlert = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%d",_yourScore] message:@"You set a new High Score" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *newHighScoreAlert = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%ld",(long)_yourScore] message:@"You set a new High Score" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
         
         [newHighScoreAlert show];
         [_savedScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:@"highScore"];
