@@ -23,6 +23,11 @@
     [_halloweenWebView release];
     [_mainMenuBtn release];
     [_loadingIndicator release];
+    
+    _halloweenWebView = nil;
+    _mainMenuBtn = nil;
+    _loadingIndicator = nil;
+    
     [super dealloc];
 }
 

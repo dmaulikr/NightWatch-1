@@ -22,6 +22,7 @@
 - (void)dealloc {
     
     [_mainMenuBtn release];
+    _mainMenuBtn = nil;
     
     [super dealloc];
 }

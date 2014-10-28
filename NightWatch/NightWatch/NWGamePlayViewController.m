@@ -62,6 +62,16 @@ BOOL gameOverScreenCalled;
     [_collisionChecker release];
     [_arrayOfIncomingGhosts release];
     
+    _highScoreLbl = nil;
+    _yourScoreLbl = nil;
+    _randomPosition = nil;
+    _savedScore = nil;
+    _cross = nil;
+    _ghost = nil;
+    _ghostFirer = nil;
+    _collisionChecker = nil;
+    _arrayOfIncomingGhosts = nil;
+    
     [super dealloc];
 }
 
