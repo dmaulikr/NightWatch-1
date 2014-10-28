@@ -54,6 +54,14 @@ BOOL gameOverScreenCalled;
 {
     [_highScoreLbl release];
     [_yourScoreLbl release];
+    [_randomPosition release];
+    [_savedScore release];
+    [_cross release];
+    [_ghost release];
+    [_ghostFirer release];
+    [_collisionChecker release];
+    [_arrayOfIncomingGhosts release];
+    
     [super dealloc];
 }
 

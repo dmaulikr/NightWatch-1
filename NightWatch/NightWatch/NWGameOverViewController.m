@@ -22,9 +22,18 @@
 @end
 
 @implementation NWGameOverViewController
-- (IBAction)backToMainMenu:(id)sender {
+
+
+- (void)dealloc {
     
-//    [self.navigationController popViewControllerAnimated:NO];
+    [_playAgainBtn release];
+    [_mainMenuBtn release];
+    [_scoreLabel release];
+    
+    [super dealloc];
+}
+
+- (IBAction)backToMainMenu:(id)sender {
     
     NWMainMenuController *mainMenu = [[[NWMainMenuController alloc]init]autorelease];
     UINavigationController *navController = self.navigationController;
@@ -65,9 +74,4 @@
     [navController pushViewController:playAgain animated:NO];
 }
 
-- (void)dealloc {
-    [_playAgainBtn release];
-    [_mainMenuBtn release];
-    [super dealloc];
-}
 @end

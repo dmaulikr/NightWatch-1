@@ -15,26 +15,27 @@
 
 @end
 
+
+
 @implementation NWAboutViewController
+
+- (void)dealloc {
+    [_halloweenWebView release];
+    [_mainMenuBtn release];
+    [_loadingIndicator release];
+    [super dealloc];
+}
+
 - (IBAction)returnToMainMenu:(id)sender {
     
     [self.navigationController popViewControllerAnimated:NO];
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     _halloweenWebView.delegate = self;
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     
     void (^blockWebView)(void) =^{
         NSString *fullURL = [NSString stringWithFormat:@"http://en.wikipedia.org/wiki/Halloween"];
@@ -51,7 +52,6 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    
     [_loadingIndicator startAnimating];
 }
 
@@ -62,16 +62,5 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-- (void)dealloc {
-    [_halloweenWebView release];
-    [_mainMenuBtn release];
-    [_loadingIndicator release];
-    [super dealloc];
-}
 @end

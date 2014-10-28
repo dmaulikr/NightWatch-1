@@ -24,6 +24,16 @@
 @implementation NWMainMenuController
 
 
+- (void)dealloc {
+    
+    [_playBtn release];
+    [_instructionsBtn release];
+    [_aboutBtn release];
+    [_highScoreLbl release];
+    
+    [super dealloc];
+}
+
 - (IBAction)viewAbout:(id)sender {
     NWAboutViewController *about = [[[NWAboutViewController alloc]init]autorelease];
     
@@ -47,19 +57,7 @@
     
     [navController popViewControllerAnimated:NO];
     [navController pushViewController:game animated:NO];
-    
-//    NWGamePlayViewController *game = [[[NWGamePlayViewController alloc]init]autorelease];
-//    [self.navigationController pushViewController:game animated:NO];
-    
-}
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
 }
 
 - (void)viewDidLoad
@@ -73,16 +71,4 @@
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)dealloc {
-    [_playBtn release];
-    [_instructionsBtn release];
-    [_aboutBtn release];
-    [super dealloc];
-}
 @end
