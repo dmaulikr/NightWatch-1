@@ -30,6 +30,10 @@
     [_mainMenuBtn release];
     [_scoreLabel release];
     
+    _playAgainBtn = nil;
+    _mainMenuBtn = nil;
+    _scoreLabel = nil;
+    
     [super dealloc];
 }
 

@@ -31,6 +31,11 @@
     [_aboutBtn release];
     [_highScoreLbl release];
     
+    _playBtn = nil;
+    _instructionsBtn = nil;
+    _aboutBtn = nil;
+    _highScoreLbl = nil;
+    
     [super dealloc];
 }
 
