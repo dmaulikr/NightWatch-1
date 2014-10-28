@@ -36,6 +36,9 @@
 		FA23130A19FF209900D7C41F /* gameplay.png in Resources */ = {isa = PBXBuildFile; fileRef = FA23130919FF209900D7C41F /* gameplay.png */; };
 		FA23130C19FF20A800D7C41F /* pre-gameover.png in Resources */ = {isa = PBXBuildFile; fileRef = FA23130B19FF20A800D7C41F /* pre-gameover.png */; };
 		FA23130E19FF342F00D7C41F /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = FA23130D19FF342F00D7C41F /* title.png */; };
+		FA23131419FF4C9B00D7C41F /* NWAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA23131219FF4C9B00D7C41F /* NWAboutViewController.m */; };
+		FA23131519FF4C9B00D7C41F /* NWAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA23131319FF4C9B00D7C41F /* NWAboutViewController.xib */; };
+		FA23131719FF4CCA00D7C41F /* Sleep_by_treijim.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA23131619FF4CCA00D7C41F /* Sleep_by_treijim.jpg */; };
 		FAB2976719FDF72A00D0D601 /* boom.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976619FDF72A00D0D601 /* boom.png */; };
 		FAB2976919FE421C00D0D601 /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976819FE421C00D0D601 /* main.png */; };
 		FAB2976D19FE422E00D0D601 /* NWMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB2976B19FE422E00D0D601 /* NWMainMenuController.m */; };
@@ -91,6 +94,10 @@
 		FA23130919FF209900D7C41F /* gameplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay.png; sourceTree = "<group>"; };
 		FA23130B19FF20A800D7C41F /* pre-gameover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pre-gameover.png"; sourceTree = "<group>"; };
 		FA23130D19FF342F00D7C41F /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
+		FA23131119FF4C9B00D7C41F /* NWAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWAboutViewController.h; sourceTree = "<group>"; };
+		FA23131219FF4C9B00D7C41F /* NWAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAboutViewController.m; sourceTree = "<group>"; };
+		FA23131319FF4C9B00D7C41F /* NWAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NWAboutViewController.xib; sourceTree = "<group>"; };
+		FA23131619FF4CCA00D7C41F /* Sleep_by_treijim.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sleep_by_treijim.jpg; sourceTree = "<group>"; };
 		FAB2976619FDF72A00D0D601 /* boom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boom.png; sourceTree = "<group>"; };
 		FAB2976819FE421C00D0D601 /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		FAB2976A19FE422E00D0D601 /* NWMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWMainMenuController.h; sourceTree = "<group>"; };
@@ -157,22 +164,8 @@
 			children = (
 				FA1958AC19F79EE200857A2E /* NWAppDelegate.h */,
 				FA1958AD19F79EE200857A2E /* NWAppDelegate.m */,
-				FA1958CC19F7A23A00857A2E /* NWGamePlayViewController.h */,
-				FA1958CD19F7A23A00857A2E /* NWGamePlayViewController.m */,
-				FA1958CE19F7A23A00857A2E /* NWGamePlayViewController.xib */,
-				FA0C0A1A19F89274006B8DA5 /* NWGhost.h */,
-				FA0C0A1B19F89274006B8DA5 /* NWGhost.m */,
-				FA2217AC19F8CA4000B5F437 /* NWCross.h */,
-				FA2217AD19F8CA4000B5F437 /* NWCross.m */,
-				FA0817E819FA22F800FC2073 /* NWGameOverViewController.h */,
-				FA0817E919FA22F800FC2073 /* NWGameOverViewController.m */,
-				FA0817EA19FA22F800FC2073 /* NWGameOverViewController.xib */,
-				FAB2976A19FE422E00D0D601 /* NWMainMenuController.h */,
-				FAB2976B19FE422E00D0D601 /* NWMainMenuController.m */,
-				FAB2976C19FE422E00D0D601 /* NWMainMenuController.xib */,
-				FA23130419FF201F00D7C41F /* NWInstructionsViewController.h */,
-				FA23130519FF201F00D7C41F /* NWInstructionsViewController.m */,
-				FA23130619FF201F00D7C41F /* NWInstructionsViewController.xib */,
+				FA23130F19FF4C3800D7C41F /* Game Views */,
+				FA23131019FF4C5100D7C41F /* Game Objects */,
 				FA0C0A1D19F893FC006B8DA5 /* ghost.json */,
 				FA1958AF19F79EE200857A2E /* Images.xcassets */,
 				FA1958D319F7A2C800857A2E /* Resources */,
@@ -213,6 +206,7 @@
 		FA1958D319F7A2C800857A2E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FA23131619FF4CCA00D7C41F /* Sleep_by_treijim.jpg */,
 				FA23130D19FF342F00D7C41F /* title.png */,
 				FA23130B19FF20A800D7C41F /* pre-gameover.png */,
 				FA23130919FF209900D7C41F /* gameplay.png */,
@@ -225,6 +219,39 @@
 				FA0817DF19F9D29A00FC2073 /* child.png */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		FA23130F19FF4C3800D7C41F /* Game Views */ = {
+			isa = PBXGroup;
+			children = (
+				FA1958CC19F7A23A00857A2E /* NWGamePlayViewController.h */,
+				FA1958CD19F7A23A00857A2E /* NWGamePlayViewController.m */,
+				FA1958CE19F7A23A00857A2E /* NWGamePlayViewController.xib */,
+				FA0817E819FA22F800FC2073 /* NWGameOverViewController.h */,
+				FA0817E919FA22F800FC2073 /* NWGameOverViewController.m */,
+				FA0817EA19FA22F800FC2073 /* NWGameOverViewController.xib */,
+				FAB2976A19FE422E00D0D601 /* NWMainMenuController.h */,
+				FAB2976B19FE422E00D0D601 /* NWMainMenuController.m */,
+				FAB2976C19FE422E00D0D601 /* NWMainMenuController.xib */,
+				FA23130419FF201F00D7C41F /* NWInstructionsViewController.h */,
+				FA23130519FF201F00D7C41F /* NWInstructionsViewController.m */,
+				FA23130619FF201F00D7C41F /* NWInstructionsViewController.xib */,
+				FA23131119FF4C9B00D7C41F /* NWAboutViewController.h */,
+				FA23131219FF4C9B00D7C41F /* NWAboutViewController.m */,
+				FA23131319FF4C9B00D7C41F /* NWAboutViewController.xib */,
+			);
+			name = "Game Views";
+			sourceTree = "<group>";
+		};
+		FA23131019FF4C5100D7C41F /* Game Objects */ = {
+			isa = PBXGroup;
+			children = (
+				FA0C0A1A19F89274006B8DA5 /* NWGhost.h */,
+				FA0C0A1B19F89274006B8DA5 /* NWGhost.m */,
+				FA2217AC19F8CA4000B5F437 /* NWCross.h */,
+				FA2217AD19F8CA4000B5F437 /* NWCross.m */,
+			);
+			name = "Game Objects";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,10 +339,12 @@
 				FA23130C19FF20A800D7C41F /* pre-gameover.png in Resources */,
 				FA0817E019F9D29A00FC2073 /* child.png in Resources */,
 				FA0817E219F9D30200FC2073 /* Cross.png in Resources */,
+				FA23131519FF4C9B00D7C41F /* NWAboutViewController.xib in Resources */,
 				FA0C0A1E19F893FC006B8DA5 /* ghost.json in Resources */,
 				FA1958D019F7A23A00857A2E /* NWGamePlayViewController.xib in Resources */,
 				FAB2976E19FE422E00D0D601 /* NWMainMenuController.xib in Resources */,
 				FAB2976919FE421C00D0D601 /* main.png in Resources */,
+				FA23131719FF4CCA00D7C41F /* Sleep_by_treijim.jpg in Resources */,
 				FA0C0A2019F896B0006B8DA5 /* Ghost.png in Resources */,
 				FA0817EC19FA22F800FC2073 /* NWGameOverViewController.xib in Resources */,
 				FA0817F019FA23C000FC2073 /* Blood-Splatter.png in Resources */,
@@ -339,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAB2976D19FE422E00D0D601 /* NWMainMenuController.m in Sources */,
+				FA23131419FF4C9B00D7C41F /* NWAboutViewController.m in Sources */,
 				FA1958CF19F7A23A00857A2E /* NWGamePlayViewController.m in Sources */,
 				FA0817EB19FA22F800FC2073 /* NWGameOverViewController.m in Sources */,
 				FA1958AA19F79EE200857A2E /* main.m in Sources */,

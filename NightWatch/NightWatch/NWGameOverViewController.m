@@ -8,6 +8,7 @@
 
 #import "NWGameOverViewController.h"
 #import "NWGamePlayViewController.h"
+#import "NWMainMenuController.h"
 
 @interface NWGameOverViewController ()
 
@@ -22,7 +23,16 @@
 
 @implementation NWGameOverViewController
 - (IBAction)backToMainMenu:(id)sender {
-    [self.navigationController popViewControllerAnimated:NO];
+    
+//    [self.navigationController popViewControllerAnimated:NO];
+    
+    NWMainMenuController *mainMenu = [[[NWMainMenuController alloc]init]autorelease];
+    UINavigationController *navController = self.navigationController;
+    [[self retain] autorelease];
+    
+    [navController popViewControllerAnimated:NO];
+    [navController pushViewController:mainMenu animated:NO];
+
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
