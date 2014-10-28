@@ -166,7 +166,6 @@
 				FA1958AD19F79EE200857A2E /* NWAppDelegate.m */,
 				FA23130F19FF4C3800D7C41F /* Game Views */,
 				FA23131019FF4C5100D7C41F /* Game Objects */,
-				FA0C0A1D19F893FC006B8DA5 /* ghost.json */,
 				FA1958AF19F79EE200857A2E /* Images.xcassets */,
 				FA1958D319F7A2C800857A2E /* Resources */,
 				FA1958A419F79EE200857A2E /* Supporting Files */,
@@ -206,6 +205,7 @@
 		FA1958D319F7A2C800857A2E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FA0C0A1D19F893FC006B8DA5 /* ghost.json */,
 				FA23131619FF4CCA00D7C41F /* Sleep_by_treijim.jpg */,
 				FA23130D19FF342F00D7C41F /* title.png */,
 				FA23130B19FF20A800D7C41F /* pre-gameover.png */,
