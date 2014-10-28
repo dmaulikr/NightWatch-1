@@ -8,13 +8,23 @@
 
 #import "NWMainMenuController.h"
 #import "NWGamePlayViewController.h"
+#import "NWInstructionsViewController.h"
 
 @interface NWMainMenuController ()
 @property (retain, nonatomic) IBOutlet UIButton *playBtn;
+@property (retain, nonatomic) IBOutlet UIButton *instructionsBtn;
+
 
 @end
 
 @implementation NWMainMenuController
+- (IBAction)goToInstructions:(id)sender {
+    
+    NWInstructionsViewController *instructionsView = [[[NWInstructionsViewController alloc]init]autorelease];
+    
+    [self.navigationController pushViewController:instructionsView animated:NO];
+    
+}
 - (IBAction)playBtn:(id)sender {
     
     NWGamePlayViewController *game = [[[NWGamePlayViewController alloc]init]autorelease];
@@ -45,6 +55,7 @@
 
 - (void)dealloc {
     [_playBtn release];
+    [_instructionsBtn release];
     [super dealloc];
 }
 @end

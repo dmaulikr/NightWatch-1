@@ -17,7 +17,7 @@
     // Override point for customization after application launch.
     
     NWMainMenuController *rvc = [[[NWMainMenuController alloc]init]autorelease];
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:rvc];
+    UINavigationController *nav = [[[UINavigationController alloc]initWithRootViewController:rvc]autorelease];
     nav.navigationBarHidden = YES;
     
     self.window.rootViewController = nav;

@@ -7,43 +7,52 @@
 //
 
 #import "NWGameOverViewController.h"
+#import "NWGamePlayViewController.h"
 
 @interface NWGameOverViewController ()
 
 @property (retain, nonatomic) IBOutlet UIButton *playAgainBtn;
 @property (retain, nonatomic) IBOutlet UIButton *mainMenuBtn;
+@property (retain, nonatomic) NWGamePlayViewController *game;
+@property (retain, nonatomic) IBOutlet UILabel *scoreLabel;
 
 - (IBAction)playAgain:(id)sender;
 
 @end
 
 @implementation NWGameOverViewController
+- (IBAction)backToMainMenu:(id)sender {
+    [self.navigationController popViewControllerAnimated:NO];
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+
     }
     return self;
 }
 
 - (void)viewDidLoad
 {
+    _game = [[[NWGamePlayViewController alloc]init]autorelease];
+    _game.savedScore = [NSUserDefaults standardUserDefaults];
+    [_game.savedScore synchronize];
+    _scoreLabel.text = [NSString stringWithFormat:@"You scored %@, Good Job!", [_game.savedScore objectForKey:@"yourScore"]];
+    
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void) playAgain:(id)sender
 {
-    [self.navigationController popViewControllerAnimated:NO];
+    NWGamePlayViewController *playAgain = [[[NWGamePlayViewController alloc]init]autorelease];
+    UINavigationController *navController = self.navigationController;
+    [[self retain] autorelease];
     
+    [navController popViewControllerAnimated:NO];
+    [navController pushViewController:playAgain animated:NO];
 }
 
 - (void)dealloc {
