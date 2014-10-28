@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		FA0817E019F9D29A00FC2073 /* child.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0817DF19F9D29A00FC2073 /* child.png */; };
 		FA0817E219F9D30200FC2073 /* Cross.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0817E119F9D30200FC2073 /* Cross.png */; };
+		FA0817EB19FA22F800FC2073 /* NWGameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0817E919FA22F800FC2073 /* NWGameOverViewController.m */; };
+		FA0817EC19FA22F800FC2073 /* NWGameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA0817EA19FA22F800FC2073 /* NWGameOverViewController.xib */; };
+		FA0817EE19FA236100FC2073 /* cry.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0817ED19FA236100FC2073 /* cry.png */; };
+		FA0817F019FA23C000FC2073 /* Blood-Splatter.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0817EF19FA23C000FC2073 /* Blood-Splatter.png */; };
 		FA0C0A1C19F89274006B8DA5 /* NWGhost.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0C0A1B19F89274006B8DA5 /* NWGhost.m */; };
 		FA0C0A1E19F893FC006B8DA5 /* ghost.json in Resources */ = {isa = PBXBuildFile; fileRef = FA0C0A1D19F893FC006B8DA5 /* ghost.json */; };
 		FA0C0A2019F896B0006B8DA5 /* Ghost.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0C0A1F19F896B0006B8DA5 /* Ghost.png */; };
@@ -27,6 +31,15 @@
 		FA1958CF19F7A23A00857A2E /* NWGamePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA1958CD19F7A23A00857A2E /* NWGamePlayViewController.m */; };
 		FA1958D019F7A23A00857A2E /* NWGamePlayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1958CE19F7A23A00857A2E /* NWGamePlayViewController.xib */; };
 		FA2217AF19F8CA4000B5F437 /* NWCross.m in Sources */ = {isa = PBXBuildFile; fileRef = FA2217AD19F8CA4000B5F437 /* NWCross.m */; };
+		FA23130719FF201F00D7C41F /* NWInstructionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA23130519FF201F00D7C41F /* NWInstructionsViewController.m */; };
+		FA23130819FF201F00D7C41F /* NWInstructionsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA23130619FF201F00D7C41F /* NWInstructionsViewController.xib */; };
+		FA23130A19FF209900D7C41F /* gameplay.png in Resources */ = {isa = PBXBuildFile; fileRef = FA23130919FF209900D7C41F /* gameplay.png */; };
+		FA23130C19FF20A800D7C41F /* pre-gameover.png in Resources */ = {isa = PBXBuildFile; fileRef = FA23130B19FF20A800D7C41F /* pre-gameover.png */; };
+		FA23130E19FF342F00D7C41F /* title.png in Resources */ = {isa = PBXBuildFile; fileRef = FA23130D19FF342F00D7C41F /* title.png */; };
+		FAB2976719FDF72A00D0D601 /* boom.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976619FDF72A00D0D601 /* boom.png */; };
+		FAB2976919FE421C00D0D601 /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976819FE421C00D0D601 /* main.png */; };
+		FAB2976D19FE422E00D0D601 /* NWMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB2976B19FE422E00D0D601 /* NWMainMenuController.m */; };
+		FAB2976E19FE422E00D0D601 /* NWMainMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976C19FE422E00D0D601 /* NWMainMenuController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +55,11 @@
 /* Begin PBXFileReference section */
 		FA0817DF19F9D29A00FC2073 /* child.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = child.png; sourceTree = "<group>"; };
 		FA0817E119F9D30200FC2073 /* Cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cross.png; sourceTree = "<group>"; };
+		FA0817E819FA22F800FC2073 /* NWGameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWGameOverViewController.h; sourceTree = "<group>"; };
+		FA0817E919FA22F800FC2073 /* NWGameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWGameOverViewController.m; sourceTree = "<group>"; };
+		FA0817EA19FA22F800FC2073 /* NWGameOverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NWGameOverViewController.xib; sourceTree = "<group>"; };
+		FA0817ED19FA236100FC2073 /* cry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cry.png; sourceTree = "<group>"; };
+		FA0817EF19FA23C000FC2073 /* Blood-Splatter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Blood-Splatter.png"; sourceTree = "<group>"; };
 		FA0C0A1A19F89274006B8DA5 /* NWGhost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWGhost.h; sourceTree = "<group>"; };
 		FA0C0A1B19F89274006B8DA5 /* NWGhost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWGhost.m; sourceTree = "<group>"; };
 		FA0C0A1D19F893FC006B8DA5 /* ghost.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ghost.json; sourceTree = "<group>"; };
@@ -67,6 +85,17 @@
 		FA1958CE19F7A23A00857A2E /* NWGamePlayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NWGamePlayViewController.xib; sourceTree = "<group>"; };
 		FA2217AC19F8CA4000B5F437 /* NWCross.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWCross.h; sourceTree = "<group>"; };
 		FA2217AD19F8CA4000B5F437 /* NWCross.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWCross.m; sourceTree = "<group>"; };
+		FA23130419FF201F00D7C41F /* NWInstructionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWInstructionsViewController.h; sourceTree = "<group>"; };
+		FA23130519FF201F00D7C41F /* NWInstructionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWInstructionsViewController.m; sourceTree = "<group>"; };
+		FA23130619FF201F00D7C41F /* NWInstructionsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NWInstructionsViewController.xib; sourceTree = "<group>"; };
+		FA23130919FF209900D7C41F /* gameplay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay.png; sourceTree = "<group>"; };
+		FA23130B19FF20A800D7C41F /* pre-gameover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pre-gameover.png"; sourceTree = "<group>"; };
+		FA23130D19FF342F00D7C41F /* title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = title.png; sourceTree = "<group>"; };
+		FAB2976619FDF72A00D0D601 /* boom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boom.png; sourceTree = "<group>"; };
+		FAB2976819FE421C00D0D601 /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
+		FAB2976A19FE422E00D0D601 /* NWMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWMainMenuController.h; sourceTree = "<group>"; };
+		FAB2976B19FE422E00D0D601 /* NWMainMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWMainMenuController.m; sourceTree = "<group>"; };
+		FAB2976C19FE422E00D0D601 /* NWMainMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NWMainMenuController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +164,15 @@
 				FA0C0A1B19F89274006B8DA5 /* NWGhost.m */,
 				FA2217AC19F8CA4000B5F437 /* NWCross.h */,
 				FA2217AD19F8CA4000B5F437 /* NWCross.m */,
+				FA0817E819FA22F800FC2073 /* NWGameOverViewController.h */,
+				FA0817E919FA22F800FC2073 /* NWGameOverViewController.m */,
+				FA0817EA19FA22F800FC2073 /* NWGameOverViewController.xib */,
+				FAB2976A19FE422E00D0D601 /* NWMainMenuController.h */,
+				FAB2976B19FE422E00D0D601 /* NWMainMenuController.m */,
+				FAB2976C19FE422E00D0D601 /* NWMainMenuController.xib */,
+				FA23130419FF201F00D7C41F /* NWInstructionsViewController.h */,
+				FA23130519FF201F00D7C41F /* NWInstructionsViewController.m */,
+				FA23130619FF201F00D7C41F /* NWInstructionsViewController.xib */,
 				FA0C0A1D19F893FC006B8DA5 /* ghost.json */,
 				FA1958AF19F79EE200857A2E /* Images.xcassets */,
 				FA1958D319F7A2C800857A2E /* Resources */,
@@ -175,6 +213,13 @@
 		FA1958D319F7A2C800857A2E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FA23130D19FF342F00D7C41F /* title.png */,
+				FA23130B19FF20A800D7C41F /* pre-gameover.png */,
+				FA23130919FF209900D7C41F /* gameplay.png */,
+				FAB2976819FE421C00D0D601 /* main.png */,
+				FAB2976619FDF72A00D0D601 /* boom.png */,
+				FA0817EF19FA23C000FC2073 /* Blood-Splatter.png */,
+				FA0817ED19FA236100FC2073 /* cry.png */,
 				FA0C0A1F19F896B0006B8DA5 /* Ghost.png */,
 				FA0817E119F9D30200FC2073 /* Cross.png */,
 				FA0817DF19F9D29A00FC2073 /* child.png */,
@@ -258,13 +303,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB2976719FDF72A00D0D601 /* boom.png in Resources */,
+				FA23130E19FF342F00D7C41F /* title.png in Resources */,
+				FA0817EE19FA236100FC2073 /* cry.png in Resources */,
+				FA23130819FF201F00D7C41F /* NWInstructionsViewController.xib in Resources */,
 				FA1958A819F79EE200857A2E /* InfoPlist.strings in Resources */,
 				FA1958B019F79EE200857A2E /* Images.xcassets in Resources */,
+				FA23130C19FF20A800D7C41F /* pre-gameover.png in Resources */,
 				FA0817E019F9D29A00FC2073 /* child.png in Resources */,
 				FA0817E219F9D30200FC2073 /* Cross.png in Resources */,
 				FA0C0A1E19F893FC006B8DA5 /* ghost.json in Resources */,
 				FA1958D019F7A23A00857A2E /* NWGamePlayViewController.xib in Resources */,
+				FAB2976E19FE422E00D0D601 /* NWMainMenuController.xib in Resources */,
+				FAB2976919FE421C00D0D601 /* main.png in Resources */,
 				FA0C0A2019F896B0006B8DA5 /* Ghost.png in Resources */,
+				FA0817EC19FA22F800FC2073 /* NWGameOverViewController.xib in Resources */,
+				FA0817F019FA23C000FC2073 /* Blood-Splatter.png in Resources */,
+				FA23130A19FF209900D7C41F /* gameplay.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -283,10 +338,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAB2976D19FE422E00D0D601 /* NWMainMenuController.m in Sources */,
 				FA1958CF19F7A23A00857A2E /* NWGamePlayViewController.m in Sources */,
+				FA0817EB19FA22F800FC2073 /* NWGameOverViewController.m in Sources */,
 				FA1958AA19F79EE200857A2E /* main.m in Sources */,
 				FA2217AF19F8CA4000B5F437 /* NWCross.m in Sources */,
 				FA0C0A1C19F89274006B8DA5 /* NWGhost.m in Sources */,
+				FA23130719FF201F00D7C41F /* NWInstructionsViewController.m in Sources */,
 				FA1958AE19F79EE200857A2E /* NWAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

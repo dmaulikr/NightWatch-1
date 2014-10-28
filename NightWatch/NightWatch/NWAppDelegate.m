@@ -7,7 +7,7 @@
 //
 
 #import "NWAppDelegate.h"
-#import "NWGamePlayViewController.h"
+#import "NWMainMenuController.h"
 
 @implementation NWAppDelegate
 
@@ -16,9 +16,11 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
     
-    NWGamePlayViewController *rvc = [[[NWGamePlayViewController alloc]init]autorelease];
+    NWMainMenuController *rvc = [[[NWMainMenuController alloc]init]autorelease];
+    UINavigationController *nav = [[[UINavigationController alloc]initWithRootViewController:rvc]autorelease];
+    nav.navigationBarHidden = YES;
     
-    self.window.rootViewController = rvc;
+    self.window.rootViewController = nav;
     
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
