@@ -107,7 +107,7 @@ BOOL gameOverScreenCalled;
                                         userInfo:nil
                                          repeats:YES];
     
-    _collisionChecker = [NSTimer timerWithTimeInterval:0
+    _collisionChecker = [NSTimer timerWithTimeInterval:0.2
                                           target:self
                                         selector:@selector(checkCollision)
                                         userInfo:nil
@@ -158,21 +158,20 @@ BOOL gameOverScreenCalled;
     for (int i = 0; i<_ghostsInScreen; i++) {
         if (CGRectIntersectsRect(_cross.frame, [[[_arrayOfIncomingGhosts[i] layer] presentationLayer] frame])) {
             NWGhost *thisGhost = _arrayOfIncomingGhosts[i];
-            
             thisGhost.image = [UIImage imageNamed:boomImage];
             
-            double delayInSeconds = 0.2;
-            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            if (didCountScore == FALSE) {
+                _yourScore++;
+                _yourScoreLbl.text = [NSString stringWithFormat:@"%ld",(long)_yourScore];
+                didCountScore = TRUE;
+                [self explodeGhost:thisGhost];
                 [thisGhost removeFromSuperview];
-                if (didCountScore == FALSE) {
-                    _yourScore++;
-                    _yourScoreLbl.text = [NSString stringWithFormat:@"%ld",(long)_yourScore];
-                    didCountScore = TRUE;
-                }
-            });
+                didCountScore = FALSE;
+            }
+
+
         }
-        didCountScore = FALSE;
+//        didCountScore = FALSE;
     }
 }
 
@@ -240,6 +239,23 @@ BOOL gameOverScreenCalled;
         [_savedScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:@"highScore"];
     }
 
+    
+}
+
+- (void)explodeGhost: (NWGhost *)ghost
+{
+    ghost.image = [UIImage imageNamed:boomImage];
+                double delayInSeconds = 0.2;
+                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//                    [ghost removeFromSuperview];
+//    
+//                    if (didCountScore == FALSE) {
+//                        _yourScore++;
+//                        _yourScoreLbl.text = [NSString stringWithFormat:@"%ld",(long)_yourScore];
+//                        didCountScore = TRUE;
+//                    }
+                });
     
 }
 
