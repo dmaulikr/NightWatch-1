@@ -72,7 +72,12 @@
     _game = [[[NWGamePlayViewController alloc]init]autorelease];
     _game.savedScore = [NSUserDefaults standardUserDefaults];
     [_game.savedScore synchronize];
-    _highScoreLbl.text = [NSString stringWithFormat:@"%@", [_game.savedScore objectForKey:@"highScore"]];
+    
+    NSObject *object = [_game.savedScore objectForKey:@"highScore"];
+    
+    if(object != nil){
+        _highScoreLbl.text = [NSString stringWithFormat:@"%@",[_game.savedScore objectForKey:@"highScore"]];
+    }
     
 }
 

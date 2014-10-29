@@ -12,7 +12,7 @@
 #import "NWGameOverViewController.h"
 
 const int CROSS_POSITION_Y = 250;
-const int BABY_X_POSITION = 350;
+const int BABY_X_POSITION = 300;
 
 NSString *boomImage = @"boom";
 
@@ -107,7 +107,7 @@ BOOL gameOverScreenCalled;
                                         userInfo:nil
                                          repeats:YES];
     
-    _collisionChecker = [NSTimer timerWithTimeInterval:0.2
+    _collisionChecker = [NSTimer timerWithTimeInterval:0.25
                                           target:self
                                         selector:@selector(checkCollision)
                                         userInfo:nil
@@ -154,7 +154,6 @@ BOOL gameOverScreenCalled;
 
 -(void)checkCollision
 {
-  
     for (int i = 0; i<_ghostsInScreen; i++) {
         if (CGRectIntersectsRect(_cross.frame, [[[_arrayOfIncomingGhosts[i] layer] presentationLayer] frame])) {
             NWGhost *thisGhost = _arrayOfIncomingGhosts[i];
@@ -165,13 +164,8 @@ BOOL gameOverScreenCalled;
                 _yourScoreLbl.text = [NSString stringWithFormat:@"%ld",(long)_yourScore];
                 didCountScore = TRUE;
                 [self explodeGhost:thisGhost];
-                [thisGhost removeFromSuperview];
-                didCountScore = FALSE;
             }
-
-
         }
-//        didCountScore = FALSE;
     }
 }
 
@@ -233,7 +227,10 @@ BOOL gameOverScreenCalled;
     gameOverScreenCalled = TRUE;
     
     if (_yourScore > _highScore) {
-        UIAlertView *newHighScoreAlert = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%ld",(long)_yourScore] message:@"You set a new High Score" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        UIAlertView *newHighScoreAlert = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%ld",(long)_yourScore]
+                                                                   message:@"YOU'VE SET A NEW HIGH SCORE!!!!"
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"OK" otherButtonTitles:nil];
         
         [newHighScoreAlert show];
         [_savedScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:@"highScore"];
@@ -245,18 +242,15 @@ BOOL gameOverScreenCalled;
 - (void)explodeGhost: (NWGhost *)ghost
 {
     ghost.image = [UIImage imageNamed:boomImage];
-                double delayInSeconds = 0.2;
-                dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-                dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//                    [ghost removeFromSuperview];
-//    
-//                    if (didCountScore == FALSE) {
-//                        _yourScore++;
-//                        _yourScoreLbl.text = [NSString stringWithFormat:@"%ld",(long)_yourScore];
-//                        didCountScore = TRUE;
-//                    }
-                });
     
+    double delayInSeconds = 0.2;
+    
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        [ghost removeFromSuperview];
+        didCountScore = FALSE;
+    });
+
 }
 
 @end
