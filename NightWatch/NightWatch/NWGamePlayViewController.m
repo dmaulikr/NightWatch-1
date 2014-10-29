@@ -27,8 +27,6 @@ BOOL highScoreAlertCalled = FALSE;
 BOOL gameOverScreenCalled;
 
 
-
-
 @interface NWGamePlayViewController ()
 
 @property (retain, nonatomic) IBOutlet UILabel *highScoreLbl;
@@ -59,21 +57,22 @@ BOOL gameOverScreenCalled;
 {
     [_highScoreLbl release];
     [_yourScoreLbl release];
-    [_randomPosition release];
-    [_savedScore release];
     [_cross release];
     [_ghostFirer release];
     [_collisionChecker release];
-    [_arrayOfIncomingGhosts release];
-    
+    [_arrayOfIncomingGhosts release];    
+    [_randomPosition release];
+    [_arrayPositions release];
+    [_savedScore release];
+
     _highScoreLbl = nil;
     _yourScoreLbl = nil;
-    _randomPosition = nil;
-    _savedScore = nil;
     _cross = nil;
     _ghostFirer = nil;
     _collisionChecker = nil;
     _arrayOfIncomingGhosts = nil;
+    _randomPosition = nil;
+    _savedScore = nil;
     
     [super dealloc];
 }
@@ -87,6 +86,9 @@ BOOL gameOverScreenCalled;
 - (void)viewWillAppear:(BOOL)animated
 {
     [self initializeGame];
+    
+
+    
 }
 
 #pragma mark - touch responder actions
@@ -145,7 +147,7 @@ BOOL gameOverScreenCalled;
 - (void)ghostsArrive
 {
     
-    [_arrayOfIncomingGhosts addObject:[[[NWGhost alloc]init]autorelease]];
+    [_arrayOfIncomingGhosts addObject:[[NWGhost alloc]init]];
     
     NWGhost *currentGhost = _arrayOfIncomingGhosts[_ghostsInScreen];
     
@@ -172,13 +174,14 @@ BOOL gameOverScreenCalled;
                             [_arrayOfIncomingGhosts removeObject:currentGhost];
                             _ghostsInScreen--;
                             [currentGhost removeFromSuperview];
-                         
                             if (currentGhost.image != [UIImage imageNamed:boomImage] &&
                                 gameOverScreenCalled == FALSE ) {
                                 [self gameOver];
                             }
+                            [currentGhost release];
                         }];
     _ghostsInScreen++;
+
 }
 
 - (void)initializeGame
@@ -220,28 +223,24 @@ BOOL gameOverScreenCalled;
     [[NSRunLoop mainRunLoop] addTimer:_collisionChecker forMode:NSDefaultRunLoopMode];
     
     gameOverScreenCalled = FALSE;
+
 }
 
 - (void)gameOver
 {
-    
-    [_arrayOfIncomingGhosts release];
-    [_cross release];
+
     [_cross removeFromSuperview];
-    _cross = nil;
-    
-    _arrayOfIncomingGhosts = nil;
-    
     [_savedScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:keyYourScore];
     
     [_ghostFirer invalidate];
     _ghostFirer = nil;
     
-    NWGameOverViewController *gameOver = [[[NWGameOverViewController alloc] initWithCurrentScore:_yourScore]autorelease];
+    NWGameOverViewController *gameOver = [[NWGameOverViewController alloc] initWithCurrentScore:_yourScore];
 
     [self.navigationController pushViewController:gameOver animated:NO];
     gameOverScreenCalled = TRUE;
-
+    
+    [gameOver release];
 }
 
 - (void)explodeGhost: (NWGhost *)ghost

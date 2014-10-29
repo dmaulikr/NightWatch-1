@@ -17,8 +17,9 @@ NSString *myHighScore = @"highScore";
 
 @property (retain, nonatomic) IBOutlet UIButton *playAgainBtn;
 @property (retain, nonatomic) IBOutlet UIButton *mainMenuBtn;
-@property (retain, nonatomic) NWGamePlayViewController *game;
 @property (retain, nonatomic) IBOutlet UILabel *scoreLabel;
+
+@property (retain, nonatomic) NWGamePlayViewController *game;
 
 - (IBAction)playAgain:(id)sender;
 
@@ -31,10 +32,12 @@ NSString *myHighScore = @"highScore";
     [_playAgainBtn release];
     [_mainMenuBtn release];
     [_scoreLabel release];
+    [_game release];
     
     _playAgainBtn = nil;
     _mainMenuBtn = nil;
     _scoreLabel = nil;
+    _game = nil;
     
     [super dealloc];
 }

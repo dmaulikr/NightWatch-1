@@ -11,14 +11,12 @@
 @interface NWCross : UIImageView
 
 @property (assign, nonatomic) CGRect Cframe;
-
 @property (assign, nonatomic) NSInteger CROSS_HEIGHT;
 @property (assign, nonatomic) NSInteger CROSS_WIDTH;
 @property (assign, nonatomic) NSInteger CROSS_POSITION_X;
 @property (assign, nonatomic) NSInteger randomPosition;
 
 @property (retain, nonatomic) NSMutableArray *arrayPositions;
-
 @property (retain, nonatomic) NSNumber *CROSS_POSITION_Y1;
 @property (retain, nonatomic) NSNumber *CROSS_POSITION_Y2;
 @property (retain, nonatomic) NSNumber *CROSS_POSITION_Y3;
