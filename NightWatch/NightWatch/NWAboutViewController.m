@@ -35,7 +35,7 @@ NSString *fullURL = @"http://en.wikipedia.org/wiki/Halloween";
 
 - (IBAction)returnToMainMenu:(id)sender {
     
-    [self.navigationController popViewControllerAnimated:NO];
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 - (void)viewDidLoad

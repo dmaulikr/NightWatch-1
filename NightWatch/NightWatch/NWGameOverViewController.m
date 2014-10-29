@@ -55,12 +55,7 @@ NSString *myHighScore = @"highScore";
 - (IBAction)backToMainMenu:(id)sender
 {
     
-    NWMainMenuController *mainMenu = [[[NWMainMenuController alloc]init]autorelease];
-    UINavigationController *navController = self.navigationController;
-    [[self retain] autorelease];
-    
-    [navController popViewControllerAnimated:NO];
-    [navController pushViewController:mainMenu animated:NO];
+    [self.navigationController popToRootViewControllerAnimated:NO];
 
 }
 

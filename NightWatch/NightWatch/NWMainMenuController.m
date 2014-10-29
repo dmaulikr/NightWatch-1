@@ -42,6 +42,7 @@ NSString *highScore = @"highScore";
 }
 
 - (IBAction)viewAbout:(id)sender {
+   
     NWAboutViewController *about = [[[NWAboutViewController alloc]init]autorelease];
     
     [self.navigationController pushViewController:about animated:NO];
@@ -52,6 +53,7 @@ NSString *highScore = @"highScore";
 - (IBAction)goToInstructions:(id)sender {
     
     NWInstructionsViewController *instructionsView = [[[NWInstructionsViewController alloc]init]autorelease];
+    
     [self.navigationController pushViewController:instructionsView animated:NO];
     
 }
@@ -66,16 +68,20 @@ NSString *highScore = @"highScore";
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
 
+- (void)viewWillAppear:(BOOL)animated
+{
     _game = [[[NWGamePlayViewController alloc]init]autorelease];
     _game.savedScore = [NSUserDefaults standardUserDefaults];
     [_game.savedScore synchronize];
-    
     NSObject *object = [_game.savedScore objectForKey:highScore];
     
     if(object != nil){
         _highScoreLbl.text = [NSString stringWithFormat:@"%@",[_game.savedScore objectForKey:highScore]];
     }
+    
+    
     
 }
 

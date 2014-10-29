@@ -234,10 +234,8 @@ BOOL gameOverScreenCalled;
     _ghostFirer = nil;
     
     NWGameOverViewController *gameOver = [[[NWGameOverViewController alloc] initWithCurrentScore:_yourScore]autorelease];
-    
-    UINavigationController *navController = self.navigationController;
 
-    [navController pushViewController:gameOver animated:NO];
+    [self.navigationController pushViewController:gameOver animated:NO];
     gameOverScreenCalled = TRUE;
 
 }
