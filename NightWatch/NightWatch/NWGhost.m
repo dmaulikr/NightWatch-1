@@ -9,7 +9,15 @@
 #import "NWGhost.h"
 
 NSString *AGhostImageName = @"Ghost";
-NSString *keyPath = @"transform.translation.x";
+NSString *jsonName = @"ghost";
+NSString *jsonType = @"json";
+NSString *jsonKeyFrameX = @"frame.x";
+NSString *jsonKeyFrameWidth = @"frame.width";
+NSString *jsonKeyFrameHeight = @"frame.height";
+NSString *jsonKeyFrameY1 = @"frame.y";
+NSString *jsonKeyFrameY2 = @"frame.y2";
+NSString *jsonKeyFrameY3 = @"frame.y3";
+
 
 @implementation NWGhost
 
@@ -22,8 +30,9 @@ NSString *keyPath = @"transform.translation.x";
     
         self.image = [UIImage imageNamed:AGhostImageName];
         //Fetching the Data from ghost.json
-        NSString *JSONFilePath = [[NSBundle mainBundle]pathForResource:@"ghost"
-                                                                ofType:@"json"];
+        NSString *JSONFilePath = [[NSBundle mainBundle]pathForResource:jsonName
+                                                                ofType:jsonType];
+        
         NSData *JSONData = [NSData dataWithContentsOfFile:JSONFilePath];
         self.dictJSON = [[[NSDictionary alloc]init]autorelease];
         self.dictJSON = [NSJSONSerialization
@@ -31,13 +40,13 @@ NSString *keyPath = @"transform.translation.x";
                          options:kNilOptions
                          error:nil];
         
-        _frameX = [self.dictJSON objectForKey:@"frame.x"];
-        _frameWidth = [self.dictJSON objectForKey:@"frame.width"];
-        _frameHeight = [self.dictJSON objectForKey:@"frame.height"];
+        _frameX = [self.dictJSON objectForKey:jsonKeyFrameX];
+        _frameWidth = [self.dictJSON objectForKey:jsonKeyFrameWidth];
+        _frameHeight = [self.dictJSON objectForKey:jsonKeyFrameHeight];
         
-        _arrayPositions = [[[NSMutableArray alloc]initWithObjects:[self.dictJSON objectForKey:@"frame.y"],
-                                                                  [self.dictJSON objectForKey:@"frame.y2"],
-                                                                  [self.dictJSON objectForKey:@"frame.y3"],
+        _arrayPositions = [[[NSMutableArray alloc]initWithObjects:[self.dictJSON objectForKey:jsonKeyFrameY1],
+                                                                  [self.dictJSON objectForKey:jsonKeyFrameY2],
+                                                                  [self.dictJSON objectForKey:jsonKeyFrameY3],
                                                                    nil]autorelease];
         
         //Assign the object Frame and Start location

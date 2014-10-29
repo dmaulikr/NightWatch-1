@@ -11,6 +11,7 @@
 #import "NWMainMenuController.h"
 
 NSInteger gameScore;
+NSString *myHighScore = @"highScore";
 
 @interface NWGameOverViewController ()
 
@@ -80,7 +81,7 @@ NSInteger gameScore;
 - (void) checkIfHighScore:(NSInteger)score
 {
     
-    NSInteger highScore = [[[NSUserDefaults standardUserDefaults] valueForKey:@"highScore"] intValue];
+    NSInteger highScore = [[[NSUserDefaults standardUserDefaults] valueForKey:myHighScore] intValue];
     
     if (score > highScore) {
         
@@ -91,7 +92,7 @@ NSInteger gameScore;
                                                          cancelButtonTitle:@"OK" otherButtonTitles:nil];
         
         [newHighScoreAlert show];
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:score] forKey:@"highScore"];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:score] forKey:myHighScore];
         
     }
 }

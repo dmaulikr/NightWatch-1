@@ -8,6 +8,8 @@
 
 #import "NWAboutViewController.h"
 
+NSString *fullURL = @"http://en.wikipedia.org/wiki/Halloween";
+
 @interface NWAboutViewController () <UIWebViewDelegate>
 @property (retain, nonatomic) IBOutlet UIWebView *halloweenWebView;
 @property (retain, nonatomic) IBOutlet UIButton *mainMenuBtn;
@@ -43,8 +45,7 @@
     [super viewDidLoad];
     
     void (^blockWebView)(void) =^{
-        NSString *fullURL = [NSString stringWithFormat:@"http://en.wikipedia.org/wiki/Halloween"];
-        
+ 
         NSURL *halloweenURL = [NSURL URLWithString:fullURL];
         
         NSURLRequest *request = [NSURLRequest requestWithURL:halloweenURL];

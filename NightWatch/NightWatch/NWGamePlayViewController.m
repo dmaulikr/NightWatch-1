@@ -13,8 +13,14 @@
 
 const int CROSS_POSITION_Y = 250;
 const int BABY_X_POSITION = 300;
+const CGFloat GHOST_ANIMATE_DURATION = 2.0;
+const CGFloat GHOST_EXPLODE_DELAY = 0.2;
+const CGFloat COLLISION_TIMER_DELAY = 0.25;
+const CGFloat GHOST_ARRIVAL_TIMER_DELAY = 0.4;
 
 NSString *boomImage = @"boom";
+NSString *keyHighScore = @"highScore";
+NSString *keyYourScore = @"yourScore";
 
 BOOL didCountScore = FALSE;
 BOOL highScoreAlertCalled = FALSE;
@@ -29,7 +35,6 @@ BOOL gameOverScreenCalled;
 @property (retain, nonatomic) IBOutlet UILabel *yourScoreLbl;
 
 @property (retain, nonatomic) NWCross *cross;
-//@property (retain, nonatomic) NWGhost *ghost;
 
 @property (retain, nonatomic) NSTimer *ghostFirer;
 @property (retain, nonatomic) NSTimer *collisionChecker;
@@ -149,7 +154,7 @@ BOOL gameOverScreenCalled;
     [self.view addSubview:currentGhost];
     
     
-    [UIView animateWithDuration:2.0
+    [UIView animateWithDuration:GHOST_ANIMATE_DURATION
                      animations:^{
                             [currentGhost setFrame:endFrame];
                         }
@@ -178,23 +183,23 @@ BOOL gameOverScreenCalled;
     _savedScore = [NSUserDefaults standardUserDefaults];
     [_savedScore synchronize];
     
-    NSObject *object = [_savedScore objectForKey:@"highScore"];
+    NSObject *object = [_savedScore objectForKey:keyHighScore];
     
     if(object != nil){
-        _highScoreLbl.text = [NSString stringWithFormat:@"%@",[_savedScore objectForKey:@"highScore"]];
+        _highScoreLbl.text = [NSString stringWithFormat:@"%@",[_savedScore objectForKey:keyHighScore]];
     }
     
-    _highScore = [[_savedScore objectForKey:@"highScore"]intValue];
+    _highScore = [[_savedScore objectForKey:keyHighScore]intValue];
     _arrayOfIncomingGhosts = [[NSMutableArray alloc]init];
     _ghostFirerInterval = 0.4;
     
-    _ghostFirer = [NSTimer timerWithTimeInterval:_ghostFirerInterval
+    _ghostFirer = [NSTimer timerWithTimeInterval:GHOST_ARRIVAL_TIMER_DELAY
                                           target:self
                                         selector:@selector(ghostsArrive)
                                         userInfo:nil
                                          repeats:YES];
     
-    _collisionChecker = [NSTimer timerWithTimeInterval:0.25
+    _collisionChecker = [NSTimer timerWithTimeInterval:COLLISION_TIMER_DELAY
                                                 target:self
                                               selector:@selector(checkCollision)
                                               userInfo:nil
@@ -214,7 +219,7 @@ BOOL gameOverScreenCalled;
     
     _arrayOfIncomingGhosts = nil;
     
-    [_savedScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:@"yourScore"];
+    [_savedScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:keyYourScore];
     
     [_ghostFirer invalidate];
     _ghostFirer = nil;
@@ -232,9 +237,7 @@ BOOL gameOverScreenCalled;
 {
     ghost.image = [UIImage imageNamed:boomImage];
     
-    double delayInSeconds = 0.2;
-    
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(GHOST_EXPLODE_DELAY * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         [ghost removeFromSuperview];
         didCountScore = FALSE;

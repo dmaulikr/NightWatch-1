@@ -11,6 +11,8 @@
 #import "NWInstructionsViewController.h"
 #import "NWAboutViewController.h"
 
+NSString *highScore = @"highScore";
+
 @interface NWMainMenuController ()
 @property (retain, nonatomic) IBOutlet UIButton *playBtn;
 @property (retain, nonatomic) IBOutlet UIButton *instructionsBtn;
@@ -69,10 +71,10 @@
     _game.savedScore = [NSUserDefaults standardUserDefaults];
     [_game.savedScore synchronize];
     
-    NSObject *object = [_game.savedScore objectForKey:@"highScore"];
+    NSObject *object = [_game.savedScore objectForKey:highScore];
     
     if(object != nil){
-        _highScoreLbl.text = [NSString stringWithFormat:@"%@",[_game.savedScore objectForKey:@"highScore"]];
+        _highScoreLbl.text = [NSString stringWithFormat:@"%@",[_game.savedScore objectForKey:highScore]];
     }
     
 }
