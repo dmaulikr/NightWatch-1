@@ -236,7 +236,6 @@ BOOL gameOverScreenCalled;
         [_savedScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:@"highScore"];
     }
 
-    
 }
 
 - (void)explodeGhost: (NWGhost *)ghost
