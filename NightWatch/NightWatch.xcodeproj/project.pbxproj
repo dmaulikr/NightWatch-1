@@ -224,15 +224,15 @@
 		FA23130F19FF4C3800D7C41F /* Game Views */ = {
 			isa = PBXGroup;
 			children = (
+				FAB2976A19FE422E00D0D601 /* NWMainMenuController.h */,
+				FAB2976B19FE422E00D0D601 /* NWMainMenuController.m */,
+				FAB2976C19FE422E00D0D601 /* NWMainMenuController.xib */,
 				FA1958CC19F7A23A00857A2E /* NWGamePlayViewController.h */,
 				FA1958CD19F7A23A00857A2E /* NWGamePlayViewController.m */,
 				FA1958CE19F7A23A00857A2E /* NWGamePlayViewController.xib */,
 				FA0817E819FA22F800FC2073 /* NWGameOverViewController.h */,
 				FA0817E919FA22F800FC2073 /* NWGameOverViewController.m */,
 				FA0817EA19FA22F800FC2073 /* NWGameOverViewController.xib */,
-				FAB2976A19FE422E00D0D601 /* NWMainMenuController.h */,
-				FAB2976B19FE422E00D0D601 /* NWMainMenuController.m */,
-				FAB2976C19FE422E00D0D601 /* NWMainMenuController.xib */,
 				FA23130419FF201F00D7C41F /* NWInstructionsViewController.h */,
 				FA23130519FF201F00D7C41F /* NWInstructionsViewController.m */,
 				FA23130619FF201F00D7C41F /* NWInstructionsViewController.xib */,

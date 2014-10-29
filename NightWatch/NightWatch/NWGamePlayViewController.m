@@ -81,6 +81,11 @@ BOOL gameOverScreenCalled;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
     [self initializeGame];
 }
 
@@ -174,6 +179,8 @@ BOOL gameOverScreenCalled;
 
 -(void)initializeGame
 {
+    _yourScore = 0;
+    _yourScoreLbl.text = [NSString stringWithFormat:@"%ld", (long)_yourScore];
     _cross = [[NWCross alloc]init];
     _cross.frame = _cross.Cframe;
     _cross.userInteractionEnabled = TRUE;
@@ -216,6 +223,8 @@ BOOL gameOverScreenCalled;
     
     [_arrayOfIncomingGhosts release];
     [_cross release];
+    [_cross removeFromSuperview];
+    _cross = nil;
     
     _arrayOfIncomingGhosts = nil;
     
