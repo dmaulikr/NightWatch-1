@@ -26,7 +26,8 @@ NSString *highScore = @"highScore";
 @implementation NWMainMenuController
 
 
-- (void)dealloc {
+- (void)dealloc
+{
     
     [_playBtn release];
     [_instructionsBtn release];
@@ -41,34 +42,12 @@ NSString *highScore = @"highScore";
     [super dealloc];
 }
 
-- (IBAction)viewAbout:(id)sender {
-   
-    NWAboutViewController *about = [[[NWAboutViewController alloc]init]autorelease];
-    
-    [self.navigationController pushViewController:about animated:NO];
-    
-}
-
-
-- (IBAction)goToInstructions:(id)sender {
-    
-    NWInstructionsViewController *instructionsView = [[[NWInstructionsViewController alloc]init]autorelease];
-    
-    [self.navigationController pushViewController:instructionsView animated:NO];
-    
-}
-- (IBAction)playBtn:(id)sender {
-    
-    NWGamePlayViewController *game = [[[NWGamePlayViewController alloc]init]autorelease];
-
-    [self.navigationController pushViewController:game animated:NO];
-
-}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 }
+
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -80,9 +59,33 @@ NSString *highScore = @"highScore";
     if(object != nil){
         _highScoreLbl.text = [NSString stringWithFormat:@"%@",[_game.savedScore objectForKey:highScore]];
     }
-    
-    
-    
 }
+
+
+
+#pragma mark - buttons actions
+
+- (IBAction)viewAbout:(id)sender
+{
+    NWAboutViewController *about = [[[NWAboutViewController alloc]init]autorelease];
+    
+    [self.navigationController pushViewController:about animated:NO];
+}
+
+- (IBAction)goToInstructions:(id)sender
+{
+    NWInstructionsViewController *instructionsView = [[[NWInstructionsViewController alloc]init]autorelease];
+    
+    [self.navigationController pushViewController:instructionsView animated:NO];
+}
+
+- (IBAction)playBtn:(id)sender
+{
+    NWGamePlayViewController *game = [[[NWGamePlayViewController alloc]init]autorelease];
+
+    [self.navigationController pushViewController:game animated:NO];
+}
+
+
 
 @end

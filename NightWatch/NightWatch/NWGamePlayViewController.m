@@ -89,6 +89,7 @@ BOOL gameOverScreenCalled;
     [self initializeGame];
 }
 
+#pragma mark - touch responder actions
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -101,7 +102,7 @@ BOOL gameOverScreenCalled;
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (_crossIsTouched){
+    if (_crossIsTouched) {
         UITouch *touch = [[event allTouches]anyObject];
         CGPoint touchPoint = [touch locationInView:self.view];
         CGRect crossFrame = CGRectMake(touchPoint.x - (_cross.CROSS_WIDTH/2),
@@ -121,7 +122,10 @@ BOOL gameOverScreenCalled;
     _crossIsTouched = FALSE;
 }
 
--(void)checkCollision
+
+#pragma mark - actions in view
+
+- (void)checkCollision
 {
     for (int i = 0; i<_ghostsInScreen; i++) {
         if (CGRectIntersectsRect(_cross.frame, [[[_arrayOfIncomingGhosts[i] layer] presentationLayer] frame])) {
@@ -138,7 +142,7 @@ BOOL gameOverScreenCalled;
     }
 }
 
--(void)ghostsArrive
+- (void)ghostsArrive
 {
     
     [_arrayOfIncomingGhosts addObject:[[[NWGhost alloc]init]autorelease]];
@@ -177,7 +181,7 @@ BOOL gameOverScreenCalled;
     _ghostsInScreen++;
 }
 
--(void)initializeGame
+- (void)initializeGame
 {
     _yourScore = 0;
     _yourScoreLbl.text = [NSString stringWithFormat:@"%ld", (long)_yourScore];
@@ -192,7 +196,7 @@ BOOL gameOverScreenCalled;
     
     NSObject *object = [_savedScore objectForKey:keyHighScore];
     
-    if(object != nil){
+    if (object != nil) {
         _highScoreLbl.text = [NSString stringWithFormat:@"%@",[_savedScore objectForKey:keyHighScore]];
     }
     
@@ -218,7 +222,7 @@ BOOL gameOverScreenCalled;
     gameOverScreenCalled = FALSE;
 }
 
--(void)gameOver
+- (void)gameOver
 {
     
     [_arrayOfIncomingGhosts release];
@@ -245,11 +249,10 @@ BOOL gameOverScreenCalled;
     ghost.image = [UIImage imageNamed:boomImage];
     
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(GHOST_EXPLODE_DELAY * NSEC_PER_SEC));
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
         [ghost removeFromSuperview];
         didCountScore = FALSE;
     });
-
 }
 
 @end

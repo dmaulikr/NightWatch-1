@@ -14,16 +14,18 @@
 
 @implementation NWInstructionsViewController
 
-- (IBAction)backToMainMenu:(id)sender {
-    
-    [self.navigationController popToRootViewControllerAnimated:NO];
-}
-
-- (void)dealloc {
+- (void)dealloc
+{
     
     [_mainMenuBtn release];
     _mainMenuBtn = nil;
     
     [super dealloc];
 }
+
+- (IBAction)backToMainMenu:(id)sender
+{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+}
+
 @end

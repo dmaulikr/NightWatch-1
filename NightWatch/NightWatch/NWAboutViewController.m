@@ -21,7 +21,8 @@ NSString *fullURL = @"http://en.wikipedia.org/wiki/Halloween";
 
 @implementation NWAboutViewController
 
-- (void)dealloc {
+- (void)dealloc
+{
     [_halloweenWebView release];
     [_mainMenuBtn release];
     [_loadingIndicator release];
@@ -33,11 +34,6 @@ NSString *fullURL = @"http://en.wikipedia.org/wiki/Halloween";
     [super dealloc];
 }
 
-- (IBAction)returnToMainMenu:(id)sender {
-    
-    [self.navigationController popToRootViewControllerAnimated:NO];
-}
-
 - (void)viewDidLoad
 {
     _halloweenWebView.delegate = self;
@@ -45,7 +41,7 @@ NSString *fullURL = @"http://en.wikipedia.org/wiki/Halloween";
     [super viewDidLoad];
     
     void (^blockWebView)(void) =^{
- 
+        
         NSURL *halloweenURL = [NSURL URLWithString:fullURL];
         
         NSURLRequest *request = [NSURLRequest requestWithURL:halloweenURL];
@@ -56,12 +52,18 @@ NSString *fullURL = @"http://en.wikipedia.org/wiki/Halloween";
     blockWebView();
 }
 
+
+- (IBAction)returnToMainMenu:(id)sender
+{
+    [self.navigationController popToRootViewControllerAnimated:NO];
+}
+
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
     [_loadingIndicator startAnimating];
 }
 
--(void)webViewDidFinishLoad:(UIWebView *)webView
+- (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [_loadingIndicator stopAnimating];
     [_loadingIndicator removeFromSuperview];

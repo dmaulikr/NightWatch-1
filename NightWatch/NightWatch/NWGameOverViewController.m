@@ -26,21 +26,8 @@ NSString *myHighScore = @"highScore";
 
 @implementation NWGameOverViewController
 
-
--(instancetype)initWithCurrentScore:(NSInteger)score
-{
-    self = [super init];
-    
-    if (self) {
-        [self checkIfHighScore:score];
-        gameScore = score;
-    }
-    return self;
-}
-
 - (void)dealloc
 {
-    
     [_playAgainBtn release];
     [_mainMenuBtn release];
     [_scoreLabel release];
@@ -52,19 +39,29 @@ NSString *myHighScore = @"highScore";
     [super dealloc];
 }
 
-- (IBAction)backToMainMenu:(id)sender
+
+- (id)initWithCurrentScore:(NSInteger)score
 {
+    self = [super init];
     
-    [self.navigationController popToRootViewControllerAnimated:NO];
-
+    if (self) {
+        [self checkIfHighScore:score];
+        gameScore = score;
+    }
+    return self;
 }
-
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self printGameScore:gameScore];
+}
 
+#pragma mark - buttons actions
+
+- (IBAction)backToMainMenu:(id)sender
+{
+    [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
 - (void) playAgain:(id)sender
@@ -72,6 +69,8 @@ NSString *myHighScore = @"highScore";
     [self.navigationController popViewControllerAnimated:NO];
 }
 
+
+#pragma mark - actions in view
 
 - (void) checkIfHighScore:(NSInteger)score
 {
