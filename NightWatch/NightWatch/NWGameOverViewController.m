@@ -10,6 +10,8 @@
 #import "NWGamePlayViewController.h"
 #import "NWMainMenuController.h"
 
+NSInteger gameScore;
+
 @interface NWGameOverViewController ()
 
 @property (retain, nonatomic) IBOutlet UIButton *playAgainBtn;
@@ -24,7 +26,19 @@
 @implementation NWGameOverViewController
 
 
-- (void)dealloc {
+-(instancetype)initWithCurrentScore:(NSInteger)score
+{
+    self = [super init];
+    
+    if (self) {
+        [self checkIfHighScore:score];
+        gameScore = score;
+    }
+    return self;
+}
+
+- (void)dealloc
+{
     
     [_playAgainBtn release];
     [_mainMenuBtn release];
@@ -37,7 +51,8 @@
     [super dealloc];
 }
 
-- (IBAction)backToMainMenu:(id)sender {
+- (IBAction)backToMainMenu:(id)sender
+{
     
     NWMainMenuController *mainMenu = [[[NWMainMenuController alloc]init]autorelease];
     UINavigationController *navController = self.navigationController;
@@ -48,34 +63,42 @@
 
 }
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-
-    }
-    return self;
-}
 
 - (void)viewDidLoad
 {
-    _game = [[[NWGamePlayViewController alloc]init]autorelease];
-    _game.savedScore = [NSUserDefaults standardUserDefaults];
-    [_game.savedScore synchronize];
-    _scoreLabel.text = [NSString stringWithFormat:@"You scored %@, Good Job!", [_game.savedScore objectForKey:@"yourScore"]];
-    
     [super viewDidLoad];
+    [self printGameScore:gameScore];
 
 }
 
 - (void) playAgain:(id)sender
 {
-    NWGamePlayViewController *playAgain = [[[NWGamePlayViewController alloc]init]autorelease];
-    UINavigationController *navController = self.navigationController;
-    [[self retain] autorelease];
+    [self.navigationController popViewControllerAnimated:NO];
+}
+
+
+- (void) checkIfHighScore:(NSInteger)score
+{
     
-    [navController popViewControllerAnimated:NO];
-    [navController pushViewController:playAgain animated:NO];
+    NSInteger highScore = [[[NSUserDefaults standardUserDefaults] valueForKey:@"highScore"] intValue];
+    
+    if (score > highScore) {
+        
+        _scoreLabel.text = [NSString stringWithFormat:@"You scored %ld, Good Job!", (long)score];
+        UIAlertView *newHighScoreAlert = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%ld",(long)score]
+                                                                   message:@"YOU'VE SET A NEW HIGH SCORE!!!!"
+                                                                  delegate:self
+                                                         cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+        [newHighScoreAlert show];
+        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:score] forKey:@"highScore"];
+        
+    }
+}
+
+- (void) printGameScore:(NSInteger)score
+{
+    _scoreLabel.text = [NSString stringWithFormat:@"You scored %ld, Good Job!", (long)score];
 }
 
 @end

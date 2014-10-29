@@ -10,4 +10,6 @@
 
 @interface NWGameOverViewController : UIViewController
 
+-(instancetype)initWithCurrentScore:(NSInteger)score;
+
 @end

@@ -56,12 +56,8 @@
 - (IBAction)playBtn:(id)sender {
     
     NWGamePlayViewController *game = [[[NWGamePlayViewController alloc]init]autorelease];
-    
-    UINavigationController *navController = self.navigationController;
-    [[self retain] autorelease];
-    
-    [navController popViewControllerAnimated:NO];
-    [navController pushViewController:game animated:NO];
+
+    [self.navigationController pushViewController:game animated:NO];
 
 }
 

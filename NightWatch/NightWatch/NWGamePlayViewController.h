@@ -18,5 +18,6 @@
 
 -(void)checkCollision;
 -(void)ghostsArrive;
+-(void)initializeGame;
 
 @end
