@@ -71,12 +71,6 @@ BOOL crossIsTouched;
     [super dealloc];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     [self initializeGame];

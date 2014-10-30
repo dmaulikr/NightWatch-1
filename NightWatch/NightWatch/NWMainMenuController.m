@@ -42,11 +42,6 @@ NSString *const HIGH_SCORE_KEY0 = @"highScore";
     [super dealloc];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
     NWGamePlayViewController *game;
