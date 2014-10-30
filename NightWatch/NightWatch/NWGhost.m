@@ -47,10 +47,11 @@ NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
                                                                    nil]autorelease];
         
         //Assign the object Frame and Start location
-        _ghostFrame = CGRectMake([_frameX floatValue],
+        _ghostFrameStart = CGRectMake([_frameX floatValue],
                                  [self randomPositions:_arrayPositions],
                                  [_frameWidth floatValue],
                                  [_frameHeight floatValue]);
+
         
         _startPosForAnimation = [self randomPositions:_arrayPositions];
     }

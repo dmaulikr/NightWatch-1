@@ -158,15 +158,14 @@ BOOL crossIsTouched;
     NWGhost *currentGhost = _arrayOfIncomingGhosts[_ghostsInScreen];
     
     //set frames for animation
-    CGRect startFrame = CGRectMake([[currentGhost frameX]floatValue],
-                                   [currentGhost startPosForAnimation],
-                                   [[currentGhost frameWidth]floatValue],
-                                   [[currentGhost frameHeight]floatValue]);
+    
+    CGRect startFrame = currentGhost.ghostFrameStart;
 
     CGRect endFrame   = CGRectMake(BABY_X_POSITION,
                                    [currentGhost startPosForAnimation],
                                    [[currentGhost frameWidth]floatValue],
                                    [[currentGhost frameHeight]floatValue]);
+
     
     //make the ghost appear in screen
     [currentGhost setFrame:startFrame];
@@ -246,13 +245,10 @@ BOOL crossIsTouched;
     [_cross removeFromSuperview];
     [_savedScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:YOUR_SCORE_KEY1];
     
-    //invalidate the timers
+    //invalidate the timer
     [_ghostFirer invalidate];
     _ghostFirer = nil;
-    
-    [_collisionChecker invalidate];
-    _collisionChecker = nil;
-    
+
     NWGameOverViewController *gameOver = [[NWGameOverViewController alloc] initWithCurrentScore:_yourScore];
 
     [self.navigationController pushViewController:gameOver animated:NO];

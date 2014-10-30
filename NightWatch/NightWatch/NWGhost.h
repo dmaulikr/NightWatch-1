@@ -18,7 +18,8 @@
 @property (retain, nonatomic) CAKeyframeAnimation *attack;
 
 @property (assign, nonatomic) CGFloat startPosForAnimation;
-@property (assign, nonatomic) CGRect ghostFrame;
+@property (assign, nonatomic) CGRect ghostFrameStart;
+@property (assign, nonatomic) CGRect ghostFrameEnd;
 @property (assign, nonatomic) NSInteger randomPosition;
 
 - (NSInteger)randomPositions:(NSMutableArray *)array;
