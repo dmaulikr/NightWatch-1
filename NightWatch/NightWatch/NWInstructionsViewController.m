@@ -9,7 +9,9 @@
 #import "NWInstructionsViewController.h"
 
 @interface NWInstructionsViewController ()
+
 @property (retain, nonatomic) IBOutlet UIButton *mainMenuBtn;
+
 @end
 
 @implementation NWInstructionsViewController

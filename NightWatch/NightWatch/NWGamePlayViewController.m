@@ -19,9 +19,9 @@ const CGFloat GHOST_EXPLODE_DELAY = 0.2;
 const CGFloat COLLISION_TIMER_DELAY = 0.25;
 const CGFloat GHOST_ARRIVAL_TIMER_DELAY = 0.4;
 
-NSString *boomImage = @"boom";
-NSString *keyHighScore = @"highScore";
-NSString *keyYourScore = @"yourScore";
+NSString *const BOOM_IMAGE = @"boom";
+NSString *const HIGH_SCORE_KEY1 = @"highScore";
+NSString *const YOUR_SCORE_KEY1 = @"yourScore";
 
 BOOL didCountScore = FALSE;
 BOOL highScoreAlertCalled = FALSE;
@@ -123,9 +123,9 @@ BOOL crossIsTouched;
 - (void)checkCollision
 {
     for (int i = 0; i<_ghostsInScreen; i++) {
+        
         if (CGRectIntersectsRect(_cross.frame, [[[_arrayOfIncomingGhosts[i] layer] presentationLayer] frame])) {
             NWGhost *thisGhost = _arrayOfIncomingGhosts[i];
-            thisGhost.image = [UIImage imageNamed:boomImage];
             
             if (didCountScore == FALSE) {
                 _yourScore++;
@@ -166,7 +166,7 @@ BOOL crossIsTouched;
                             [_arrayOfIncomingGhosts removeObject:currentGhost];
                             _ghostsInScreen--;
                             [currentGhost removeFromSuperview];
-                            if (currentGhost.image != [UIImage imageNamed:boomImage] &&
+                            if (currentGhost.image != [UIImage imageNamed:BOOM_IMAGE] &&
                                 gameOverScreenCalled == FALSE ) {
                                 [self gameOver];
                             }
@@ -188,13 +188,13 @@ BOOL crossIsTouched;
     _savedScore = [NSUserDefaults standardUserDefaults];
     [_savedScore synchronize];
     
-    NSObject *object = [_savedScore objectForKey:keyHighScore];
+    NSObject *object = [_savedScore objectForKey:HIGH_SCORE_KEY1];
     
     if (object != nil) {
-        _highScoreLbl.text = [NSString stringWithFormat:@"%@",[_savedScore objectForKey:keyHighScore]];
+        _highScoreLbl.text = [NSString stringWithFormat:@"%@",[_savedScore objectForKey:HIGH_SCORE_KEY1]];
     }
     
-    _highScore = [[_savedScore objectForKey:keyHighScore]intValue];
+    _highScore = [[_savedScore objectForKey:HIGH_SCORE_KEY1]intValue];
     _arrayOfIncomingGhosts = [[NSMutableArray alloc]init];
     
     _ghostFirer = [NSTimer timerWithTimeInterval:GHOST_ARRIVAL_TIMER_DELAY
@@ -218,7 +218,7 @@ BOOL crossIsTouched;
 - (void)gameOver
 {
     [_cross removeFromSuperview];
-    [_savedScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:keyYourScore];
+    [_savedScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:YOUR_SCORE_KEY1];
     
     [_ghostFirer invalidate];
     _ghostFirer = nil;
@@ -233,7 +233,7 @@ BOOL crossIsTouched;
 
 - (void)explodeGhost: (NWGhost *)ghost
 {
-    ghost.image = [UIImage imageNamed:boomImage];
+    ghost.image = [UIImage imageNamed:BOOM_IMAGE];
     
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(GHOST_EXPLODE_DELAY * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {

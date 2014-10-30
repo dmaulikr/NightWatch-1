@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface NWCross : UIImageView
 
 @property (assign, nonatomic) CGRect Cframe;

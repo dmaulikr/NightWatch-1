@@ -11,7 +11,7 @@
 #import "NWInstructionsViewController.h"
 #import "NWAboutViewController.h"
 
-NSString *highScore = @"highScore";
+NSString *const HIGH_SCORE_KEY0 = @"highScore";
 
 
 @interface NWMainMenuController ()
@@ -52,10 +52,10 @@ NSString *highScore = @"highScore";
     _game = [[NWGamePlayViewController alloc]init];
     _game.savedScore = [NSUserDefaults standardUserDefaults];
     [_game.savedScore synchronize];
-    NSObject *object = [_game.savedScore objectForKey:highScore];
+    NSObject *object = [_game.savedScore objectForKey:HIGH_SCORE_KEY0];
     
     if(object != nil){
-        _highScoreLbl.text = [NSString stringWithFormat:@"%@",[_game.savedScore objectForKey:highScore]];
+        _highScoreLbl.text = [NSString stringWithFormat:@"%@",[_game.savedScore objectForKey:HIGH_SCORE_KEY0]];
     }
     
     [_game release];
