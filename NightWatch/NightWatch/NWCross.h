@@ -11,7 +11,7 @@
 
 @interface NWCross : UIImageView
 
-@property (assign, nonatomic) CGRect Cframe;
+@property (assign, nonatomic) CGRect crossFrame;
 @property (retain, nonatomic) NSNumber *CROSS_POSITION_Y1;
 @property (retain, nonatomic) NSNumber *CROSS_POSITION_Y2;
 @property (retain, nonatomic) NSNumber *CROSS_POSITION_Y3;

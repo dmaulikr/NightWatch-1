@@ -24,22 +24,19 @@ NSString *const FULL_URL = @"http://en.wikipedia.org/wiki/Halloween";
 
 - (void)dealloc
 {
-    [_halloweenWebView release];
-    [_mainMenuBtn release];
-    [_loadingIndicator release];
-    
-    _halloweenWebView = nil;
-    _mainMenuBtn = nil;
-    _loadingIndicator = nil;
+    self.halloweenWebView = nil;
+    self.mainMenuBtn = nil;
+    self.loadingIndicator = nil;
     
     [super dealloc];
 }
 
 - (void)viewDidLoad
 {
-    _halloweenWebView.delegate = self;
     
     [super viewDidLoad];
+    
+    _halloweenWebView.delegate = self;
     
     void (^blockWebView)(void) =^{
         

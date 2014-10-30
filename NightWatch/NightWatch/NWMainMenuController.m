@@ -29,15 +29,10 @@ NSString *const HIGH_SCORE_KEY0 = @"highScore";
 
 - (void)dealloc
 {
-    [_playBtn release];
-    [_instructionsBtn release];
-    [_aboutBtn release];
-    [_highScoreLbl release];
-    
-    _playBtn = nil;
-    _instructionsBtn = nil;
-    _aboutBtn = nil;
-    _highScoreLbl = nil;
+    self.playBtn = nil;
+    self.instructionsBtn = nil;
+    self.aboutBtn = nil;
+    self.highScoreLbl = nil;
     
     [super dealloc];
 }
@@ -46,6 +41,7 @@ NSString *const HIGH_SCORE_KEY0 = @"highScore";
 {
     NWGamePlayViewController *game;
     game = [[NWGamePlayViewController alloc]init];
+    
     game.savedScore = [NSUserDefaults standardUserDefaults];
     [game.savedScore synchronize];
     NSObject *object = [game.savedScore objectForKey:HIGH_SCORE_KEY0];

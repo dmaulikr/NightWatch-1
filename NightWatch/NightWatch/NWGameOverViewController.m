@@ -20,8 +20,6 @@ NSString *const HIGH_SCORE_KEY2 = @"highScore";
 @property (retain, nonatomic) IBOutlet UIButton *mainMenuBtn;
 @property (retain, nonatomic) IBOutlet UILabel *scoreLabel;
 
-@property (retain, nonatomic) NWGamePlayViewController *game;
-
 - (IBAction)playAgain:(id)sender;
 
 @end
@@ -31,15 +29,9 @@ NSString *const HIGH_SCORE_KEY2 = @"highScore";
 
 - (void)dealloc
 {
-    [_playAgainBtn release];
-    [_mainMenuBtn release];
-    [_scoreLabel release];
-    [_game release];
-    
-    _playAgainBtn = nil;
-    _mainMenuBtn = nil;
-    _scoreLabel = nil;
-    _game = nil;
+    self.playAgainBtn = nil;
+    self.mainMenuBtn = nil;
+    self.scoreLabel = nil;
     
     [super dealloc];
 }

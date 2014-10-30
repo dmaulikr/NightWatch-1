@@ -49,30 +49,23 @@ BOOL crossIsTouched;
 
 - (void)dealloc
 {
-    [_highScoreLbl release];
-    [_yourScoreLbl release];
-    [_cross release];
-    [_ghostFirer release];
-    [_collisionChecker release];
-    [_arrayOfIncomingGhosts release];    
-    [_randomPosition release];
-    [_arrayPositions release];
-    [_savedScore release];
-
-    _highScoreLbl = nil;
-    _yourScoreLbl = nil;
-    _cross = nil;
-    _ghostFirer = nil;
-    _collisionChecker = nil;
-    _arrayOfIncomingGhosts = nil;
-    _randomPosition = nil;
-    _savedScore = nil;
+    self.highScoreLbl = nil;
+    self.yourScoreLbl = nil;
+    self.cross = nil;
+    self.ghostFirer = nil;
+    self.collisionChecker = nil;
+    self.arrayOfIncomingGhosts = nil;
+    self.randomPosition = nil;
+    self.savedScore = nil;
+    
+    NSLog(@"dealloc");
     
     [super dealloc];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    NSLog(@"Initialize");
     [self initializeGame];
 }
 
@@ -185,7 +178,7 @@ BOOL crossIsTouched;
     _yourScoreLbl.text = [NSString stringWithFormat:@"%ld", (long)_yourScore];
     
     _cross = [[NWCross alloc]init];
-    _cross.frame = _cross.Cframe;
+    _cross.frame = _cross.crossFrame;
     _cross.userInteractionEnabled = TRUE;
     
     [self.view addSubview:_cross];

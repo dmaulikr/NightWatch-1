@@ -18,8 +18,8 @@
 
 - (void)dealloc
 {
-    [_mainMenuBtn release];
-    _mainMenuBtn = nil;
+
+    self.mainMenuBtn = nil;
     
     [super dealloc];
 }

@@ -23,6 +23,14 @@ NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
 
 @implementation NWGhost
 
+- (void)dealloc
+{
+    self.dictJSON = nil;
+    self.attack = nil;
+    
+    [super dealloc];
+}
+
 - (id)init
 {
     self = [super init];
@@ -55,7 +63,6 @@ NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
                                  [_frameWidth floatValue],
                                  [_frameHeight floatValue]);
 
-        
         //to give a different x position for the end frame
         _startPosForAnimation = [self randomPositions:_arrayPositions];
     }

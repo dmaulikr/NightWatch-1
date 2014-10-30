@@ -15,15 +15,10 @@ NSString *const CROSS_IMAGE_NAME = @"Cross";
 
 - (void)dealloc
 {
-    [_arrayPositions release];
-    [_CROSS_POSITION_Y1 release];
-    [_CROSS_POSITION_Y2 release];
-    [_CROSS_POSITION_Y3 release];
-    
-    _arrayPositions = nil;
-    _CROSS_POSITION_Y1 = nil;
-    _CROSS_POSITION_Y2 = nil;
-    _CROSS_POSITION_Y3 = nil;
+    self.arrayPositions = nil;
+    self.CROSS_POSITION_Y1 = nil;
+    self.CROSS_POSITION_Y2 = nil;
+    self.CROSS_POSITION_Y3 = nil;
     
     [super dealloc];
 }
@@ -45,7 +40,7 @@ NSString *const CROSS_IMAGE_NAME = @"Cross";
                            _CROSS_POSITION_Y2,
                            _CROSS_POSITION_Y3, nil];
         
-        _Cframe = CGRectMake(_CROSS_POSITION_X, [self randomPositions:_arrayPositions], _CROSS_WIDTH, _CROSS_HEIGHT);
+        _crossFrame = CGRectMake(_CROSS_POSITION_X, [self randomPositions:_arrayPositions], _CROSS_WIDTH, _CROSS_HEIGHT);
     }
     return self;
 }
