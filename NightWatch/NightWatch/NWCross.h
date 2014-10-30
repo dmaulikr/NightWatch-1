@@ -19,7 +19,7 @@
 @property (assign, nonatomic) NSInteger CROSS_WIDTH;
 @property (assign, nonatomic) NSInteger CROSS_POSITION_X;
 @property (assign, nonatomic) NSInteger randomPosition;
-@property (retain, nonatomic) NSMutableArray *arrayPositions;
+@property (assign, nonatomic) NSMutableArray *arrayPositions;
 
 - (NSInteger)randomPositions:(NSMutableArray *)array;
 

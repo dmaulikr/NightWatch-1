@@ -24,7 +24,6 @@ NSString *const HIGH_SCORE_KEY2 = @"highScore";
 
 @end
 
-
 @implementation NWGameOverViewController
 
 - (void)dealloc

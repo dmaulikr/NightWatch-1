@@ -15,7 +15,6 @@ NSString *const CROSS_IMAGE_NAME = @"Cross";
 
 - (void)dealloc
 {
-    self.arrayPositions = nil;
     self.CROSS_POSITION_Y1 = nil;
     self.CROSS_POSITION_Y2 = nil;
     self.CROSS_POSITION_Y3 = nil;

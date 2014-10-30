@@ -27,8 +27,8 @@ NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
 {
     self.dictJSON = nil;
     self.attack = nil;
-    
     [super dealloc];
+
 }
 
 - (id)init
@@ -67,6 +67,7 @@ NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
         _startPosForAnimation = [self randomPositions:_arrayPositions];
     }
     return self;
+
 }
 
 - (NSInteger)randomPositions:(NSMutableArray *)array
