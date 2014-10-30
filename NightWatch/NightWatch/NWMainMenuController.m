@@ -20,7 +20,7 @@ NSString *const HIGH_SCORE_KEY0 = @"highScore";
 @property (retain, nonatomic) IBOutlet UIButton *instructionsBtn;
 @property (retain, nonatomic) IBOutlet UIButton *aboutBtn;
 @property (retain, nonatomic) IBOutlet UILabel *highScoreLbl;
-@property (retain, nonatomic) NWGamePlayViewController *game;
+
 
 @end
 
@@ -49,16 +49,17 @@ NSString *const HIGH_SCORE_KEY0 = @"highScore";
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    _game = [[NWGamePlayViewController alloc]init];
-    _game.savedScore = [NSUserDefaults standardUserDefaults];
-    [_game.savedScore synchronize];
-    NSObject *object = [_game.savedScore objectForKey:HIGH_SCORE_KEY0];
+    NWGamePlayViewController *game;
+    game = [[NWGamePlayViewController alloc]init];
+    game.savedScore = [NSUserDefaults standardUserDefaults];
+    [game.savedScore synchronize];
+    NSObject *object = [game.savedScore objectForKey:HIGH_SCORE_KEY0];
     
     if(object != nil){
-        _highScoreLbl.text = [NSString stringWithFormat:@"%@",[_game.savedScore objectForKey:HIGH_SCORE_KEY0]];
+        _highScoreLbl.text = [NSString stringWithFormat:@"%@",[game.savedScore objectForKey:HIGH_SCORE_KEY0]];
     }
     
-    [_game release];
+    [game release];
 }
 
 

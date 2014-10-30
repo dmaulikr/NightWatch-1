@@ -6,6 +6,8 @@
 //  Copyright (c) 2014 Marvin Labrador. All rights reserved.
 //
 
+const CGFloat ALPHA_GHOST = 0.35;
+
 #import "NWGhost.h"
 
 NSString *const GHOST_IMAGE_NAME = @"Ghost";
@@ -26,6 +28,7 @@ NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
     self = [super init];
     if (self) {
         self.image = [UIImage imageNamed:GHOST_IMAGE_NAME];
+        self.alpha = ALPHA_GHOST;
         //Fetching the Data from ghost.json
         NSString *JSONFilePath = [[NSBundle mainBundle]pathForResource:JSON_NAME
                                                                 ofType:JSON_TYPE];

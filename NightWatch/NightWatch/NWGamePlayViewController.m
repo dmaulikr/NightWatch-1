@@ -14,6 +14,7 @@
 const NSInteger CROSS_POSITION_Y = 250;
 const NSInteger BABY_X_POSITION = 300;
 
+const CGFloat EXPLOSION_ALPHA = 1.0;
 const CGFloat GHOST_ANIMATE_DURATION = 2.0;
 const CGFloat GHOST_EXPLODE_DELAY = 0.2;
 const CGFloat COLLISION_TIMER_DELAY = 0.25;
@@ -119,8 +120,6 @@ BOOL crossIsTouched;
         _cross.frame = CGRectMake(_cross.CROSS_POSITION_X, [_cross randomPositions:_cross.arrayPositions],
                                   _cross.CROSS_WIDTH, _cross.CROSS_HEIGHT);
     }
-    
-
     crossIsTouched = FALSE;
 }
 
@@ -150,36 +149,37 @@ BOOL crossIsTouched;
 - (void)ghostsArrive
 {
 
-    [_arrayOfIncomingGhosts addObject:[[NWGhost alloc]init]];
+    NWGhost *ghostForArray = [[NWGhost alloc]init];
+    [_arrayOfIncomingGhosts addObject:ghostForArray];
     
-    NWGhost *currentGhost = _arrayOfIncomingGhosts[_ghostsInScreen];
-    
-    CGRect startFrame = currentGhost.ghostFrameStart;
+    CGRect startFrame = ghostForArray.ghostFrameStart;
 
     CGRect endFrame   = CGRectMake(BABY_X_POSITION,
-                                   [currentGhost startPosForAnimation],
-                                   [[currentGhost frameWidth]floatValue],
-                                   [[currentGhost frameHeight]floatValue]);
+                                   [ghostForArray startPosForAnimation],
+                                   [[ghostForArray frameWidth]floatValue],
+                                   [[ghostForArray frameHeight]floatValue]);
 
 
-    [currentGhost setFrame:startFrame];
-    [self.view addSubview:currentGhost];
+    [ghostForArray setFrame:startFrame];
     
+    [self.view addSubview:ghostForArray];
     
     [UIView animateWithDuration:GHOST_ANIMATE_DURATION
                      animations:^{
-                            [currentGhost setFrame:endFrame];
+                            [ghostForArray setFrame:endFrame];
                         }
                      completion:^(BOOL finished) {
-                         
-                            [_arrayOfIncomingGhosts removeObject:currentGhost];
-                            _ghostsInScreen--;
-                            [currentGhost removeFromSuperview];
-                            if (currentGhost.image != [UIImage imageNamed:BOOM_IMAGE] &&
-                                gameOverScreenCalled == FALSE ) {
-                                [self gameOver];
+                         [_arrayOfIncomingGhosts removeObject:ghostForArray];
+                         _ghostsInScreen--;
+                         if (ghostForArray.image != [UIImage imageNamed:BOOM_IMAGE]) {
+                             [ghostForArray removeFromSuperview];
+                             [ghostForArray release];
+                             if (gameOverScreenCalled == FALSE )
+                             {
+                                 [self gameOver];
+                             }
                             }
-                            [currentGhost release];
+
                         }];
     
     _ghostsInScreen++;
@@ -246,6 +246,7 @@ BOOL crossIsTouched;
 - (void)explodeGhost: (NWGhost *)ghost
 {
     ghost.image = [UIImage imageNamed:BOOM_IMAGE];
+    ghost.alpha = EXPLOSION_ALPHA;
     
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(GHOST_EXPLODE_DELAY * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
