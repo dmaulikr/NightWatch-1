@@ -87,8 +87,10 @@ BOOL crossIsTouched;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    [super touchesBegan:touches withEvent:event];
+    //save your touch point to a variable
     UITouch *touch = [touches anyObject];
+    
+    //make cross responsive to touchesMoved upon touchesBegan
     if ([touch.view isKindOfClass: NWCross.class]) {
         crossIsTouched = TRUE;
     }
@@ -97,8 +99,11 @@ BOOL crossIsTouched;
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
     if (crossIsTouched) {
+        //save your touch point to a variable
         UITouch *touch = [[event allTouches]anyObject];
         CGPoint touchPoint = [touch locationInView:self.view];
+        
+        //continuously changes the frame of the Cross according to your touch movements
         CGRect crossFrame = CGRectMake(touchPoint.x - (_cross.CROSS_WIDTH/2),
                                         touchPoint.y - (_cross.CROSS_HEIGHT/2),
                                         _cross.CROSS_WIDTH,
@@ -109,10 +114,13 @@ BOOL crossIsTouched;
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    //make cross reappear in three random positions among the three orbs in the rightmost part of the screen
     if (crossIsTouched) {
         _cross.frame = CGRectMake(_cross.CROSS_POSITION_X, [_cross randomPositions:_cross.arrayPositions],
                                   _cross.CROSS_WIDTH, _cross.CROSS_HEIGHT);
     }
+    
+    //make cross unresponsive to touchesMoved upon touchesEnd
     crossIsTouched = FALSE;
 }
 
@@ -122,11 +130,15 @@ BOOL crossIsTouched;
 
 - (void)checkCollision
 {
+    //checkking ALL ghost instances onscreen
     for (int i = 0; i<_ghostsInScreen; i++) {
         
+        //collision detected
         if (CGRectIntersectsRect(_cross.frame, [[[_arrayOfIncomingGhosts[i] layer] presentationLayer] frame])) {
+            //store the collided ghost into a variable
             NWGhost *thisGhost = _arrayOfIncomingGhosts[i];
             
+            //added this filter to increment score only once despite continuous loop
             if (didCountScore == FALSE) {
                 _yourScore++;
                 _yourScoreLbl.text = [NSString stringWithFormat:@"%ld",(long)_yourScore];
@@ -139,10 +151,13 @@ BOOL crossIsTouched;
 
 - (void)ghostsArrive
 {
+    //method will be called continuously via _ghostFirer NSTimer
+    //instantiate a ghost object
     [_arrayOfIncomingGhosts addObject:[[NWGhost alloc]init]];
     
     NWGhost *currentGhost = _arrayOfIncomingGhosts[_ghostsInScreen];
     
+    //set frames for animation
     CGRect startFrame = CGRectMake([[currentGhost frameX]floatValue],
                                    [currentGhost startPosForAnimation],
                                    [[currentGhost frameWidth]floatValue],
@@ -153,6 +168,7 @@ BOOL crossIsTouched;
                                    [[currentGhost frameWidth]floatValue],
                                    [[currentGhost frameHeight]floatValue]);
     
+    //make the ghost appear in screen
     [currentGhost setFrame:startFrame];
     [self.view addSubview:currentGhost];
     
@@ -172,19 +188,25 @@ BOOL crossIsTouched;
                             }
                             [currentGhost release];
                         }];
+    
+    //count the ghosts onscreen
     _ghostsInScreen++;
 }
 
 - (void)initializeGame
 {
+    //reset current score
     _yourScore = 0;
     _yourScoreLbl.text = [NSString stringWithFormat:@"%ld", (long)_yourScore];
+    
+    //make the cross appear
     _cross = [[NWCross alloc]init];
     _cross.frame = _cross.Cframe;
     _cross.userInteractionEnabled = TRUE;
     
     [self.view addSubview:_cross];
     
+    //display the saved highscore
     _savedScore = [NSUserDefaults standardUserDefaults];
     [_savedScore synchronize];
     
@@ -195,14 +217,18 @@ BOOL crossIsTouched;
     }
     
     _highScore = [[_savedScore objectForKey:HIGH_SCORE_KEY1]intValue];
+    
+    //allocate Array for incoming ghost instances
     _arrayOfIncomingGhosts = [[NSMutableArray alloc]init];
     
+    //start continuous firing ghosts
     _ghostFirer = [NSTimer timerWithTimeInterval:GHOST_ARRIVAL_TIMER_DELAY
                                           target:self
                                         selector:@selector(ghostsArrive)
                                         userInfo:nil
                                          repeats:YES];
     
+    //start continuous collision checking
     _collisionChecker = [NSTimer timerWithTimeInterval:COLLISION_TIMER_DELAY
                                                 target:self
                                               selector:@selector(checkCollision)
@@ -220,8 +246,12 @@ BOOL crossIsTouched;
     [_cross removeFromSuperview];
     [_savedScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:YOUR_SCORE_KEY1];
     
+    //invalidate the timers
     [_ghostFirer invalidate];
     _ghostFirer = nil;
+    
+    [_collisionChecker invalidate];
+    _collisionChecker = nil;
     
     NWGameOverViewController *gameOver = [[NWGameOverViewController alloc] initWithCurrentScore:_yourScore];
 

@@ -61,7 +61,9 @@ NSString *const HIGH_SCORE_KEY2 = @"highScore";
     [self printGameScore:gameScore];
 }
 
+
 #pragma mark - buttons actions
+
 
 - (IBAction)backToMainMenu:(id)sender
 {
