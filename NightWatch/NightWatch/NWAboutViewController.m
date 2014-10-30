@@ -55,7 +55,7 @@ NSString *fullURL = @"http://en.wikipedia.org/wiki/Halloween";
     blockWebView();
 }
 
-- (IBAction)returnToMainMenu:(id)sender
+- (IBAction)backToMainMenu:(id)sender
 {
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
