@@ -53,6 +53,7 @@ NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
                                  [_frameHeight floatValue]);
 
         
+        //to give a different x position for the end frame
         _startPosForAnimation = [self randomPositions:_arrayPositions];
     }
     return self;
