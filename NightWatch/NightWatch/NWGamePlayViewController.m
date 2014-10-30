@@ -6,13 +6,14 @@
 //  Copyright (c) 2014 Marvin Labrador. All rights reserved.
 //
 
-#import "NWGamePlayViewController.h"
 #import "NWGhost.h"
 #import "NWCross.h"
+#import "NWGamePlayViewController.h"
 #import "NWGameOverViewController.h"
 
-const int CROSS_POSITION_Y = 250;
-const int BABY_X_POSITION = 300;
+const NSInteger CROSS_POSITION_Y = 250;
+const NSInteger BABY_X_POSITION = 300;
+
 const CGFloat GHOST_ANIMATE_DURATION = 2.0;
 const CGFloat GHOST_EXPLODE_DELAY = 0.2;
 const CGFloat COLLISION_TIMER_DELAY = 0.25;
@@ -25,28 +26,20 @@ NSString *keyYourScore = @"yourScore";
 BOOL didCountScore = FALSE;
 BOOL highScoreAlertCalled = FALSE;
 BOOL gameOverScreenCalled;
+BOOL crossIsTouched;
 
 
 @interface NWGamePlayViewController ()
 
 @property (retain, nonatomic) IBOutlet UILabel *highScoreLbl;
 @property (retain, nonatomic) IBOutlet UILabel *yourScoreLbl;
-
 @property (retain, nonatomic) NWCross *cross;
-
 @property (retain, nonatomic) NSTimer *ghostFirer;
 @property (retain, nonatomic) NSTimer *collisionChecker;
-
+@property (assign, nonatomic) NSInteger ghostsInScreen;
 @property (retain, nonatomic) NSMutableArray *arrayOfIncomingGhosts;
 
-@property (assign, nonatomic) BOOL crossIsTouched;
-@property (assign, nonatomic) NSInteger ghostsInScreen;
-
-
-@property (assign, nonatomic) CGFloat ghostFirerInterval;
-
 - (void)gameOver;
-
 
 @end
 
@@ -86,25 +79,24 @@ BOOL gameOverScreenCalled;
 - (void)viewWillAppear:(BOOL)animated
 {
     [self initializeGame];
-    
-
-    
 }
 
+
 #pragma mark - touch responder actions
+
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesBegan:touches withEvent:event];
     UITouch *touch = [touches anyObject];
     if ([touch.view isKindOfClass: NWCross.class]) {
-        _crossIsTouched = TRUE;
+        crossIsTouched = TRUE;
     }
 }
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (_crossIsTouched) {
+    if (crossIsTouched) {
         UITouch *touch = [[event allTouches]anyObject];
         CGPoint touchPoint = [touch locationInView:self.view];
         CGRect crossFrame = CGRectMake(touchPoint.x - (_cross.CROSS_WIDTH/2),
@@ -117,15 +109,16 @@ BOOL gameOverScreenCalled;
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-    if (_crossIsTouched) {
+    if (crossIsTouched) {
         _cross.frame = CGRectMake(_cross.CROSS_POSITION_X, [_cross randomPositions:_cross.arrayPositions],
                                   _cross.CROSS_WIDTH, _cross.CROSS_HEIGHT);
     }
-    _crossIsTouched = FALSE;
+    crossIsTouched = FALSE;
 }
 
 
 #pragma mark - actions in view
+
 
 - (void)checkCollision
 {
@@ -146,7 +139,6 @@ BOOL gameOverScreenCalled;
 
 - (void)ghostsArrive
 {
-    
     [_arrayOfIncomingGhosts addObject:[[NWGhost alloc]init]];
     
     NWGhost *currentGhost = _arrayOfIncomingGhosts[_ghostsInScreen];
@@ -181,7 +173,6 @@ BOOL gameOverScreenCalled;
                             [currentGhost release];
                         }];
     _ghostsInScreen++;
-
 }
 
 - (void)initializeGame
@@ -205,7 +196,6 @@ BOOL gameOverScreenCalled;
     
     _highScore = [[_savedScore objectForKey:keyHighScore]intValue];
     _arrayOfIncomingGhosts = [[NSMutableArray alloc]init];
-    _ghostFirerInterval = 0.4;
     
     _ghostFirer = [NSTimer timerWithTimeInterval:GHOST_ARRIVAL_TIMER_DELAY
                                           target:self
@@ -223,12 +213,10 @@ BOOL gameOverScreenCalled;
     [[NSRunLoop mainRunLoop] addTimer:_collisionChecker forMode:NSDefaultRunLoopMode];
     
     gameOverScreenCalled = FALSE;
-
 }
 
 - (void)gameOver
 {
-
     [_cross removeFromSuperview];
     [_savedScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:keyYourScore];
     

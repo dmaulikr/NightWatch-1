@@ -13,22 +13,22 @@
 
 NSString *highScore = @"highScore";
 
+
 @interface NWMainMenuController ()
+
 @property (retain, nonatomic) IBOutlet UIButton *playBtn;
 @property (retain, nonatomic) IBOutlet UIButton *instructionsBtn;
+@property (retain, nonatomic) IBOutlet UIButton *aboutBtn;
 @property (retain, nonatomic) IBOutlet UILabel *highScoreLbl;
 @property (retain, nonatomic) NWGamePlayViewController *game;
-@property (retain, nonatomic) IBOutlet UIButton *aboutBtn;
-
 
 @end
 
-@implementation NWMainMenuController
 
+@implementation NWMainMenuController
 
 - (void)dealloc
 {
-    
     [_playBtn release];
     [_instructionsBtn release];
     [_aboutBtn release];
@@ -42,12 +42,10 @@ NSString *highScore = @"highScore";
     [super dealloc];
 }
 
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 }
-
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -66,7 +64,8 @@ NSString *highScore = @"highScore";
 
 #pragma mark - buttons actions
 
-- (IBAction)viewAbout:(id)sender
+
+- (IBAction)goToAbout:(id)sender
 {
     NWAboutViewController *about = [[NWAboutViewController alloc]init];
     
@@ -84,7 +83,7 @@ NSString *highScore = @"highScore";
     [instructionsView release];
 }
 
-- (IBAction)playBtn:(id)sender
+- (IBAction)startPlaying:(id)sender
 {
     NWGamePlayViewController *game = [[NWGamePlayViewController alloc]init];
 

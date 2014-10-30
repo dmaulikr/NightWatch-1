@@ -13,6 +13,7 @@
 NSInteger gameScore;
 NSString *myHighScore = @"highScore";
 
+
 @interface NWGameOverViewController ()
 
 @property (retain, nonatomic) IBOutlet UIButton *playAgainBtn;
@@ -24,6 +25,7 @@ NSString *myHighScore = @"highScore";
 - (IBAction)playAgain:(id)sender;
 
 @end
+
 
 @implementation NWGameOverViewController
 
@@ -41,7 +43,6 @@ NSString *myHighScore = @"highScore";
     
     [super dealloc];
 }
-
 
 - (id)initWithCurrentScore:(NSInteger)score
 {
@@ -77,7 +78,6 @@ NSString *myHighScore = @"highScore";
 
 - (void) checkIfHighScore:(NSInteger)score
 {
-    
     NSInteger highScore = [[[NSUserDefaults standardUserDefaults] valueForKey:myHighScore] intValue];
     
     if (score > highScore) {
@@ -90,7 +90,6 @@ NSString *myHighScore = @"highScore";
         
         [newHighScoreAlert show];
         [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:score] forKey:myHighScore];
-        
     }
 }
 

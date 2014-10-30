@@ -10,6 +10,7 @@
 
 NSString *crossImageName = @"Cross";
 
+
 @implementation NWCross
 
 - (void)dealloc

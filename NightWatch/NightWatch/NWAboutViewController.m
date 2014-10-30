@@ -10,13 +10,14 @@
 
 NSString *fullURL = @"http://en.wikipedia.org/wiki/Halloween";
 
+
 @interface NWAboutViewController () <UIWebViewDelegate>
+
 @property (retain, nonatomic) IBOutlet UIWebView *halloweenWebView;
 @property (retain, nonatomic) IBOutlet UIButton *mainMenuBtn;
 @property (retain, nonatomic) IBOutlet UIActivityIndicatorView *loadingIndicator;
 
 @end
-
 
 
 @implementation NWAboutViewController
@@ -49,25 +50,20 @@ NSString *fullURL = @"http://en.wikipedia.org/wiki/Halloween";
         [_halloweenWebView loadRequest:request];
     };
     
+    [_loadingIndicator startAnimating];
+    
     blockWebView();
 }
-
 
 - (IBAction)returnToMainMenu:(id)sender
 {
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView
-{
-    [_loadingIndicator startAnimating];
-}
-
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     [_loadingIndicator stopAnimating];
     [_loadingIndicator removeFromSuperview];
-    
 }
 
 

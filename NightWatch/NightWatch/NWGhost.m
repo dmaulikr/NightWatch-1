@@ -21,14 +21,10 @@ NSString *jsonKeyFrameY3 = @"frame.y3";
 
 @implementation NWGhost
 
-
 - (id)init
 {
-    
     self = [super init];
     if (self) {
-        
-    
         self.image = [UIImage imageNamed:AGhostImageName];
         //Fetching the Data from ghost.json
         NSString *JSONFilePath = [[NSBundle mainBundle]pathForResource:jsonName
@@ -57,17 +53,14 @@ NSString *jsonKeyFrameY3 = @"frame.y3";
                                  [_frameHeight floatValue]);
         
         _startPosForAnimation = [self randomPositions:_arrayPositions];
-        
     }
     return self;
 }
-
 
 - (NSInteger)randomPositions:(NSMutableArray *)array
 {
     _randomPosition = [array[arc4random() % [array count]]integerValue];
     return _randomPosition;
 }
-
 
 @end
