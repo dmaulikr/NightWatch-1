@@ -10,6 +10,8 @@
 #import "NWCross.h"
 #import "NWGamePlayViewController.h"
 #import "NWGameOverViewController.h"
+#import "NWHighScoreManager.h"
+
 
 const NSInteger CROSS_POSITION_Y = 250;
 const NSInteger BABY_X_POSITION = 300;
@@ -56,7 +58,6 @@ BOOL crossIsTouched;
     self.collisionChecker = nil;
     self.arrayOfIncomingGhosts = nil;
     self.randomPosition = nil;
-    self.savedScore = nil;
  
     [super dealloc];
 }
@@ -173,17 +174,13 @@ BOOL crossIsTouched;
     _cross.userInteractionEnabled = TRUE;
     
     [self.view addSubview:_cross];
+
+    NWHighScoreManager *highScoreMgr = [[NWHighScoreManager alloc]init];
     
-    _savedScore = [NSUserDefaults standardUserDefaults];
-    [_savedScore synchronize];
-    
-    NSObject *object = [_savedScore objectForKey:HIGH_SCORE_KEY1];
-    
-    if (object != nil) {
-        _highScoreLbl.text = [NSString stringWithFormat:@"%@",[_savedScore objectForKey:HIGH_SCORE_KEY1]];
+    NSObject *highScoreObject = [highScoreMgr retrieveHighScore];
+    if (highScoreObject != nil) {
+        _highScoreLbl.text = [NSString stringWithFormat:@"%@",highScoreObject];
     }
-    
-    _highScore = [[_savedScore objectForKey:HIGH_SCORE_KEY1]intValue];
     
     _arrayOfIncomingGhosts = [[NSMutableArray alloc]init];
     
@@ -211,7 +208,6 @@ BOOL crossIsTouched;
     _ghostFirer = nil;
     
     [_cross removeFromSuperview];
-    [_savedScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:YOUR_SCORE_KEY1];
     
     [_cross release];
     _cross = nil;

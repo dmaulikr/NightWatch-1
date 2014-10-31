@@ -43,6 +43,7 @@
 		FAB2976919FE421C00D0D601 /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976819FE421C00D0D601 /* main.png */; };
 		FAB2976D19FE422E00D0D601 /* NWMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB2976B19FE422E00D0D601 /* NWMainMenuController.m */; };
 		FAB2976E19FE422E00D0D601 /* NWMainMenuController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976C19FE422E00D0D601 /* NWMainMenuController.xib */; };
+		FACA20281A0361030009A1AA /* NWHighScoreManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FACA20271A0361030009A1AA /* NWHighScoreManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,6 +104,8 @@
 		FAB2976A19FE422E00D0D601 /* NWMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWMainMenuController.h; sourceTree = "<group>"; };
 		FAB2976B19FE422E00D0D601 /* NWMainMenuController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWMainMenuController.m; sourceTree = "<group>"; };
 		FAB2976C19FE422E00D0D601 /* NWMainMenuController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NWMainMenuController.xib; sourceTree = "<group>"; };
+		FACA20261A0361030009A1AA /* NWHighScoreManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWHighScoreManager.h; sourceTree = "<group>"; };
+		FACA20271A0361030009A1AA /* NWHighScoreManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWHighScoreManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +253,8 @@
 				FA0C0A1B19F89274006B8DA5 /* NWGhost.m */,
 				FA2217AC19F8CA4000B5F437 /* NWCross.h */,
 				FA2217AD19F8CA4000B5F437 /* NWCross.m */,
+				FACA20261A0361030009A1AA /* NWHighScoreManager.h */,
+				FACA20271A0361030009A1AA /* NWHighScoreManager.m */,
 			);
 			name = "Game Objects";
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAB2976D19FE422E00D0D601 /* NWMainMenuController.m in Sources */,
+				FACA20281A0361030009A1AA /* NWHighScoreManager.m in Sources */,
 				FA23131419FF4C9B00D7C41F /* NWAboutViewController.m in Sources */,
 				FA1958CF19F7A23A00857A2E /* NWGamePlayViewController.m in Sources */,
 				FA0817EB19FA22F800FC2073 /* NWGameOverViewController.m in Sources */,

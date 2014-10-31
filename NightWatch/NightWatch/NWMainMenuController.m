@@ -10,9 +10,7 @@
 #import "NWGamePlayViewController.h"
 #import "NWInstructionsViewController.h"
 #import "NWAboutViewController.h"
-
-NSString *const HIGH_SCORE_KEY0 = @"highScore";
-
+#import "NWHighScoreManager.h"
 
 @interface NWMainMenuController ()
 
@@ -20,6 +18,7 @@ NSString *const HIGH_SCORE_KEY0 = @"highScore";
 @property (retain, nonatomic) IBOutlet UIButton *instructionsBtn;
 @property (retain, nonatomic) IBOutlet UIButton *aboutBtn;
 @property (retain, nonatomic) IBOutlet UILabel *highScoreLbl;
+@property (retain, nonatomic) NWHighScoreManager *highScoreMgr;
 
 
 @end
@@ -37,20 +36,22 @@ NSString *const HIGH_SCORE_KEY0 = @"highScore";
     [super dealloc];
 }
 
+- (id) init
+{
+    self = [super init];
+    
+    _highScoreMgr = [[NWHighScoreManager alloc]init];
+    
+    return self;
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
-    NWGamePlayViewController *gameViewController;
-    gameViewController = [[NWGamePlayViewController alloc]init];
+    NSObject *highScoreObject = [_highScoreMgr retrieveHighScore];
     
-    gameViewController.savedScore = [NSUserDefaults standardUserDefaults];
-    [gameViewController.savedScore synchronize];
-    NSObject *object = [gameViewController.savedScore objectForKey:HIGH_SCORE_KEY0];
-    
-    if(object != nil){
-        _highScoreLbl.text = [NSString stringWithFormat:@"%@",[gameViewController.savedScore objectForKey:HIGH_SCORE_KEY0]];
+    if(highScoreObject != nil){
+        _highScoreLbl.text = [NSString stringWithFormat:@"%@",highScoreObject];
     }
-    
-    [gameViewController release];
 }
 
 

@@ -9,6 +9,7 @@
 #import "NWGameOverViewController.h"
 #import "NWGamePlayViewController.h"
 #import "NWMainMenuController.h"
+#import "NWHighScoreManager.h"
 
 NSInteger gameScore;
 NSString *const HIGH_SCORE_KEY2 = @"highScore";
@@ -19,9 +20,9 @@ NSString *const HIGH_SCORE_KEY2 = @"highScore";
 @property (retain, nonatomic) IBOutlet UIButton *playAgainBtn;
 @property (retain, nonatomic) IBOutlet UIButton *mainMenuBtn;
 @property (retain, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (retain, nonatomic) NWHighScoreManager *highScoreMgr;
 
 - (IBAction)playAgain:(id)sender;
-- (BOOL) isHighScore:(NSInteger)score;
 
 @end
 
@@ -39,9 +40,10 @@ NSString *const HIGH_SCORE_KEY2 = @"highScore";
 - (id)initWithCurrentScore:(NSInteger)score
 {
     self = [super init];
+    _highScoreMgr = [[NWHighScoreManager alloc]init];
     
     if (self) {
-        if ([self isHighScore:score]) {
+        if ([_highScoreMgr isHighScore:score]) {
             [self updateHighScore:score];
         }
         gameScore = score;
@@ -80,19 +82,8 @@ NSString *const HIGH_SCORE_KEY2 = @"highScore";
                                                      cancelButtonTitle:@"OK" otherButtonTitles:nil];
         
     [newHighScoreAlert show];
-    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:score] forKey:HIGH_SCORE_KEY2];
+    [_highScoreMgr setScoreAsHighScore:score];
     
-}
-
-- (BOOL) isHighScore:(NSInteger)score
-{
-    NSInteger highScore = [[[NSUserDefaults standardUserDefaults] valueForKey:HIGH_SCORE_KEY2] intValue];
-    
-    if (score > highScore) {
-        return TRUE;
-    }
-    return  FALSE;
-
 }
 
 - (void) printGameScore:(NSInteger)score

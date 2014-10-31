@@ -14,7 +14,6 @@
 @property (assign, nonatomic) NSInteger yourScore;
 @property (assign, nonatomic) NSInteger highScore;
 @property (retain, nonatomic) NSMutableArray *arrayPositions;
-@property (retain, nonatomic) NSUserDefaults *savedScore;
 
 -(void)checkCollision;
 -(void)ghostsArrive;
