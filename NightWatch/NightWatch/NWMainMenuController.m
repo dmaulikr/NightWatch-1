@@ -39,18 +39,18 @@ NSString *const HIGH_SCORE_KEY0 = @"highScore";
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NWGamePlayViewController *game;
-    game = [[NWGamePlayViewController alloc]init];
+    NWGamePlayViewController *gameViewController;
+    gameViewController = [[NWGamePlayViewController alloc]init];
     
-    game.savedScore = [NSUserDefaults standardUserDefaults];
-    [game.savedScore synchronize];
-    NSObject *object = [game.savedScore objectForKey:HIGH_SCORE_KEY0];
+    gameViewController.savedScore = [NSUserDefaults standardUserDefaults];
+    [gameViewController.savedScore synchronize];
+    NSObject *object = [gameViewController.savedScore objectForKey:HIGH_SCORE_KEY0];
     
     if(object != nil){
-        _highScoreLbl.text = [NSString stringWithFormat:@"%@",[game.savedScore objectForKey:HIGH_SCORE_KEY0]];
+        _highScoreLbl.text = [NSString stringWithFormat:@"%@",[gameViewController.savedScore objectForKey:HIGH_SCORE_KEY0]];
     }
     
-    [game release];
+    [gameViewController release];
 }
 
 
@@ -59,29 +59,29 @@ NSString *const HIGH_SCORE_KEY0 = @"highScore";
 
 - (IBAction)goToAbout:(id)sender
 {
-    NWAboutViewController *about = [[NWAboutViewController alloc]init];
+    NWAboutViewController *aboutViewController = [[NWAboutViewController alloc]init];
     
-    [self.navigationController pushViewController:about animated:NO];
+    [self.navigationController pushViewController:aboutViewController animated:NO];
     
-    [about autorelease];
+    [aboutViewController autorelease];
 }
 
 - (IBAction)goToInstructions:(id)sender
 {
-    NWInstructionsViewController *instructionsView = [[NWInstructionsViewController alloc]init];
+    NWInstructionsViewController *instructionsViewController = [[NWInstructionsViewController alloc]init];
     
-    [self.navigationController pushViewController:instructionsView animated:NO];
+    [self.navigationController pushViewController:instructionsViewController animated:NO];
     
-    [instructionsView release];
+    [instructionsViewController release];
 }
 
 - (IBAction)startPlaying:(id)sender
 {
-    NWGamePlayViewController *game = [[NWGamePlayViewController alloc]init];
+    NWGamePlayViewController *gameViewController = [[NWGamePlayViewController alloc]init];
 
-    [self.navigationController pushViewController:game animated:NO];
+    [self.navigationController pushViewController:gameViewController animated:NO];
     
-    [game release];
+    [gameViewController release];
 }
 
 

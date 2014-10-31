@@ -75,7 +75,6 @@ BOOL crossIsTouched;
 {
     UITouch *touch = [touches anyObject];
     
-
     if ([touch.view isKindOfClass: NWCross.class]) {
         crossIsTouched = TRUE;
     }
@@ -99,7 +98,6 @@ BOOL crossIsTouched;
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
-
     if (crossIsTouched) {
         _cross.frame = CGRectMake(_cross.CROSS_POSITION_X, [_cross randomPositions:_cross.arrayPositions],
                                   _cross.CROSS_WIDTH, _cross.CROSS_HEIGHT);
@@ -162,9 +160,7 @@ BOOL crossIsTouched;
                                  [self gameOver];
                              }
                             }
-
                         }];
-    
     _ghostsInScreen++;
 }
 
@@ -221,12 +217,16 @@ BOOL crossIsTouched;
     [_ghostFirer invalidate];
     _ghostFirer = nil;
 
-    NWGameOverViewController *gameOver = [[NWGameOverViewController alloc] initWithCurrentScore:_yourScore];
+    [_arrayOfIncomingGhosts release];
+    _arrayOfIncomingGhosts = nil;
+    
+    NWGameOverViewController *gameOverViewController = [[NWGameOverViewController alloc] initWithCurrentScore:_yourScore];
+    
 
-    [self.navigationController pushViewController:gameOver animated:NO];
+    [self.navigationController pushViewController:gameOverViewController animated:NO];
     gameOverScreenCalled = TRUE;
     
-    [gameOver release];
+    [gameOverViewController release];
 }
 
 - (void)explodeGhost: (NWGhost *)ghost
