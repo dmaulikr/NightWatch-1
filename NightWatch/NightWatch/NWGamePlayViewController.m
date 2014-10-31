@@ -113,7 +113,6 @@ BOOL crossIsTouched;
 {
     for (int i = 0; i<_ghostsInScreen; i++) {
         
-
         if (CGRectIntersectsRect(_cross.frame, [[[_arrayOfIncomingGhosts[i] layer] presentationLayer] frame])) {
             NWGhost *thisGhost = _arrayOfIncomingGhosts[i];
             
@@ -208,21 +207,20 @@ BOOL crossIsTouched;
 
 - (void)gameOver
 {
+    [_ghostFirer invalidate];
+    _ghostFirer = nil;
+    
     [_cross removeFromSuperview];
     [_savedScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:YOUR_SCORE_KEY1];
     
     [_cross release];
     _cross = nil;
-    
-    [_ghostFirer invalidate];
-    _ghostFirer = nil;
 
     [_arrayOfIncomingGhosts release];
     _arrayOfIncomingGhosts = nil;
     
     NWGameOverViewController *gameOverViewController = [[NWGameOverViewController alloc] initWithCurrentScore:_yourScore];
     
-
     [self.navigationController pushViewController:gameOverViewController animated:NO];
     gameOverScreenCalled = TRUE;
     

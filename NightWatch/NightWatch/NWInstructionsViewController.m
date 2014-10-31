@@ -18,7 +18,6 @@
 
 - (void)dealloc
 {
-
     self.mainMenuBtn = nil;
     
     [super dealloc];

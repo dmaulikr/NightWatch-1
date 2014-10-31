@@ -15,10 +15,6 @@ NSString *const CROSS_IMAGE_NAME = @"Cross";
 
 - (void)dealloc
 {
-    self.CROSS_POSITION_Y1 = nil;
-    self.CROSS_POSITION_Y2 = nil;
-    self.CROSS_POSITION_Y3 = nil;
-    
     [super dealloc];
 }
 
@@ -28,16 +24,15 @@ NSString *const CROSS_IMAGE_NAME = @"Cross";
 
     if (self) {
         self.image = [UIImage imageNamed:CROSS_IMAGE_NAME];
-        _CROSS_POSITION_Y1 = [NSNumber numberWithInt:28];
-        _CROSS_POSITION_Y2 = [NSNumber numberWithInt:135];
-        _CROSS_POSITION_Y3 = [NSNumber numberWithInt:243];
         _CROSS_POSITION_X = 410;
         _CROSS_HEIGHT = 75;
         _CROSS_WIDTH = 75;
         
-        _arrayPositions = [[NSMutableArray alloc]initWithObjects:_CROSS_POSITION_Y1,
-                           _CROSS_POSITION_Y2,
-                           _CROSS_POSITION_Y3, nil];
+        NSNumber *Y1 = [NSNumber numberWithInt:28];
+        NSNumber *Y2 = [NSNumber numberWithInt:135];
+        NSNumber *Y3 = [NSNumber numberWithInt:243];
+        
+        _arrayPositions = [[NSMutableArray alloc]initWithObjects:Y1,Y2,Y3, nil];
         
         _crossFrame = CGRectMake(_CROSS_POSITION_X, [self randomPositions:_arrayPositions], _CROSS_WIDTH, _CROSS_HEIGHT);
     }

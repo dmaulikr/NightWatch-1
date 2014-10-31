@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+NSNumber *CROSS_POSITION_Y1;// = 28;
+NSNumber *CROSS_POSITION_Y2;// = 135;
+NSNumber *CROSS_POSITION_Y3;// = 243;
 
 @interface NWCross : UIImageView
 
 @property (assign, nonatomic) CGRect crossFrame;
-@property (retain, nonatomic) NSNumber *CROSS_POSITION_Y1;
-@property (retain, nonatomic) NSNumber *CROSS_POSITION_Y2;
-@property (retain, nonatomic) NSNumber *CROSS_POSITION_Y3;
 @property (assign, nonatomic) NSInteger CROSS_HEIGHT;
 @property (assign, nonatomic) NSInteger CROSS_WIDTH;
 @property (assign, nonatomic) NSInteger CROSS_POSITION_X;
