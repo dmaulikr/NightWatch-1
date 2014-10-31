@@ -12,8 +12,6 @@
 #import "NWHighScoreManager.h"
 
 NSInteger gameScore;
-NSString *const HIGH_SCORE_KEY2 = @"highScore";
-
 
 @interface NWGameOverViewController ()
 

@@ -23,8 +23,6 @@ const CGFloat COLLISION_TIMER_DELAY = 0.25;
 const CGFloat GHOST_ARRIVAL_TIMER_DELAY = 0.25;
 
 NSString *const BOOM_IMAGE = @"boom";
-NSString *const HIGH_SCORE_KEY1 = @"highScore";
-NSString *const YOUR_SCORE_KEY1 = @"yourScore";
 
 BOOL didCountScore = FALSE;
 BOOL highScoreAlertCalled = FALSE;

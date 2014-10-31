@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-NSNumber *CROSS_POSITION_Y1;// = 28;
-NSNumber *CROSS_POSITION_Y2;// = 135;
-NSNumber *CROSS_POSITION_Y3;// = 243;
+NSNumber *CROSS_POSITION_Y1;
+NSNumber *CROSS_POSITION_Y2;
+NSNumber *CROSS_POSITION_Y3;
 
 @interface NWCross : UIImageView
 
