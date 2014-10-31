@@ -35,7 +35,12 @@ NSString *const FULL_URL = @"http://en.wikipedia.org/wiki/Halloween";
 {
     
     [super viewDidLoad];
+    [self loadWebView];
     
+}
+
+- (void)loadWebView
+{
     _halloweenWebView.delegate = self;
     
     void (^blockWebView)(void) =^{
