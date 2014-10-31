@@ -21,6 +21,7 @@ NSString *const HIGH_SCORE_KEY2 = @"highScore";
 @property (retain, nonatomic) IBOutlet UILabel *scoreLabel;
 
 - (IBAction)playAgain:(id)sender;
+- (BOOL) isHighScore:(NSInteger)score;
 
 @end
 
@@ -40,7 +41,9 @@ NSString *const HIGH_SCORE_KEY2 = @"highScore";
     self = [super init];
     
     if (self) {
-        [self checkIfHighScore:score];
+        if ([self isHighScore:score]) {
+            [self updateHighScore:score];
+        }
         gameScore = score;
     }
     return self;
@@ -69,21 +72,27 @@ NSString *const HIGH_SCORE_KEY2 = @"highScore";
 
 #pragma mark - actions in view
 
-- (void) checkIfHighScore:(NSInteger)score
+- (void) updateHighScore:(NSInteger)score
+{
+    UIAlertView *newHighScoreAlert = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%ld",(long)score]
+                                                               message:@"YOU'VE SET A NEW HIGH SCORE!!!!"
+                                                              delegate:self
+                                                     cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        
+    [newHighScoreAlert show];
+    [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:score] forKey:HIGH_SCORE_KEY2];
+    
+}
+
+- (BOOL) isHighScore:(NSInteger)score
 {
     NSInteger highScore = [[[NSUserDefaults standardUserDefaults] valueForKey:HIGH_SCORE_KEY2] intValue];
     
     if (score > highScore) {
-        
-        _scoreLabel.text = [NSString stringWithFormat:@"You scored %ld, Good Job!", (long)score];
-        UIAlertView *newHighScoreAlert = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%ld",(long)score]
-                                                                   message:@"YOU'VE SET A NEW HIGH SCORE!!!!"
-                                                                  delegate:self
-                                                         cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        
-        [newHighScoreAlert show];
-        [[NSUserDefaults standardUserDefaults] setObject:[NSNumber numberWithInteger:score] forKey:HIGH_SCORE_KEY2];
+        return TRUE;
     }
+    return  FALSE;
+
 }
 
 - (void) printGameScore:(NSInteger)score
