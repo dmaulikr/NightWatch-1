@@ -57,9 +57,7 @@ BOOL crossIsTouched;
     self.arrayOfIncomingGhosts = nil;
     self.randomPosition = nil;
     self.savedScore = nil;
-    
-    NSLog(@"dealloc");
-    
+ 
     [super dealloc];
 }
 
@@ -75,7 +73,6 @@ BOOL crossIsTouched;
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-
     UITouch *touch = [touches anyObject];
     
 
@@ -116,7 +113,6 @@ BOOL crossIsTouched;
 
 - (void)checkCollision
 {
-
     for (int i = 0; i<_ghostsInScreen; i++) {
         
 
@@ -218,6 +214,9 @@ BOOL crossIsTouched;
 {
     [_cross removeFromSuperview];
     [_savedScore setObject:[NSNumber numberWithInteger:_yourScore] forKey:YOUR_SCORE_KEY1];
+    
+    [_cross release];
+    _cross = nil;
     
     [_ghostFirer invalidate];
     _ghostFirer = nil;

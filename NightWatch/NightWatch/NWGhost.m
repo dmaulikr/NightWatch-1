@@ -27,12 +27,13 @@ NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
 {
     self.dictJSON = nil;
     self.attack = nil;
+    NSLog(@"dealloc ghost");
     [super dealloc];
-
 }
 
 - (id)init
 {
+    NSLog(@"init ghost");
     self = [super init];
     if (self) {
         self.image = [UIImage imageNamed:GHOST_IMAGE_NAME];
