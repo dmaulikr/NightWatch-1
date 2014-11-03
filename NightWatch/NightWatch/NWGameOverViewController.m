@@ -39,14 +39,16 @@ NSInteger gameScore;
 - (id)initWithCurrentScore:(NSInteger)score
 {
     self = [super init];
-    _highScoreMgr = [[NWHighScoreManager alloc]init];
     
     if (self) {
+        _highScoreMgr = [[NWHighScoreManager alloc]init];
+        
         if ([_highScoreMgr isHighScore:score]) {
             [self updateHighScore:score];
         }
         gameScore = score;
     }
+    
     return self;
 }
 

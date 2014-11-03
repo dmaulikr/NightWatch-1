@@ -16,6 +16,7 @@ NSString *const CROSS_IMAGE_NAME = @"Cross";
 - (void)dealloc
 {
     [super dealloc];
+    
 }
 
 - (id)init
