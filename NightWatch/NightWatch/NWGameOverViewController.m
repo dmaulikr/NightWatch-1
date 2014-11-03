@@ -31,6 +31,7 @@ NSInteger gameScore;
     self.playAgainBtn = nil;
     self.mainMenuBtn = nil;
     self.scoreLabel = nil;
+    self.highScoreMgr = nil;
     
     [super dealloc];
 }

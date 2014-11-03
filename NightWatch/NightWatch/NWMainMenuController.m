@@ -18,8 +18,6 @@
 @property (retain, nonatomic) IBOutlet UIButton *instructionsBtn;
 @property (retain, nonatomic) IBOutlet UIButton *aboutBtn;
 @property (retain, nonatomic) IBOutlet UILabel *highScoreLbl;
-@property (retain, nonatomic) NWHighScoreManager *highScoreMgr;
-
 
 @end
 
@@ -36,22 +34,17 @@
     [super dealloc];
 }
 
-- (id) init
-{
-    self = [super init];
-    
-    _highScoreMgr = [[NWHighScoreManager alloc]init];
-    
-    return self;
-}
-
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSObject *highScoreObject = [_highScoreMgr retrieveHighScore];
+    NWHighScoreManager *highScoreMgr = [[NWHighScoreManager alloc]init];
+    
+    NSObject *highScoreObject = [highScoreMgr retrieveHighScore];
     
     if(highScoreObject != nil){
         _highScoreLbl.text = [NSString stringWithFormat:@"%@",highScoreObject];
     }
+    
+    [highScoreMgr release];
 }
 
 

@@ -27,13 +27,11 @@ NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
 {
     self.dictJSON = nil;
     self.attack = nil;
-    NSLog(@"dealloc ghost");
     [super dealloc];
 }
 
 - (id)init
 {
-    NSLog(@"init ghost");
     self = [super init];
     if (self) {
         self.image = [UIImage imageNamed:GHOST_IMAGE_NAME];
@@ -43,7 +41,7 @@ NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
                                                                 ofType:JSON_TYPE];
         
         NSData *JSONData = [NSData dataWithContentsOfFile:JSONFilePath];
-        self.dictJSON = [[[NSDictionary alloc]init]autorelease];
+        self.dictJSON = [[NSDictionary alloc]init];
         self.dictJSON = [NSJSONSerialization
                          JSONObjectWithData:JSONData
                          options:kNilOptions
@@ -66,6 +64,8 @@ NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
 
         //to give a different x position for the end frame
         _startPosForAnimation = [self randomPositions:_arrayPositions];
+        
+        self.dictJSON = nil;
     }
     return self;
 

@@ -62,7 +62,6 @@ BOOL crossIsTouched;
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    NSLog(@"Initialize");
     [self initializeGame];
 }
 
@@ -86,7 +85,6 @@ BOOL crossIsTouched;
         UITouch *touch = [[event allTouches]anyObject];
         CGPoint touchPoint = [touch locationInView:self.view];
         
-
         CGRect crossFrame = CGRectMake(touchPoint.x - (_cross.CROSS_WIDTH/2),
                                         touchPoint.y - (_cross.CROSS_HEIGHT/2),
                                         _cross.CROSS_WIDTH,
@@ -180,6 +178,8 @@ BOOL crossIsTouched;
         _highScoreLbl.text = [NSString stringWithFormat:@"%@",highScoreObject];
     }
     
+    [highScoreMgr release];
+    
     _arrayOfIncomingGhosts = [[NSMutableArray alloc]init];
     
     _ghostFirer = [NSTimer timerWithTimeInterval:GHOST_ARRIVAL_TIMER_DELAY
@@ -203,15 +203,14 @@ BOOL crossIsTouched;
 - (void)gameOver
 {
     [_ghostFirer invalidate];
+    [_collisionChecker invalidate];
     _ghostFirer = nil;
+    _collisionChecker = nil;
     
     [_cross removeFromSuperview];
     
-    [_cross release];
-    _cross = nil;
-
-    [_arrayOfIncomingGhosts release];
-    _arrayOfIncomingGhosts = nil;
+    self.cross = nil;
+    self.arrayOfIncomingGhosts = nil;
     
     NWGameOverViewController *gameOverViewController = [[NWGameOverViewController alloc] initWithCurrentScore:_yourScore];
     
