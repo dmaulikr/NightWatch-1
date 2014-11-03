@@ -41,7 +41,7 @@ NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
                                                                 ofType:JSON_TYPE];
         
         NSData *JSONData = [NSData dataWithContentsOfFile:JSONFilePath];
-        self.dictJSON = [[NSDictionary alloc]init];
+        self.dictJSON = [[[NSDictionary alloc]init]autorelease];
         self.dictJSON = [NSJSONSerialization
                          JSONObjectWithData:JSONData
                          options:kNilOptions
@@ -65,7 +65,6 @@ NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
         //to give a different x position for the end frame
         _startPosForAnimation = [self randomPositions:_arrayPositions];
         
-        self.dictJSON = nil;
     }
     return self;
 
