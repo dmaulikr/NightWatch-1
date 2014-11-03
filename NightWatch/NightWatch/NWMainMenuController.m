@@ -38,7 +38,7 @@
 {
     NWHighScoreManager *highScoreMgr = [[NWHighScoreManager alloc]init];
     
-    NSObject *highScoreObject = [highScoreMgr retrieveHighScore];
+    NSNumber *highScoreObject = [highScoreMgr retrieveHighScore];
     
     if(highScoreObject != nil){
         _highScoreLbl.text = [NSString stringWithFormat:@"%@",highScoreObject];
