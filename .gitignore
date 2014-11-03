@@ -1,0 +1,8 @@
+#.gitignore for NightWatch Project
+
+*~
+
+.DS_Store
+
+xcuserdata
+*.xcuserstate
