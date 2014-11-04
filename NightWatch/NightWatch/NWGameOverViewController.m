@@ -83,7 +83,10 @@ NSInteger gameScore;
                                                      cancelButtonTitle:@"OK" otherButtonTitles:nil];
         
     [newHighScoreAlert show];
+    
+    [newHighScoreAlert release];
     [_highScoreMgr setScoreAsHighScore:score];
+    
     
 }
 

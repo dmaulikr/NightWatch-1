@@ -18,6 +18,7 @@
 @property (retain, nonatomic) IBOutlet UIButton *instructionsBtn;
 @property (retain, nonatomic) IBOutlet UIButton *aboutBtn;
 @property (retain, nonatomic) IBOutlet UILabel *highScoreLbl;
+@property (retain, nonatomic) IBOutlet UIImageView *welcomeImg;
 
 @end
 
@@ -31,6 +32,7 @@
     self.aboutBtn = nil;
     self.highScoreLbl = nil;
     
+    [_welcomeImg release];
     [super dealloc];
 }
 

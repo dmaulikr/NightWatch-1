@@ -11,6 +11,7 @@
                 <outlet property="instructionsBtn" destination="QQ4-qw-8JQ" id="6o0-I4-qHk"/>
                 <outlet property="playBtn" destination="ekf-jD-4Bk" id="QrN-LV-vUI"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="welcomeImg" destination="I6j-YI-Tck" id="Xkg-pX-dVf"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -72,6 +73,10 @@
                         <action selector="goToAbout:" destination="-1" eventType="touchUpInside" id="T7l-IF-OHD"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6j-YI-Tck">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="320"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
