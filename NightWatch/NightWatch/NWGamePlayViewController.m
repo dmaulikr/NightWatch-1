@@ -208,6 +208,7 @@ BOOL crossIsTouched;
     _collisionChecker = nil;
     
     [_cross removeFromSuperview];
+    [_cross.arrayPositions release];
     
     self.cross = nil;
     self.arrayOfIncomingGhosts = nil;
