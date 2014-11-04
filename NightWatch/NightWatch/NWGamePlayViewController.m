@@ -149,6 +149,7 @@ BOOL crossIsTouched;
                          [_arrayOfIncomingGhosts removeObject:ghostForArray];
                          _ghostsInScreen--;
                          if (ghostForArray.image != [UIImage imageNamed:BOOM_IMAGE]) {
+                             
                              [ghostForArray removeFromSuperview];
                              [ghostForArray release];
                              if (gameOverScreenCalled == FALSE )
@@ -208,6 +209,7 @@ BOOL crossIsTouched;
     _collisionChecker = nil;
     
     [_cross removeFromSuperview];
+    
     [_cross.arrayPositions release];
     
     self.cross = nil;

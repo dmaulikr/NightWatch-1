@@ -39,6 +39,7 @@
 		FA23131419FF4C9B00D7C41F /* NWAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA23131219FF4C9B00D7C41F /* NWAboutViewController.m */; };
 		FA23131519FF4C9B00D7C41F /* NWAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA23131319FF4C9B00D7C41F /* NWAboutViewController.xib */; };
 		FA23131719FF4CCA00D7C41F /* Sleep_by_treijim.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA23131619FF4CCA00D7C41F /* Sleep_by_treijim.jpg */; };
+		FA8F1A751A08AF8900B7A000 /* Untitled.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8F1A741A08AF8900B7A000 /* Untitled.png */; };
 		FAB2976719FDF72A00D0D601 /* boom.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976619FDF72A00D0D601 /* boom.png */; };
 		FAB2976919FE421C00D0D601 /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976819FE421C00D0D601 /* main.png */; };
 		FAB2976D19FE422E00D0D601 /* NWMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB2976B19FE422E00D0D601 /* NWMainMenuController.m */; };
@@ -99,6 +100,7 @@
 		FA23131219FF4C9B00D7C41F /* NWAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAboutViewController.m; sourceTree = "<group>"; };
 		FA23131319FF4C9B00D7C41F /* NWAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NWAboutViewController.xib; sourceTree = "<group>"; };
 		FA23131619FF4CCA00D7C41F /* Sleep_by_treijim.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sleep_by_treijim.jpg; sourceTree = "<group>"; };
+		FA8F1A741A08AF8900B7A000 /* Untitled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Untitled.png; sourceTree = "<group>"; };
 		FAB2976619FDF72A00D0D601 /* boom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boom.png; sourceTree = "<group>"; };
 		FAB2976819FE421C00D0D601 /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		FAB2976A19FE422E00D0D601 /* NWMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWMainMenuController.h; sourceTree = "<group>"; };
@@ -208,6 +210,7 @@
 		FA1958D319F7A2C800857A2E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FA8F1A741A08AF8900B7A000 /* Untitled.png */,
 				FA0C0A1D19F893FC006B8DA5 /* ghost.json */,
 				FA23131619FF4CCA00D7C41F /* Sleep_by_treijim.jpg */,
 				FA23130D19FF342F00D7C41F /* title.png */,
@@ -343,6 +346,7 @@
 				FA1958B019F79EE200857A2E /* Images.xcassets in Resources */,
 				FA23130C19FF20A800D7C41F /* pre-gameover.png in Resources */,
 				FA0817E019F9D29A00FC2073 /* child.png in Resources */,
+				FA8F1A751A08AF8900B7A000 /* Untitled.png in Resources */,
 				FA0817E219F9D30200FC2073 /* Cross.png in Resources */,
 				FA23131519FF4C9B00D7C41F /* NWAboutViewController.xib in Resources */,
 				FA0C0A1E19F893FC006B8DA5 /* ghost.json in Resources */,

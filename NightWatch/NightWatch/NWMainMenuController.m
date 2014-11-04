@@ -36,6 +36,37 @@
     [super dealloc];
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+        _welcomeImg.image = [UIImage imageNamed:@"Untitled"];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC));
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
+        [UIView animateWithDuration:4.0
+                              delay:0
+                            options:UIViewAnimationOptionAllowAnimatedContent
+                         animations:^{
+                             _welcomeImg.alpha = 1;
+                         }
+                         completion:^(BOOL finished){
+                             [UIView animateWithDuration:1.0
+                                              animations:^{
+                                                  _welcomeImg.alpha = 0;
+                                              }
+                                              completion:^(BOOL finished){
+                                                  [_welcomeImg removeFromSuperview];
+                                              }];
+                         }];
+
+    });
+
+    
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     NWHighScoreManager *highScoreMgr = [[NWHighScoreManager alloc]init];
