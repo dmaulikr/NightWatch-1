@@ -6,8 +6,10 @@
 //  Copyright (c) 2015 Marvin Labrador. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import "NWSoundCommon.h"
+#import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
+#import "ObjectAL.h"
 
 @interface NWSound : NSObject
 
