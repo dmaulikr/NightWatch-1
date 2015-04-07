@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA0163531AD38F660024D9E1 /* NWSound.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0163521AD38F660024D9E1 /* NWSound.m */; };
 		FA0817E019F9D29A00FC2073 /* child.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0817DF19F9D29A00FC2073 /* child.png */; };
 		FA0817E219F9D30200FC2073 /* Cross.png in Resources */ = {isa = PBXBuildFile; fileRef = FA0817E119F9D30200FC2073 /* Cross.png */; };
 		FA0817EB19FA22F800FC2073 /* NWGameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0817E919FA22F800FC2073 /* NWGameOverViewController.m */; };
@@ -57,6 +58,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA0163511AD38F660024D9E1 /* NWSound.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWSound.h; sourceTree = "<group>"; };
+		FA0163521AD38F660024D9E1 /* NWSound.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWSound.m; sourceTree = "<group>"; };
+		FA0163551AD38FC00024D9E1 /* NWSoundCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWSoundCommon.h; sourceTree = "<group>"; };
 		FA0817DF19F9D29A00FC2073 /* child.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = child.png; sourceTree = "<group>"; };
 		FA0817E119F9D30200FC2073 /* Cross.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Cross.png; sourceTree = "<group>"; };
 		FA0817E819FA22F800FC2073 /* NWGameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWGameOverViewController.h; sourceTree = "<group>"; };
@@ -132,6 +136,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA0163541AD38F6F0024D9E1 /* Game Sound Handler */ = {
+			isa = PBXGroup;
+			children = (
+				FA0163511AD38F660024D9E1 /* NWSound.h */,
+				FA0163521AD38F660024D9E1 /* NWSound.m */,
+				FA0163551AD38FC00024D9E1 /* NWSoundCommon.h */,
+			);
+			name = "Game Sound Handler";
+			sourceTree = "<group>";
+		};
 		FA19589119F79EE200857A2E = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +183,7 @@
 				FA1958AD19F79EE200857A2E /* NWAppDelegate.m */,
 				FA23130F19FF4C3800D7C41F /* Game Views */,
 				FA23131019FF4C5100D7C41F /* Game Objects */,
+				FA0163541AD38F6F0024D9E1 /* Game Sound Handler */,
 				FA1958AF19F79EE200857A2E /* Images.xcassets */,
 				FA1958D319F7A2C800857A2E /* Resources */,
 				FA1958A419F79EE200857A2E /* Supporting Files */,
@@ -378,6 +393,7 @@
 				FA1958CF19F7A23A00857A2E /* NWGamePlayViewController.m in Sources */,
 				FA0817EB19FA22F800FC2073 /* NWGameOverViewController.m in Sources */,
 				FA1958AA19F79EE200857A2E /* main.m in Sources */,
+				FA0163531AD38F660024D9E1 /* NWSound.m in Sources */,
 				FA2217AF19F8CA4000B5F437 /* NWCross.m in Sources */,
 				FA0C0A1C19F89274006B8DA5 /* NWGhost.m in Sources */,
 				FA23130719FF201F00D7C41F /* NWInstructionsViewController.m in Sources */,
