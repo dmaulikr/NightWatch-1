@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "NWSoundCommon.h"
 
 @interface NWSound : NSObject
 
