@@ -9,5 +9,14 @@
 #ifndef NightWatch_NWSoundCommon_h
 #define NightWatch_NWSoundCommon_h
 
+#define kNWSoundFileExtension @".caf"
+
+#define kNWSoundMainBGM @"NWBurnSFX"
+#define kNWSoundGameBGM @"NWGameBGM"
+#define kNWSoundGameSFX @"NWGameSFX"
+#define kNWSoundBurnSFX @"NWBurnSFX"
+#define kNWSoundGameOverSFX @"NWGameOverSFX"
+
+
 
 #endif
