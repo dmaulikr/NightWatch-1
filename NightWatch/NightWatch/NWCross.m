@@ -15,6 +15,7 @@ NSString *const CROSS_IMAGE_NAME = @"Cross";
 
 - (void)dealloc
 {
+    self.arrayPositions = nil;
     [super dealloc];
     
 }
@@ -25,7 +26,8 @@ NSString *const CROSS_IMAGE_NAME = @"Cross";
 
     if (self) {
         self.image = [UIImage imageNamed:CROSS_IMAGE_NAME];
-        _CROSS_POSITION_X = 410;
+        _CROSS_POSITION_X = [[UIScreen mainScreen]bounds].size.height - 75;
+        NSLog(@"self.superview.width %f",[[UIScreen mainScreen]bounds].size.height);
         _CROSS_HEIGHT = 75;
         _CROSS_WIDTH = 75;
         

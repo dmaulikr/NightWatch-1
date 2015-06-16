@@ -27,6 +27,10 @@ NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
 {
     self.dictJSON = nil;
     self.attack = nil;
+    self.frameX = nil;
+    self.frameWidth = nil;
+    self.frameHeight = nil;
+    self.attack = nil;
     [super dealloc];
 }
 

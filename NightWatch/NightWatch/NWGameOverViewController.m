@@ -89,7 +89,28 @@ NSInteger gameScore;
 
 - (void) printGameScore:(NSInteger)score
 {
-    _scoreLabel.text = [NSString stringWithFormat:@"You scored %ld, Good Job!", (long)score];
+    NSString *message;
+    
+    if (score >= 0 && score < 5) {
+        message = [NSString stringWithFormat:@"You scored %ld, What a disappointment!", (long)score];
+    }
+    if (score >= 5 && score < 10) {
+        message = [NSString stringWithFormat:@"You scored %ld, You can do better!", (long)score];
+    }
+    if (score >= 10 && score < 20) {
+        message = [NSString stringWithFormat:@"You scored %ld, Is that all you got?!", (long)score];
+    }
+    if (score >= 20 && score < 30) {
+        message = [NSString stringWithFormat:@"You scored %ld, OK good!", (long)score];
+    }
+    if (score >= 30 && score < 50) {
+        message = [NSString stringWithFormat:@"You scored %ld, Awesome!", (long)score];
+    }
+    if (score >= 50) {
+        message = [NSString stringWithFormat:@"You scored %ld, You're an Idol!", (long)score];
+    }
+    
+    _scoreLabel.text = message;
 }
 
 @end

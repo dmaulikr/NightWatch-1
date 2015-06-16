@@ -12,7 +12,10 @@ NSString *const HIGH_SCOREKEY = @"highScore";
 
 @implementation NWHighScoreManager
 
-
+-(void) dealloc
+{
+    [super dealloc];
+}
 -(void) setScoreAsHighScore:(NSInteger)score
 {
     NSNumber *scoreObject = [NSNumber numberWithInteger:score];

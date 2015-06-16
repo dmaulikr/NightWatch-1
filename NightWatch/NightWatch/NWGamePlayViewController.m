@@ -14,7 +14,7 @@
 
 
 const NSInteger CROSS_POSITION_Y = 250;
-const NSInteger BABY_X_POSITION = 300;
+NSInteger BABY_X_POSITION = 0;
 
 const CGFloat EXPLOSION_ALPHA = 1.0;
 const CGFloat GHOST_ANIMATE_DURATION = 2.0;
@@ -56,12 +56,14 @@ BOOL crossIsTouched;
     self.collisionChecker = nil;
     self.arrayOfIncomingGhosts = nil;
     self.randomPosition = nil;
+    self.arrayPositions = nil;
  
     [super dealloc];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    BABY_X_POSITION = [[UIScreen mainScreen]bounds].size.height - 175;
     [self initializeGame];
 }
 
@@ -228,8 +230,11 @@ BOOL crossIsTouched;
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(GHOST_EXPLODE_DELAY * NSEC_PER_SEC));
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void) {
         [ghost removeFromSuperview];
+        
         didCountScore = FALSE;
     });
+    
+    
 }
 
 @end

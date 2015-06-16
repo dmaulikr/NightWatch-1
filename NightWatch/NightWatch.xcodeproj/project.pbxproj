@@ -66,6 +66,16 @@
 		FA23131419FF4C9B00D7C41F /* NWAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA23131219FF4C9B00D7C41F /* NWAboutViewController.m */; };
 		FA23131519FF4C9B00D7C41F /* NWAboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA23131319FF4C9B00D7C41F /* NWAboutViewController.xib */; };
 		FA23131719FF4CCA00D7C41F /* Sleep_by_treijim.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA23131619FF4CCA00D7C41F /* Sleep_by_treijim.jpg */; };
+		FA3482471B303AD800FA59A1 /* NWBurnSFX.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482421B303AD800FA59A1 /* NWBurnSFX.caf */; };
+		FA3482481B303AD800FA59A1 /* NWBurnSFX.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482421B303AD800FA59A1 /* NWBurnSFX.caf */; };
+		FA3482491B303AD800FA59A1 /* NWGameBGM.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482431B303AD800FA59A1 /* NWGameBGM.caf */; };
+		FA34824A1B303AD800FA59A1 /* NWGameBGM.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482431B303AD800FA59A1 /* NWGameBGM.caf */; };
+		FA34824B1B303AD800FA59A1 /* NWGameOverSFX.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482441B303AD800FA59A1 /* NWGameOverSFX.caf */; };
+		FA34824C1B303AD800FA59A1 /* NWGameOverSFX.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482441B303AD800FA59A1 /* NWGameOverSFX.caf */; };
+		FA34824D1B303AD800FA59A1 /* NWGameSFX.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482451B303AD800FA59A1 /* NWGameSFX.caf */; };
+		FA34824E1B303AD800FA59A1 /* NWGameSFX.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482451B303AD800FA59A1 /* NWGameSFX.caf */; };
+		FA34824F1B303AD800FA59A1 /* NWMainBGM.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482461B303AD800FA59A1 /* NWMainBGM.caf */; };
+		FA3482501B303AD800FA59A1 /* NWMainBGM.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482461B303AD800FA59A1 /* NWMainBGM.caf */; };
 		FAB2976719FDF72A00D0D601 /* boom.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976619FDF72A00D0D601 /* boom.png */; };
 		FAB2976919FE421C00D0D601 /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976819FE421C00D0D601 /* main.png */; };
 		FAB2976D19FE422E00D0D601 /* NWMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB2976B19FE422E00D0D601 /* NWMainMenuController.m */; };
@@ -190,6 +200,11 @@
 		FA23131219FF4C9B00D7C41F /* NWAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NWAboutViewController.m; sourceTree = "<group>"; };
 		FA23131319FF4C9B00D7C41F /* NWAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NWAboutViewController.xib; sourceTree = "<group>"; };
 		FA23131619FF4CCA00D7C41F /* Sleep_by_treijim.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sleep_by_treijim.jpg; sourceTree = "<group>"; };
+		FA3482421B303AD800FA59A1 /* NWBurnSFX.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NWBurnSFX.caf; sourceTree = "<group>"; };
+		FA3482431B303AD800FA59A1 /* NWGameBGM.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NWGameBGM.caf; sourceTree = "<group>"; };
+		FA3482441B303AD800FA59A1 /* NWGameOverSFX.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NWGameOverSFX.caf; sourceTree = "<group>"; };
+		FA3482451B303AD800FA59A1 /* NWGameSFX.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NWGameSFX.caf; sourceTree = "<group>"; };
+		FA3482461B303AD800FA59A1 /* NWMainBGM.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NWMainBGM.caf; sourceTree = "<group>"; };
 		FAB2976619FDF72A00D0D601 /* boom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boom.png; sourceTree = "<group>"; };
 		FAB2976819FE421C00D0D601 /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		FAB2976A19FE422E00D0D601 /* NWMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWMainMenuController.h; sourceTree = "<group>"; };
@@ -420,17 +435,8 @@
 			isa = PBXGroup;
 			children = (
 				FA0C0A1D19F893FC006B8DA5 /* ghost.json */,
-				FA23131619FF4CCA00D7C41F /* Sleep_by_treijim.jpg */,
-				FA23130D19FF342F00D7C41F /* title.png */,
-				FA23130B19FF20A800D7C41F /* pre-gameover.png */,
-				FA23130919FF209900D7C41F /* gameplay.png */,
-				FAB2976819FE421C00D0D601 /* main.png */,
-				FAB2976619FDF72A00D0D601 /* boom.png */,
-				FA0817EF19FA23C000FC2073 /* Blood-Splatter.png */,
-				FA0817ED19FA236100FC2073 /* cry.png */,
-				FA0C0A1F19F896B0006B8DA5 /* Ghost.png */,
-				FA0817E119F9D30200FC2073 /* Cross.png */,
-				FA0817DF19F9D29A00FC2073 /* child.png */,
+				FA3482511B303ADD00FA59A1 /* Audio */,
+				FA3482411B303ABB00FA59A1 /* Images */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -468,6 +474,36 @@
 				FACA20271A0361030009A1AA /* NWHighScoreManager.m */,
 			);
 			name = "Game Objects";
+			sourceTree = "<group>";
+		};
+		FA3482411B303ABB00FA59A1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				FA23131619FF4CCA00D7C41F /* Sleep_by_treijim.jpg */,
+				FA23130D19FF342F00D7C41F /* title.png */,
+				FA23130B19FF20A800D7C41F /* pre-gameover.png */,
+				FA23130919FF209900D7C41F /* gameplay.png */,
+				FAB2976819FE421C00D0D601 /* main.png */,
+				FAB2976619FDF72A00D0D601 /* boom.png */,
+				FA0817EF19FA23C000FC2073 /* Blood-Splatter.png */,
+				FA0817ED19FA236100FC2073 /* cry.png */,
+				FA0C0A1F19F896B0006B8DA5 /* Ghost.png */,
+				FA0817E119F9D30200FC2073 /* Cross.png */,
+				FA0817DF19F9D29A00FC2073 /* child.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		FA3482511B303ADD00FA59A1 /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				FA3482421B303AD800FA59A1 /* NWBurnSFX.caf */,
+				FA3482431B303AD800FA59A1 /* NWGameBGM.caf */,
+				FA3482441B303AD800FA59A1 /* NWGameOverSFX.caf */,
+				FA3482451B303AD800FA59A1 /* NWGameSFX.caf */,
+				FA3482461B303AD800FA59A1 /* NWMainBGM.caf */,
+			);
+			name = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -549,9 +585,12 @@
 				FAB2976719FDF72A00D0D601 /* boom.png in Resources */,
 				FA23130E19FF342F00D7C41F /* title.png in Resources */,
 				FA0817EE19FA236100FC2073 /* cry.png in Resources */,
+				FA3482491B303AD800FA59A1 /* NWGameBGM.caf in Resources */,
 				FA23130819FF201F00D7C41F /* NWInstructionsViewController.xib in Resources */,
+				FA34824B1B303AD800FA59A1 /* NWGameOverSFX.caf in Resources */,
 				FA1958A819F79EE200857A2E /* InfoPlist.strings in Resources */,
 				FA1958B019F79EE200857A2E /* Images.xcassets in Resources */,
+				FA3482471B303AD800FA59A1 /* NWBurnSFX.caf in Resources */,
 				FA23130C19FF20A800D7C41F /* pre-gameover.png in Resources */,
 				FA0817E019F9D29A00FC2073 /* child.png in Resources */,
 				FA0817E219F9D30200FC2073 /* Cross.png in Resources */,
@@ -564,6 +603,8 @@
 				FA0C0A2019F896B0006B8DA5 /* Ghost.png in Resources */,
 				FA0817EC19FA22F800FC2073 /* NWGameOverViewController.xib in Resources */,
 				FA0817F019FA23C000FC2073 /* Blood-Splatter.png in Resources */,
+				FA34824F1B303AD800FA59A1 /* NWMainBGM.caf in Resources */,
+				FA34824D1B303AD800FA59A1 /* NWGameSFX.caf in Resources */,
 				FA23130A19FF209900D7C41F /* gameplay.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -572,6 +613,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA34824A1B303AD800FA59A1 /* NWGameBGM.caf in Resources */,
+				FA34824C1B303AD800FA59A1 /* NWGameOverSFX.caf in Resources */,
+				FA3482481B303AD800FA59A1 /* NWBurnSFX.caf in Resources */,
+				FA3482501B303AD800FA59A1 /* NWMainBGM.caf in Resources */,
+				FA34824E1B303AD800FA59A1 /* NWGameSFX.caf in Resources */,
 				FA1958C119F79EE200857A2E /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -677,7 +723,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CYSCORPIONS INC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CYSCORPIONS INC";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -715,7 +762,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: CYSCORPIONS INC";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: CYSCORPIONS INC";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
