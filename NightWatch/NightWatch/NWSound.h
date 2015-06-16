@@ -11,6 +11,48 @@
 #import <AVFoundation/AVFoundation.h>
 #import "ObjectAL.h"
 
+
+typedef enum {
+   
+    NWSFXTypeBurn = 1,
+    NWSFXTypeGameOver = 2,
+
+}NWSFXType;
+
+typedef enum {
+    NWBGMTypeMain = 1,
+    NWBGMTypeGame = 2,
+    NWBGMTypeGameSounds =3
+    
+} NWBGMType;
+
+
 @interface NWSound : NSObject
+
++ (void)AudioInit;
+
++ (NWSound *)sharedSound;
+
++ (void)play:(NWSFXType)soundType;
++ (void)stop:(NWSFXType)soundType;
++ (void)backgroundMode;
++ (void)foregroundMode;
+
++ (void)playPreviousBGM;
++ (void)playBGM:(NWBGMType)type;
++ (void)stopBGM;
++ (void)stopBGMFadeTime:(CGFloat)fadeTime;
++ (void)replayBGM;
+
++ (void)setPlaying:(BOOL)is;
++ (BOOL)playing;
+
++ (void)allowPlay;
++ (BOOL)canPlay;
+
++ (void)play:(NWSFXType)soundType
+      target:(id)target
+    selector:(SEL)selector;
+
 
 @end
