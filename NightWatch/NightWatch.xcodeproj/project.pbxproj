@@ -76,6 +76,8 @@
 		FA34824E1B303AD800FA59A1 /* NWGameSFX.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482451B303AD800FA59A1 /* NWGameSFX.caf */; };
 		FA34824F1B303AD800FA59A1 /* NWMainBGM.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482461B303AD800FA59A1 /* NWMainBGM.caf */; };
 		FA3482501B303AD800FA59A1 /* NWMainBGM.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482461B303AD800FA59A1 /* NWMainBGM.caf */; };
+		FA3482541B30432300FA59A1 /* NSUserDefaults+appDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3482531B30432300FA59A1 /* NSUserDefaults+appDefaults.m */; };
+		FA3482551B30432300FA59A1 /* NSUserDefaults+appDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3482531B30432300FA59A1 /* NSUserDefaults+appDefaults.m */; };
 		FAB2976719FDF72A00D0D601 /* boom.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976619FDF72A00D0D601 /* boom.png */; };
 		FAB2976919FE421C00D0D601 /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976819FE421C00D0D601 /* main.png */; };
 		FAB2976D19FE422E00D0D601 /* NWMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB2976B19FE422E00D0D601 /* NWMainMenuController.m */; };
@@ -205,6 +207,8 @@
 		FA3482441B303AD800FA59A1 /* NWGameOverSFX.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NWGameOverSFX.caf; sourceTree = "<group>"; };
 		FA3482451B303AD800FA59A1 /* NWGameSFX.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NWGameSFX.caf; sourceTree = "<group>"; };
 		FA3482461B303AD800FA59A1 /* NWMainBGM.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NWMainBGM.caf; sourceTree = "<group>"; };
+		FA3482521B30432300FA59A1 /* NSUserDefaults+appDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+appDefaults.h"; sourceTree = "<group>"; };
+		FA3482531B30432300FA59A1 /* NSUserDefaults+appDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+appDefaults.m"; sourceTree = "<group>"; };
 		FAB2976619FDF72A00D0D601 /* boom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boom.png; sourceTree = "<group>"; };
 		FAB2976819FE421C00D0D601 /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		FAB2976A19FE422E00D0D601 /* NWMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWMainMenuController.h; sourceTree = "<group>"; };
@@ -390,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				FA1958AC19F79EE200857A2E /* NWAppDelegate.h */,
+				FA3482561B30433300FA59A1 /* Categories */,
 				FA1958AD19F79EE200857A2E /* NWAppDelegate.m */,
 				FA23130F19FF4C3800D7C41F /* Game Views */,
 				FA23131019FF4C5100D7C41F /* Game Objects */,
@@ -504,6 +509,15 @@
 				FA3482461B303AD800FA59A1 /* NWMainBGM.caf */,
 			);
 			name = Audio;
+			sourceTree = "<group>";
+		};
+		FA3482561B30433300FA59A1 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				FA3482521B30432300FA59A1 /* NSUserDefaults+appDefaults.h */,
+				FA3482531B30432300FA59A1 /* NSUserDefaults+appDefaults.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -664,6 +678,7 @@
 				FA01639D1AD3A3C80024D9E1 /* OALAudioTrack.m in Sources */,
 				FA1958AE19F79EE200857A2E /* NWAppDelegate.m in Sources */,
 				FA01639A1AD3A3C80024D9E1 /* OALActionManager.m in Sources */,
+				FA3482541B30432300FA59A1 /* NSUserDefaults+appDefaults.m in Sources */,
 				FA01639F1AD3A3C80024D9E1 /* OALAudioTracks.m in Sources */,
 				FA0163B11AD3A3C80024D9E1 /* OALAudioFile.m in Sources */,
 			);
@@ -674,6 +689,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA1958C319F79EE200857A2E /* NightWatchTests.m in Sources */,
+				FA3482551B30432300FA59A1 /* NSUserDefaults+appDefaults.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

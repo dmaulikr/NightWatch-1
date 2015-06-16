@@ -16,13 +16,16 @@ typedef enum {
    
     NWSFXTypeBurn = 1,
     NWSFXTypeGameOver = 2,
+    NWSFXTypeNone = 3
 
 }NWSFXType;
 
 typedef enum {
+    
     NWBGMTypeMain = 1,
     NWBGMTypeGame = 2,
-    NWBGMTypeGameSounds =3
+    NWBGMTypeGameSounds = 3,
+    NWBGMTypeNone = 4
     
 } NWBGMType;
 
