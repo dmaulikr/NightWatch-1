@@ -11,6 +11,7 @@
 #import "NWGamePlayViewController.h"
 #import "NWGameOverViewController.h"
 #import "NWHighScoreManager.h"
+#import "NWSound.h"
 
 
 const NSInteger CROSS_POSITION_Y = 250;
@@ -28,7 +29,6 @@ BOOL didCountScore = FALSE;
 BOOL highScoreAlertCalled = FALSE;
 BOOL gameOverScreenCalled;
 BOOL crossIsTouched;
-
 
 @interface NWGamePlayViewController ()
 
@@ -63,6 +63,7 @@ BOOL crossIsTouched;
 
 - (void)viewWillAppear:(BOOL)animated
 {
+    [NWSound playBGM:NWBGMTypeGame];
     BABY_X_POSITION = [[UIScreen mainScreen]bounds].size.height - 175;
     [self initializeGame];
 }
@@ -116,6 +117,7 @@ BOOL crossIsTouched;
             NWGhost *thisGhost = _arrayOfIncomingGhosts[i];
             
             if (didCountScore == FALSE) {
+                [NWSound play:NWSFXTypeBurn];
                 _yourScore++;
                 _yourScoreLbl.text = [NSString stringWithFormat:@"%ld",(long)_yourScore];
                 didCountScore = TRUE;
@@ -204,6 +206,8 @@ BOOL crossIsTouched;
 
 - (void)gameOver
 {
+    [NWSound stopBGM];
+    [NWSound play:NWSFXTypeGameOver];
     [_ghostFirer invalidate];
     [_collisionChecker invalidate];
     _ghostFirer = nil;

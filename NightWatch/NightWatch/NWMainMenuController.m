@@ -11,6 +11,7 @@
 #import "NWInstructionsViewController.h"
 #import "NWAboutViewController.h"
 #import "NWHighScoreManager.h"
+#import "NWSound.h"
 
 @interface NWMainMenuController ()
 
@@ -34,8 +35,14 @@
     [super dealloc];
 }
 
+- (void)viewDidLoad
+{
+//    [NWSound playBGM:NWBGMTypeMain];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
+    [NWSound playBGM:NWBGMTypeMain];
     NWHighScoreManager *highScoreMgr = [[NWHighScoreManager alloc]init];
     
     NSNumber *highScoreObject = [highScoreMgr retrieveHighScore];
@@ -53,6 +60,7 @@
 
 - (IBAction)goToAbout:(id)sender
 {
+    [NWSound stopBGM];
     NWAboutViewController *aboutViewController = [[NWAboutViewController alloc]init];
     
     [self.navigationController pushViewController:aboutViewController animated:NO];
@@ -62,6 +70,7 @@
 
 - (IBAction)goToInstructions:(id)sender
 {
+    [NWSound stopBGM];
     NWInstructionsViewController *instructionsViewController = [[NWInstructionsViewController alloc]init];
     
     [self.navigationController pushViewController:instructionsViewController animated:NO];
@@ -71,6 +80,7 @@
 
 - (IBAction)startPlaying:(id)sender
 {
+    [NWSound stopBGM];
     NWGamePlayViewController *gameViewController = [[NWGamePlayViewController alloc]init];
 
     [self.navigationController pushViewController:gameViewController animated:NO];

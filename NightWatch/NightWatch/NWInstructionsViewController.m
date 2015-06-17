@@ -7,6 +7,7 @@
 //
 
 #import "NWInstructionsViewController.h"
+#import "NWSound.h"
 
 @interface NWInstructionsViewController ()
 
@@ -23,8 +24,15 @@
     [super dealloc];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [NWSound playBGM:NWBGMTypeGameSounds];
+    
+}
+
 - (IBAction)backToMainMenu:(id)sender
 {
+    [NWSound stopBGM];
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
 

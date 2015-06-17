@@ -175,22 +175,22 @@ static BOOL backgroundMode = NO;
 {
     NWSound* sound = [NWSound sharedSound];
     
-    if (backgroundMode) {
-        [sound.channel stop];
-        return;
-    }
+//    if (backgroundMode) {
+//        [sound.channel stop];
+//        return;
+//    }
     
-    if (![NWSound canPlay])
-    {
-        return;
-    }
-    
-    if (sound.onSound)
-    {
+//    if (![NWSound canPlay])
+//    {
+//        return;
+//    }
+//    
+//    if (sound.onSound)
+//    {
         sound.effectBuffer = [[OpenALManager sharedInstance] bufferFromFile:[sound soundFileName:soundType]];
         
         [sound.channel play:sound.effectBuffer];
-    }
+//    }
     
     [target performSelector:selector withObject:nil afterDelay:0.5f];
 }
@@ -237,36 +237,36 @@ static BOOL backgroundMode = NO;
 + (void)playBGM
 {
     NWSound* sound = [NWSound sharedSound];
+//    if (![NWSound canPlay])
+//    {
+//        return;
+//    }
     
-    if (![NWSound canPlay])
-    {
-        return;
-    }
+//    if (sound.onSound && !backgroundMode)
+//    {
+    sound.audioTrack.volume = kDEFAULT_BGM_VOLUME;
+    [sound.audioTrack setMuted:!sound.onSound];
     
-    if (sound.onSound && !backgroundMode)
-    {
-        sound.audioTrack.volume = kDEFAULT_BGM_VOLUME;
-        
-        [sound.audioTrack setMuted:!sound.onSound];
-        
-        if ([NWSound canPlay])
-        {
-            [sound.audioTrack playFile:[sound soundBGMFileName:sound.currentSoundBGMType] loops:-1];
-        }
-    }
+//        if ([NWSound canPlay])
+//        {
+    [sound.audioTrack playFile:[sound soundBGMFileName:sound.currentSoundBGMType] loops:-1];
+//    [sound.audioTrack playFile:@"NWMainBGM.caf" loops:-1];
+//        }
+//    }
 }
 
 + (void)playBGM:(NWBGMType)type
 {
     NWSound* sound = [NWSound sharedSound];
     
-    if (![NWSound canPlay])
-    {
-        return;
-    }
+//    if (![NWSound canPlay])
+//    {
+//        return;
+//    }
     
-    if (sound.currentSoundBGMType != type && sound.onSound)
-    {
+//    if (sound.currentSoundBGMType != type && sound.onSound)
+//    {
+    
         sound.previousBGMType = sound.currentSoundBGMType;
         sound.currentSoundBGMType = type;
         sound.lastPlayBGMType = type;
@@ -282,7 +282,8 @@ static BOOL backgroundMode = NO;
         }
         
         [NWSound playBGM];
-    }
+//    }
+
 }
 
 + (void)stopBGM

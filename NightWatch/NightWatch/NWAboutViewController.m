@@ -7,6 +7,7 @@
 //
 
 #import "NWAboutViewController.h"
+#import "NWSound.h"
 
 NSString *const FULL_URL = @"http://en.wikipedia.org/wiki/Halloween";
 
@@ -39,6 +40,11 @@ NSString *const FULL_URL = @"http://en.wikipedia.org/wiki/Halloween";
     
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [NWSound playBGM:NWBGMTypeGameSounds];
+}
+
 - (void)loadWebView
 {
     _halloweenWebView.delegate = self;
@@ -59,6 +65,7 @@ NSString *const FULL_URL = @"http://en.wikipedia.org/wiki/Halloween";
 
 - (IBAction)backToMainMenu:(id)sender
 {
+    [NWSound stopBGM];
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
 

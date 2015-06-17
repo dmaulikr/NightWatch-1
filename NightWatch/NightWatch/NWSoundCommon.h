@@ -11,7 +11,7 @@
 
 #define kNWSoundFileExtension @".caf"
 
-#define kNWSoundMainBGM @"NWBurnSFX"
+#define kNWSoundMainBGM @"NWMainBGM"
 #define kNWSoundGameBGM @"NWGameBGM"
 #define kNWSoundGameSFX @"NWGameSFX"
 #define kNWSoundBurnSFX @"NWBurnSFX"
