@@ -18,7 +18,7 @@ const NSInteger CROSS_POSITION_Y = 250;
 NSInteger BABY_X_POSITION = 0;
 
 const CGFloat EXPLOSION_ALPHA = 1.0;
-const CGFloat GHOST_ANIMATE_DURATION = 2.0;
+const CGFloat GHOST_ANIMATE_DURATION = 1.5;
 const CGFloat GHOST_EXPLODE_DELAY = 0.2;
 const CGFloat COLLISION_TIMER_DELAY = 0.25;
 const CGFloat GHOST_ARRIVAL_TIMER_DELAY = 0.45;
@@ -207,7 +207,6 @@ BOOL crossIsTouched;
 - (void)gameOver
 {
     [NWSound stopBGM];
-    [NWSound play:NWSFXTypeGameOver];
     [_ghostFirer invalidate];
     [_collisionChecker invalidate];
     _ghostFirer = nil;

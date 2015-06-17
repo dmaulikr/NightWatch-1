@@ -10,6 +10,7 @@
 #import "NWGamePlayViewController.h"
 #import "NWMainMenuController.h"
 #import "NWHighScoreManager.h"
+#import "NWSound.h"
 
 NSInteger gameScore;
 
@@ -58,12 +59,18 @@ NSInteger gameScore;
     [self printGameScore:gameScore];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [NWSound play:NWSFXTypeGameOver];
+}
+
 
 #pragma mark - buttons actions
 
 
 - (IBAction)backToMainMenu:(id)sender
 {
+    [NWSound stop:NWSFXTypeGameOver];
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
 
