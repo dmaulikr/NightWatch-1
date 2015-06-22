@@ -68,8 +68,6 @@
 		FA23131719FF4CCA00D7C41F /* Sleep_by_treijim.jpg in Resources */ = {isa = PBXBuildFile; fileRef = FA23131619FF4CCA00D7C41F /* Sleep_by_treijim.jpg */; };
 		FA3482471B303AD800FA59A1 /* NWBurnSFX.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482421B303AD800FA59A1 /* NWBurnSFX.caf */; };
 		FA3482481B303AD800FA59A1 /* NWBurnSFX.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482421B303AD800FA59A1 /* NWBurnSFX.caf */; };
-		FA3482491B303AD800FA59A1 /* NWGameBGM.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482431B303AD800FA59A1 /* NWGameBGM.caf */; };
-		FA34824A1B303AD800FA59A1 /* NWGameBGM.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482431B303AD800FA59A1 /* NWGameBGM.caf */; };
 		FA34824B1B303AD800FA59A1 /* NWGameOverSFX.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482441B303AD800FA59A1 /* NWGameOverSFX.caf */; };
 		FA34824C1B303AD800FA59A1 /* NWGameOverSFX.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482441B303AD800FA59A1 /* NWGameOverSFX.caf */; };
 		FA34824D1B303AD800FA59A1 /* NWGameSFX.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482451B303AD800FA59A1 /* NWGameSFX.caf */; };
@@ -78,6 +76,11 @@
 		FA3482501B303AD800FA59A1 /* NWMainBGM.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA3482461B303AD800FA59A1 /* NWMainBGM.caf */; };
 		FA3482541B30432300FA59A1 /* NSUserDefaults+appDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3482531B30432300FA59A1 /* NSUserDefaults+appDefaults.m */; };
 		FA3482551B30432300FA59A1 /* NSUserDefaults+appDefaults.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3482531B30432300FA59A1 /* NSUserDefaults+appDefaults.m */; };
+		FA4D65851B3182C10019D3DB /* NWGameBGM.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA4D65841B3182C10019D3DB /* NWGameBGM.caf */; };
+		FA4D65861B3182C10019D3DB /* NWGameBGM.caf in Resources */ = {isa = PBXBuildFile; fileRef = FA4D65841B3182C10019D3DB /* NWGameBGM.caf */; };
+		FA7D8B651B37F0C600C49821 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA7D8B641B37F0C600C49821 /* CoreData.framework */; };
+		FA7D8B681B37F18800C49821 /* NightWatch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA7D8B661B37F18800C49821 /* NightWatch.xcdatamodeld */; };
+		FA7D8B691B37F18800C49821 /* NightWatch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA7D8B661B37F18800C49821 /* NightWatch.xcdatamodeld */; };
 		FAB2976719FDF72A00D0D601 /* boom.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976619FDF72A00D0D601 /* boom.png */; };
 		FAB2976919FE421C00D0D601 /* main.png in Resources */ = {isa = PBXBuildFile; fileRef = FAB2976819FE421C00D0D601 /* main.png */; };
 		FAB2976D19FE422E00D0D601 /* NWMainMenuController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB2976B19FE422E00D0D601 /* NWMainMenuController.m */; };
@@ -203,12 +206,14 @@
 		FA23131319FF4C9B00D7C41F /* NWAboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NWAboutViewController.xib; sourceTree = "<group>"; };
 		FA23131619FF4CCA00D7C41F /* Sleep_by_treijim.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Sleep_by_treijim.jpg; sourceTree = "<group>"; };
 		FA3482421B303AD800FA59A1 /* NWBurnSFX.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NWBurnSFX.caf; sourceTree = "<group>"; };
-		FA3482431B303AD800FA59A1 /* NWGameBGM.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NWGameBGM.caf; sourceTree = "<group>"; };
 		FA3482441B303AD800FA59A1 /* NWGameOverSFX.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NWGameOverSFX.caf; sourceTree = "<group>"; };
 		FA3482451B303AD800FA59A1 /* NWGameSFX.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NWGameSFX.caf; sourceTree = "<group>"; };
 		FA3482461B303AD800FA59A1 /* NWMainBGM.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NWMainBGM.caf; sourceTree = "<group>"; };
 		FA3482521B30432300FA59A1 /* NSUserDefaults+appDefaults.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+appDefaults.h"; sourceTree = "<group>"; };
 		FA3482531B30432300FA59A1 /* NSUserDefaults+appDefaults.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+appDefaults.m"; sourceTree = "<group>"; };
+		FA4D65841B3182C10019D3DB /* NWGameBGM.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = NWGameBGM.caf; sourceTree = "<group>"; };
+		FA7D8B641B37F0C600C49821 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		FA7D8B671B37F18800C49821 /* NightWatch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = NightWatch.xcdatamodel; sourceTree = "<group>"; };
 		FAB2976619FDF72A00D0D601 /* boom.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = boom.png; sourceTree = "<group>"; };
 		FAB2976819FE421C00D0D601 /* main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main.png; sourceTree = "<group>"; };
 		FAB2976A19FE422E00D0D601 /* NWMainMenuController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NWMainMenuController.h; sourceTree = "<group>"; };
@@ -223,6 +228,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7D8B651B37F0C600C49821 /* CoreData.framework in Frameworks */,
 				FA1958A019F79EE200857A2E /* CoreGraphics.framework in Frameworks */,
 				FA1958A219F79EE200857A2E /* UIKit.framework in Frameworks */,
 				FA19589E19F79EE200857A2E /* Foundation.framework in Frameworks */,
@@ -382,6 +388,7 @@
 		FA19589C19F79EE200857A2E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA7D8B641B37F0C600C49821 /* CoreData.framework */,
 				FA19589D19F79EE200857A2E /* Foundation.framework */,
 				FA19589F19F79EE200857A2E /* CoreGraphics.framework */,
 				FA1958A119F79EE200857A2E /* UIKit.framework */,
@@ -394,8 +401,8 @@
 			isa = PBXGroup;
 			children = (
 				FA1958AC19F79EE200857A2E /* NWAppDelegate.h */,
-				FA3482561B30433300FA59A1 /* Categories */,
 				FA1958AD19F79EE200857A2E /* NWAppDelegate.m */,
+				FA3482561B30433300FA59A1 /* Categories */,
 				FA23130F19FF4C3800D7C41F /* Game Views */,
 				FA23131019FF4C5100D7C41F /* Game Objects */,
 				FA0163541AD38F6F0024D9E1 /* Game Sound Handler */,
@@ -410,6 +417,7 @@
 		FA1958A419F79EE200857A2E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FA7D8B661B37F18800C49821 /* NightWatch.xcdatamodeld */,
 				FA1958A519F79EE200857A2E /* NightWatch-Info.plist */,
 				FA1958A619F79EE200857A2E /* InfoPlist.strings */,
 				FA1958A919F79EE200857A2E /* main.m */,
@@ -503,7 +511,7 @@
 			isa = PBXGroup;
 			children = (
 				FA3482421B303AD800FA59A1 /* NWBurnSFX.caf */,
-				FA3482431B303AD800FA59A1 /* NWGameBGM.caf */,
+				FA4D65841B3182C10019D3DB /* NWGameBGM.caf */,
 				FA3482441B303AD800FA59A1 /* NWGameOverSFX.caf */,
 				FA3482451B303AD800FA59A1 /* NWGameSFX.caf */,
 				FA3482461B303AD800FA59A1 /* NWMainBGM.caf */,
@@ -599,7 +607,6 @@
 				FAB2976719FDF72A00D0D601 /* boom.png in Resources */,
 				FA23130E19FF342F00D7C41F /* title.png in Resources */,
 				FA0817EE19FA236100FC2073 /* cry.png in Resources */,
-				FA3482491B303AD800FA59A1 /* NWGameBGM.caf in Resources */,
 				FA23130819FF201F00D7C41F /* NWInstructionsViewController.xib in Resources */,
 				FA34824B1B303AD800FA59A1 /* NWGameOverSFX.caf in Resources */,
 				FA1958A819F79EE200857A2E /* InfoPlist.strings in Resources */,
@@ -615,6 +622,7 @@
 				FAB2976919FE421C00D0D601 /* main.png in Resources */,
 				FA23131719FF4CCA00D7C41F /* Sleep_by_treijim.jpg in Resources */,
 				FA0C0A2019F896B0006B8DA5 /* Ghost.png in Resources */,
+				FA4D65851B3182C10019D3DB /* NWGameBGM.caf in Resources */,
 				FA0817EC19FA22F800FC2073 /* NWGameOverViewController.xib in Resources */,
 				FA0817F019FA23C000FC2073 /* Blood-Splatter.png in Resources */,
 				FA34824F1B303AD800FA59A1 /* NWMainBGM.caf in Resources */,
@@ -627,7 +635,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA34824A1B303AD800FA59A1 /* NWGameBGM.caf in Resources */,
+				FA4D65861B3182C10019D3DB /* NWGameBGM.caf in Resources */,
 				FA34824C1B303AD800FA59A1 /* NWGameOverSFX.caf in Resources */,
 				FA3482481B303AD800FA59A1 /* NWBurnSFX.caf in Resources */,
 				FA3482501B303AD800FA59A1 /* NWMainBGM.caf in Resources */,
@@ -676,6 +684,7 @@
 				FA0163B21AD3A3C80024D9E1 /* OALTools.m in Sources */,
 				FA0163A61AD3A3C80024D9E1 /* ALListener.m in Sources */,
 				FA01639D1AD3A3C80024D9E1 /* OALAudioTrack.m in Sources */,
+				FA7D8B681B37F18800C49821 /* NightWatch.xcdatamodeld in Sources */,
 				FA1958AE19F79EE200857A2E /* NWAppDelegate.m in Sources */,
 				FA01639A1AD3A3C80024D9E1 /* OALActionManager.m in Sources */,
 				FA3482541B30432300FA59A1 /* NSUserDefaults+appDefaults.m in Sources */,
@@ -688,6 +697,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA7D8B691B37F18800C49821 /* NightWatch.xcdatamodeld in Sources */,
 				FA1958C319F79EE200857A2E /* NightWatchTests.m in Sources */,
 				FA3482551B30432300FA59A1 /* NSUserDefaults+appDefaults.m in Sources */,
 			);
@@ -894,6 +904,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		FA7D8B661B37F18800C49821 /* NightWatch.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				FA7D8B671B37F18800C49821 /* NightWatch.xcdatamodel */,
+			);
+			currentVersion = FA7D8B671B37F18800C49821 /* NightWatch.xcdatamodel */;
+			path = NightWatch.xcdatamodeld;
+			sourceTree = SOURCE_ROOT;
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = FA19589219F79EE200857A2E /* Project object */;
 }
