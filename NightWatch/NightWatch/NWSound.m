@@ -215,8 +215,8 @@ static BOOL backgroundMode = NO;
     backgroundMode =  YES;
 }
 
-//+ (void)foregroundMode
-//{
++ (void)foregroundMode
+{
 //    NWSound* sound = [NWSound sharedSound];
 //    
 //    SBAppController *appController = [SBAppController sharedAppController];
@@ -232,7 +232,7 @@ static BOOL backgroundMode = NO;
 //    }
 //    
 //    backgroundMode =  NO;
-//}
+}
 
 + (void)playBGM
 {
