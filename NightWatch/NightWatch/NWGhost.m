@@ -19,6 +19,8 @@ NSString *const JSON_KEYFRAMEHEIGHT = @"frame.height";
 NSString *const JSON_KEYFRAMEY1 = @"frame.y";
 NSString *const JSON_KEYFRAMEY2 = @"frame.y2";
 NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
+NSString *const JSON_KEYFRAMEY4 = @"frame.y4";
+NSString *const JSON_KEYFRAMEY5 = @"frame.y5";
 
 
 @implementation NWGhost
@@ -58,6 +60,8 @@ NSString *const JSON_KEYFRAMEY3 = @"frame.y3";
         _arrayPositions = [[[NSMutableArray alloc]initWithObjects:[self.dictJSON objectForKey:JSON_KEYFRAMEY1],
                                                                   [self.dictJSON objectForKey:JSON_KEYFRAMEY2],
                                                                   [self.dictJSON objectForKey:JSON_KEYFRAMEY3],
+                                                                  [self.dictJSON objectForKey:JSON_KEYFRAMEY4],
+                                                                  [self.dictJSON objectForKey:JSON_KEYFRAMEY5],
                                                                    nil]autorelease];
         
         //Assign the object Frame and Start location
