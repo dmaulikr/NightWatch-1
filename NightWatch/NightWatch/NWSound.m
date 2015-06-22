@@ -245,7 +245,7 @@ static BOOL backgroundMode = NO;
 //    if (sound.onSound && !backgroundMode)
 //    {
     sound.audioTrack.volume = kDEFAULT_BGM_VOLUME;
-    [sound.audioTrack setMuted:!sound.onSound];
+//    [sound.audioTrack setMuted:!sound.onSound];
     
 //        if ([NWSound canPlay])
 //        {
