@@ -10,31 +10,31 @@
 	<string>NightWatch</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>63FF73FB-E5B0-4957-908C-515314E87094</key>
-		<string>https://github.com/marvinlab/NightWatch.git</string>
+		<key>AA07859817FDCEF578504A169D73B42EC481C9FD</key>
+		<string>https://github.com/marvinlab/NightWatch</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>NightWatch/NightWatch.xcodeproj/project.xcworkspace</string>
+	<string>NightWatch/NightWatch.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>63FF73FB-E5B0-4957-908C-515314E87094</key>
+		<key>AA07859817FDCEF578504A169D73B42EC481C9FD</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/marvinlab/NightWatch.git</string>
+	<string>https://github.com/marvinlab/NightWatch</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>63FF73FB-E5B0-4957-908C-515314E87094</string>
+	<string>AA07859817FDCEF578504A169D73B42EC481C9FD</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>63FF73FB-E5B0-4957-908C-515314E87094</string>
+			<string>AA07859817FDCEF578504A169D73B42EC481C9FD</string>
 			<key>IDESourceControlWCCName</key>
-			<string>PROJECT_COURSE</string>
+			<string>NWrepo</string>
 		</dict>
 	</array>
 </dict>

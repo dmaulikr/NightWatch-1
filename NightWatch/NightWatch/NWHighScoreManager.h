@@ -13,5 +13,6 @@
 - (BOOL) isHighScore:(NSInteger)score;
 - (NSNumber *) retrieveHighScore;
 - (void) setScoreAsHighScore:(NSInteger)score;
+-(void)showHighScoreAlertWithScore:(NSInteger)score;
 
 @end

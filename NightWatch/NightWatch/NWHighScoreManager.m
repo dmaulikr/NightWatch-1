@@ -10,6 +10,12 @@
 
 NSString *const HIGH_SCOREKEY = @"highScore";
 
+@interface NWHighScoreManager()
+
+@property (nonatomic, retain) UITextField *highScorerTextField;
+
+@end
+
 @implementation NWHighScoreManager
 
 -(void) dealloc
@@ -37,6 +43,20 @@ NSString *const HIGH_SCOREKEY = @"highScore";
     }
     return  FALSE;
     
+}
+
+-(void)showHighScoreAlertWithScore:(NSInteger)score
+{
+    UIAlertView *newHighScoreAlert = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%ld",(long)score]
+                                                               message:@"highscore!, please enter your name"
+                                                              delegate:self
+                                                     cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    
+    newHighScoreAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [newHighScoreAlert setFrame:CGRectMake(newHighScoreAlert.frame.origin.x, newHighScoreAlert.frame.origin.y, newHighScoreAlert.frame.size.width, 500)];
+    
+    [newHighScoreAlert show];
+    [newHighScoreAlert release];
 }
 
 

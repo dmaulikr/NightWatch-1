@@ -76,6 +76,7 @@ NSInteger gameScore;
 
 - (void) playAgain:(id)sender
 {
+    [NWSound stop:NWSFXTypeGameOver];
     [self.navigationController popViewControllerAnimated:NO];
 }
 
@@ -84,14 +85,8 @@ NSInteger gameScore;
 
 - (void) updateHighScore:(NSInteger)score
 {
-    UIAlertView *newHighScoreAlert = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%ld",(long)score]
-                                                               message:@"YOU'VE SET A NEW HIGH SCORE!!!!"
-                                                              delegate:self
-                                                     cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        
-    [newHighScoreAlert show];
+    [_highScoreMgr showHighScoreAlertWithScore:score];
     [_highScoreMgr setScoreAsHighScore:score];
-    
 }
 
 - (void) printGameScore:(NSInteger)score
