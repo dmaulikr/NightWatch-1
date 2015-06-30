@@ -48,12 +48,9 @@ NSString *const HIGH_SCOREKEY = @"highScore";
 -(void)showHighScoreAlertWithScore:(NSInteger)score
 {
     UIAlertView *newHighScoreAlert = [[UIAlertView alloc]initWithTitle:[NSString stringWithFormat:@"%ld",(long)score]
-                                                               message:@"highscore!, please enter your name"
+                                                               message:@"You've Set a New Highscore"
                                                               delegate:self
                                                      cancelButtonTitle:@"OK" otherButtonTitles:nil];
-    
-    newHighScoreAlert.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [newHighScoreAlert setFrame:CGRectMake(newHighScoreAlert.frame.origin.x, newHighScoreAlert.frame.origin.y, newHighScoreAlert.frame.size.width, 500)];
     
     [newHighScoreAlert show];
     [newHighScoreAlert release];
