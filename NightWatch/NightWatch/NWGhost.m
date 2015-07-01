@@ -41,6 +41,10 @@ NSString *const JSON_KEYFRAMEY5 = @"frame.y5";
     self = [super init];
     if (self) {
         self.image = [UIImage imageNamed:GHOST_IMAGE_NAME];
+//        NSString *imageUrl = @"http://major.dev.en.lods.klabgames.net/image/item/thumb/item_thumb_00010.png";
+//        [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+//            self.image = [UIImage imageWithData:data];
+//        }];
         self.alpha = ALPHA_GHOST;
         //Fetching the Data from ghost.json
         NSString *JSONFilePath = [[NSBundle mainBundle]pathForResource:JSON_NAME

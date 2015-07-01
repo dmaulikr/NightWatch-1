@@ -39,6 +39,7 @@ BOOL crossIsTouched;
 @property (retain, nonatomic) NSTimer *collisionChecker;
 @property (assign, nonatomic) NSInteger ghostsInScreen;
 @property (retain, nonatomic) NSMutableArray *arrayOfIncomingGhosts;
+@property (nonatomic, retain) IBOutlet UIView *loadingView;
 
 - (void)gameOver;
 
@@ -57,15 +58,23 @@ BOOL crossIsTouched;
     self.arrayOfIncomingGhosts = nil;
     self.randomPosition = nil;
     self.arrayPositions = nil;
+    self.bgView = nil;
  
     [super dealloc];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [NWSound playBGM:NWBGMTypeGame];
+    [self.view addSubview:self.loadingView];
+    
     BABY_X_POSITION = [[UIScreen mainScreen]bounds].size.height - 175;
-    [self initializeGame];
+    NSString *imageUrl = @"https://upload.wikimedia.org/wikipedia/commons/b/bf/Lano_Beach_-_Savai'i,_2007.jpg";
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        self.bgView.image = [UIImage imageWithData:data];
+        [self.loadingView removeFromSuperview];
+        [self initializeGame];
+    }];
+    
 }
 
 
@@ -166,6 +175,7 @@ BOOL crossIsTouched;
 
 - (void)initializeGame
 {
+    [NWSound playBGM:NWBGMTypeGame];
     _yourScore = 0;
     _yourScoreLbl.text = [NSString stringWithFormat:@"%ld", (long)_yourScore];
     

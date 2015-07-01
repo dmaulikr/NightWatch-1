@@ -14,6 +14,9 @@
 @property (assign, nonatomic) NSInteger yourScore;
 @property (assign, nonatomic) NSInteger highScore;
 @property (retain, nonatomic) NSMutableArray *arrayPositions;
+@property (nonatomic, retain) IBOutlet UIImageView *bgView;
+@property (nonatomic, retain) NSString *bgURL;
+@property (nonatomic, retain) ASINetworkQueue* networkQueue;
 
 -(void)checkCollision;
 -(void)ghostsArrive;
