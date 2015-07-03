@@ -30,7 +30,7 @@ BOOL highScoreAlertCalled = FALSE;
 BOOL gameOverScreenCalled;
 BOOL crossIsTouched;
 
-@interface NWGamePlayViewController ()
+@interface NWGamePlayViewController () <NSURLConnectionDataDelegate>
 
 @property (retain, nonatomic) IBOutlet UILabel *highScoreLbl;
 @property (retain, nonatomic) IBOutlet UILabel *yourScoreLbl;
@@ -40,6 +40,8 @@ BOOL crossIsTouched;
 @property (assign, nonatomic) NSInteger ghostsInScreen;
 @property (retain, nonatomic) NSMutableArray *arrayOfIncomingGhosts;
 @property (nonatomic, retain) IBOutlet UIView *loadingView;
+@property (nonatomic, retain) NSMutableData *responseData;
+@property (nonatomic, retain) NSDictionary *dictionaryResponse;
 
 - (void)gameOver;
 
@@ -59,6 +61,7 @@ BOOL crossIsTouched;
     self.randomPosition = nil;
     self.arrayPositions = nil;
     self.bgView = nil;
+    self.responseData = nil;
  
     [super dealloc];
 }
@@ -68,12 +71,13 @@ BOOL crossIsTouched;
     [self.view addSubview:self.loadingView];
     
     BABY_X_POSITION = [[UIScreen mainScreen]bounds].size.height - 175;
-    NSString *imageUrl = @"https://upload.wikimedia.org/wikipedia/commons/b/bf/Lano_Beach_-_Savai'i,_2007.jpg";
-    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-        self.bgView.image = [UIImage imageWithData:data];
-        [self.loadingView removeFromSuperview];
-        [self initializeGame];
-    }];
+    
+    NSURLRequest *request = [NSURLRequest requestWithURL:
+                                         [NSURL URLWithString:@"http://dev.masarap.com.ph/reviews/view/938?viewer_id=810&access_id=810&page=1&lat=14.550696&long=121.048843&"]];
+    
+    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+
     
 }
 
@@ -247,6 +251,57 @@ BOOL crossIsTouched;
         didCountScore = FALSE;
     });
     
+    
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    self.responseData = [[NSMutableData alloc] init];
+    [self.responseData appendData:data];
+}
+
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSString *responseString = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
+    NSError *e = nil;
+    NSData *jsonData = [responseString dataUsingEncoding:NSUTF8StringEncoding];
+    NSDictionary *JSON = [NSJSONSerialization JSONObjectWithData:jsonData options: NSJSONReadingMutableContainers error: &e];
+    self.dictionaryResponse = JSON;
+
+    NSString *imageUrl = @"http://dev.masarap.com.ph//uploads/default/";
+    
+    NSDictionary *dataDictionary = [self.dictionaryResponse objectForKey:@"data"];
+    
+    NSMutableArray *photoArray = [dataDictionary objectForKey:@"photos"];
+    
+    NSLog(@"MARVS photoarray %@", photoArray);
+    
+    NSInteger lowerBnd = 0;
+    NSInteger higherBnd = 3;
+    NSString *imageURLfromJSON = nil;
+    NSInteger random = (int)lowerBnd + arc4random() % (higherBnd-lowerBnd+1);
+    NSLog(@"MARVS random %ld",(long)random);
+    NSLog(@"MARVS url %@", [photoArray[random] objectForKey:@"url"]);
+    
+    
+    if([photoArray[random] objectForKey:@"url"]){
+        imageURLfromJSON = [photoArray[random] objectForKey:@"url"];
+        imageUrl = [imageUrl stringByAppendingString:imageURLfromJSON];
+    } else {
+        imageUrl = @"";
+    }
+    self.bgView.image = [UIImage imageNamed:@"child.png"];
+    
+    [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+        if([photoArray[random] objectForKey:@"url"]){
+            self.bgView.image = [UIImage imageWithData:data];
+        }
+        
+        [self.loadingView removeFromSuperview];
+        [self initializeGame];
+    }];
+
     
 }
 

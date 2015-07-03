@@ -16,7 +16,6 @@
 @property (retain, nonatomic) NSMutableArray *arrayPositions;
 @property (nonatomic, retain) IBOutlet UIImageView *bgView;
 @property (nonatomic, retain) NSString *bgURL;
-@property (nonatomic, retain) ASINetworkQueue* networkQueue;
 
 -(void)checkCollision;
 -(void)ghostsArrive;
