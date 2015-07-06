@@ -275,15 +275,10 @@ BOOL crossIsTouched;
     
     NSMutableArray *photoArray = [dataDictionary objectForKey:@"photos"];
     
-    NSLog(@"MARVS photoarray %@", photoArray);
-    
     NSInteger lowerBnd = 0;
     NSInteger higherBnd = 3;
     NSString *imageURLfromJSON = nil;
     NSInteger random = (int)lowerBnd + arc4random() % (higherBnd-lowerBnd+1);
-    NSLog(@"MARVS random %ld",(long)random);
-    NSLog(@"MARVS url %@", [photoArray[random] objectForKey:@"url"]);
-    
     
     if([photoArray[random] objectForKey:@"url"]){
         imageURLfromJSON = [photoArray[random] objectForKey:@"url"];
