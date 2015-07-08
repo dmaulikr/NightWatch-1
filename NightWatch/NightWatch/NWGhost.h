@@ -12,9 +12,9 @@
 
 @property (retain, nonatomic) NSDictionary *dictJSON;
 @property (retain, nonatomic) NSMutableArray *arrayPositions;
-@property (retain, nonatomic) NSNumber *frameX;
-@property (retain, nonatomic) NSNumber *frameWidth;
-@property (retain, nonatomic) NSNumber *frameHeight;
+@property (assign, nonatomic) NSInteger frameX;
+@property (assign, nonatomic) NSInteger frameWidth;
+@property (assign, nonatomic) NSInteger frameHeight;
 @property (retain, nonatomic) CAKeyframeAnimation *attack;
 
 @property (assign, nonatomic) CGFloat startPosForAnimation;
