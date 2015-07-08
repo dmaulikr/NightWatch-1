@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 Marvin Labrador. All rights reserved.
 //
 
-const CGFloat ALPHA_GHOST = 0.35;
+const CGFloat ALPHA_GHOST = 0.55f;
 
 #import "NWGhost.h"
 
@@ -41,12 +41,7 @@ NSString *const JSON_KEYFRAMEY5 = @"frame.y5";
     self = [super init];
     if (self) {
         self.image = [UIImage imageNamed:GHOST_IMAGE_NAME];
-//        NSString *imageUrl = @"http://major.dev.en.lods.klabgames.net/image/item/thumb/item_thumb_00010.png";
-//        [NSURLConnection sendAsynchronousRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:imageUrl]] queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//            self.image = [UIImage imageWithData:data];
-//        }];
         self.alpha = ALPHA_GHOST;
-        //Fetching the Data from ghost.json
         NSString *JSONFilePath = [[NSBundle mainBundle]pathForResource:JSON_NAME
                                                                 ofType:JSON_TYPE];
         
@@ -56,7 +51,6 @@ NSString *const JSON_KEYFRAMEY5 = @"frame.y5";
                          JSONObjectWithData:JSONData
                          options:kNilOptions
                          error:nil];
-        
         _frameX = [self.dictJSON objectForKey:JSON_KEYFRAMEX];
         _frameWidth = [self.dictJSON objectForKey:JSON_KEYFRAMEWIDTH];
         _frameHeight = [self.dictJSON objectForKey:JSON_KEYFRAMEHEIGHT];
@@ -69,6 +63,7 @@ NSString *const JSON_KEYFRAMEY5 = @"frame.y5";
                                                                    nil]autorelease];
         
         //Assign the object Frame and Start location
+        
         _ghostFrameStart = CGRectMake([_frameX floatValue],
                                  [self randomPositions:_arrayPositions],
                                  [_frameWidth floatValue],
